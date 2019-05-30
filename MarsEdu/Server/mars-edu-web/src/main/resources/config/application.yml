@@ -1,0 +1,21 @@
+# 开放修改参数
+port: 5060
+# 开放修改参数
+
+server:
+  port: ${port}
+app:
+  props: #自定义变量
+
+swagger:
+  version: ${project.version} #读取pom.xml中的版本号
+  title: <a style='font-size:20pt;color:#de55ff'>火星教育</a> 后端服务数据接口系统
+  author: Chris Chan
+  service-url: https://www.baidu.com/
+  description: ● 为了便于前端调用做统一封装，所有的接口请求和返回均采用统一的自定义协议进行打包。<br>● 本系统全部采用RequestBody模式，使用POST方式提交。
+  contact:
+    url: http://blog.csdn.net/xxkalychen
+    email: chriachen2018@163.com
+spring:
+  profiles:
+    active: office
