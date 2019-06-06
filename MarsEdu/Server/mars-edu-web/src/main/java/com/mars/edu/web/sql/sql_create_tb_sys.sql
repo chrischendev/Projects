@@ -72,8 +72,8 @@ create table if not exists sys_school_images
 (
   id        int(10)      not null primary key auto_increment comment 'ID',
   school_id int(10)      not null comment '学校ID 外键',
-  url       tinyint(512) not null comment '图片Url',
-  type      tinyint(1) comment '图片类型 主图 轮播图 缩略图',
+  url       varchar(512) not null comment '图片Url',
+  type      int(10) comment '图片类型ID 主图 轮播图 缩略图 外键',
   status    tinyint(1)   not null default 0 comment '逻辑删除标记'
 );
 
@@ -98,6 +98,45 @@ create table if not exists sys_user
   password  varchar(20)  not null comment '密码 加密',
   school_id varchar(20)  not null comment '学校ID 外键',
   status    tinyint(1)   not null default 0 comment '逻辑删除标记'
+);
+
+# 角色
+drop table if exists sys_role;
+create table if not exists sys_role
+(
+  id     int(10)     not null primary key auto_increment comment 'ID',
+  code   varchar(20) not null comment '角色编码',
+  name   varchar(20) not null comment '用户名',
+  status tinyint(1)  not null default 0 comment '逻辑删除标记'
+);
+# 用户 角色
+drop table if exists sys_user_role;
+create table if not exists sys_user_role
+(
+  id      int(10)    not null primary key auto_increment comment 'ID',
+  user_id int(10)    not null comment '用户id 外键',
+  role_id int(10)    not null comment '角色id 外键',
+  status  tinyint(1) not null default 0 comment '逻辑删除标记'
+);
+
+# 权限
+drop table if exists sys_auth;
+create table if not exists sys_auth
+(
+  id     int(10)     not null primary key auto_increment comment 'ID',
+  code   varchar(20) not null comment '权限编码',
+  name   varchar(20) not null comment '权限名称',
+  status tinyint(1)  not null default 0 comment '逻辑删除标记'
+);
+
+# 角色 权限
+drop table if exists sys_role_auth;
+create table if not exists sys_role_auth
+(
+  id      int(10)    not null primary key auto_increment comment 'ID',
+  role_id int(10)    not null comment '角色id 外键',
+  auth_id int(10)    not null comment '权限id 外键',
+  status  tinyint(1) not null default 0 comment '逻辑删除标记'
 );
 
 # 用户详情
