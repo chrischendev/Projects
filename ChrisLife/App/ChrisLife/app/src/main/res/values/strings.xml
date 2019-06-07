@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">可燃冰</string>
+    <string name="navigation_drawer_open">打开</string>
+    <string name="navigation_drawer_close">关闭</string>
+    <string name="nav_header_title">可燃冰</string>
+    <string name="nav_header_subtitle">惊涛骇浪 不忘初心</string>
+    <string name="nav_header_desc">导航</string>
+    <string name="action_settings">设置</string>
+
+    <string name="menu_home">主页</string>
+    <string name="menu_gallery">相册</string>
+    <string name="menu_slideshow">文稿</string>
+    <string name="menu_tools">工具</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_send">邮件</string>
+    <string name="title_act_news">每日新闻</string>
+    <string name="title_news_home">首页</string>
+    <string name="title_news_video">视频</string>
+    <string name="title_news_joke">笑话</string>
+</resources>
