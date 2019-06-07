@@ -37,7 +37,7 @@ public class UserController {
         return null != userService.getUser(username, password) ? "login success!" : "login failed.";
     }
 
-    @PostMapping("/getUserDtoList")
+    @GetMapping("/getUserDtoList")
     @ApiOperation(value = "获取所有用户数据")
     public List<UserDto> getUserDtoList() {
         return userDtoRepository.findAll();

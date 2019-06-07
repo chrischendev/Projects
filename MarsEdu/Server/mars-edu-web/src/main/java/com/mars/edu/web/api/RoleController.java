@@ -7,10 +7,7 @@ import com.mars.edu.web.model.orm.SysRoleEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class RoleController {
         return roleRepository.saveAndFlush(role);
     }
 
-    @PostMapping("/getRoleDtoList")
+    @GetMapping("/getRoleDtoList")
     @ApiOperation(value = "获取所有角色数据")
     public List<RoleDto> getRoleDtoList() {
         return roleDtoRepository.findAll();

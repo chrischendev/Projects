@@ -22,7 +22,6 @@ import java.util.Date;
  * Explain:Swagger2配置
  */
 @Configuration
-@EnableSwagger2
 public class Swagger2Config {
     @Autowired
     SwaggerProperties swaggerProperties;
