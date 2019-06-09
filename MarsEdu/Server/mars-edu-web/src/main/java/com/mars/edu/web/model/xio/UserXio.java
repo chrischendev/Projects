@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@XlsSheet(value = "user", maxLines = 65534, titleRowIndex = 0, dataRowStart = 1)
+@XlsSheet(value = "user")
 public class UserXio {
     @XlsColumn("姓名")
     private String name;

@@ -1,6 +1,5 @@
 package com.mars.edu.web.api;
 
-import com.chris.poi.utils.XlsIOUtils;
 import com.chris.poi.xls.XlsDataSheet;
 import com.chris.poi.xls.XlsUtils;
 import com.google.gson.Gson;
@@ -56,10 +55,13 @@ public class UserController {
 
     @GetMapping("/export")
     @ApiOperation(value = "导出")
-    public String exportUsers(HttpServletResponse response) throws IOException {
+    public String exportUsers(HttpServletResponse response) throws IOException, IllegalAccessException {
         //XlsDataWorkBook workBook = XlsDataWorkBook.get().addDataList(UserXio.class, "用户", new ArrayList<>());
         XlsDataSheet<UserXio> sheet = XlsDataSheet.get(UserXio.class).setDataList(new ArrayList()).setTitle("user");
-        XlsIOUtils.writeToOutputStream(XlsIOUtils.buildeExportResponse("user", response), sheet, response.getOutputStream());
+
+        response.setHeader("content-type", "application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=" + "user.xls");
+        XlsUtils.exportToXlsOutputStream(sheet, response.getOutputStream());
         return "export success.";
     }
 
@@ -68,7 +70,7 @@ public class UserController {
     public String importUsers(@RequestPart("file") MultipartFile file) throws IOException, IllegalAccessException, InstantiationException {
         List<UserXio> userXioList = XlsUtils.readXlsxFromInputStream(file.getInputStream(), UserXio.class);
         System.out.println(gson.toJson(userXioList));
-        return "import success.";
+        return userService.addXioList(userXioList) ? "import success." : "import failed.";
     }
 
 }

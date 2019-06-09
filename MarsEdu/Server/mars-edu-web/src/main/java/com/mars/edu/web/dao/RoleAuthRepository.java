@@ -2,7 +2,6 @@ package com.mars.edu.web.dao;
 
 import com.mars.edu.web.locallibs.MarsRepository;
 import com.mars.edu.web.model.orm.SysRoleAuthEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -11,9 +10,10 @@ import java.util.List;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface RoleAuthRepository extends MarsRepository<SysRoleAuthEntity, Long> {
+public interface RoleAuthRepository extends MarsRepository<SysRoleAuthEntity> {
     /**
      * 根据角色id查询权限集合
+     *
      * @param roleId
      * @return
      */

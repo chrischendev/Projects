@@ -53,6 +53,8 @@ public class MarsSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/logout").permitAll().logoutSuccessUrl("/login.html")
                 .and()
                 .authorizeRequests()
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/role/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()
                 .and()

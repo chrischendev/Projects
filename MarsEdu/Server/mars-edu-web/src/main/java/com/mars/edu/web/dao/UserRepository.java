@@ -8,6 +8,6 @@ import com.mars.edu.web.model.orm.SysUserEntity;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface UserRepository extends MarsRepository<SysUserEntity, Long> {
+public interface UserRepository extends MarsRepository<SysUserEntity> {
     SysUserEntity findFirstByNameAndPassword(String username, String password);
 }

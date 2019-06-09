@@ -10,7 +10,7 @@ import java.util.List;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface UserRoleRepository extends MarsRepository<SysUserRoleEntity, Long> {
+public interface UserRoleRepository extends MarsRepository<SysUserRoleEntity> {
     /**
      * 根据用户id查询角色
      *
