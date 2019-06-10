@@ -1,9 +1,11 @@
 package com.mars.edu.web.api;
 
+import com.mars.edu.web.converter.RoleConverter;
 import com.mars.edu.web.dao.RoleDtoRepository;
 import com.mars.edu.web.locallibs.base.BaseSwaggerController;
 import com.mars.edu.web.model.dto.RoleDto;
 import com.mars.edu.web.model.orm.SysRoleEntity;
+import com.mars.edu.web.model.xio.RoleXio;
 import com.mars.edu.web.service.RoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,15 +24,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/role")
 @Api(value = "role", tags = "02. Role", description = "角色")
-public class RoleController implements BaseSwaggerController<SysRoleEntity, Integer, RoleService> {
+public class RoleController implements BaseSwaggerController<SysRoleEntity, Integer, RoleXio, RoleService, RoleConverter> {
     @Autowired
     RoleService roleService;
     @Autowired
     RoleDtoRepository roleDtoRepository;
+    @Autowired
+    RoleConverter roleConverter;
 
     @Override
     public RoleService getService() {
         return roleService;
+    }
+
+    @Override
+    public RoleConverter getConverter() {
+        return roleConverter;
+    }
+
+    @Override
+    public Class<RoleXio> getDtoClass() {
+        return RoleXio.class;
     }
 
     @GetMapping("/getRoleDtoList")

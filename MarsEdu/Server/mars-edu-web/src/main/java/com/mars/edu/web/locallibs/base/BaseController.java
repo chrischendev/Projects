@@ -21,7 +21,19 @@ public interface BaseController<T, ID extends Serializable, S extends BaseServic
         return getService().add(entity);
     }
 
-    //获取所有数据
+    //删除
+    @GetMapping("/deleteById")
+    default boolean deleteById(ID id) {
+        return getService().delete(id);
+    }
+
+    //修改
+    @PostMapping("/update")
+    default boolean update(@RequestBody T entity) {
+        return getService().update(entity);
+    }
+
+    //根据Id获取数据
     @GetMapping("/findById")
     default T findById(ID id) {
         return (T) getService().findById(id);
