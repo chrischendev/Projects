@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
  * Create on 2019/6/10 17:25
  * Use for:
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 @XlsSheet(value = "role")
 public class RoleXio {
     @XlsColumn("编码")

@@ -1,6 +1,7 @@
 package com.mars.edu.web.locallibs.base;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.*;
 
@@ -9,6 +10,7 @@ import java.util.*;
  * create on: 2019/6/9 22:16
  * use for:
  */
+@Transactional
 public interface BaseService<T, ID extends Serializable, R extends BaseRepository<T, ID>> {
     R getRepository();
 
