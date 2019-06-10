@@ -1,7 +1,7 @@
 package com.mars.edu.web.api;
 
 import com.mars.edu.web.dao.RoleDtoRepository;
-import com.mars.edu.web.locallibs.BaseSwaggerController;
+import com.mars.edu.web.locallibs.base.BaseSwaggerController;
 import com.mars.edu.web.model.dto.RoleDto;
 import com.mars.edu.web.model.orm.SysRoleEntity;
 import com.mars.edu.web.service.RoleService;

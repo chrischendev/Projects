@@ -1,13 +1,15 @@
 package com.mars.edu.web.api;
 
-import com.chris.poi.xls.XlsDataSheet;
+import com.chris.poi.xls.XlsDataWorkBook;
 import com.chris.poi.xls.XlsUtils;
 import com.google.gson.Gson;
 import com.mars.edu.web.dao.UserDtoRepository;
+import com.mars.edu.web.mapstruct.UserMapper;
 import com.mars.edu.web.model.dto.UserDto;
 import com.mars.edu.web.model.orm.SysUserEntity;
 import com.mars.edu.web.model.xio.UserXio;
 import com.mars.edu.web.service.UserService;
+import com.mars.edu.web.utils.LocalXlsUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,8 @@ public class UserController {
     @Autowired
     UserDtoRepository userDtoRepository;
     @Autowired
+    UserMapper userMapper;
+    @Autowired
     Gson gson;
 
     @PostMapping("/reg")
@@ -44,7 +47,7 @@ public class UserController {
     @GetMapping("/login")
     @ApiOperation(value = "登录")
     public String login(String username, String password) {
-        return null != userService.getUser(username, password) ? "login success!" : "login failed.";
+        return null != userService.findUserByUsernameAndPassword(username, password) ? "login success!" : "login failed.";
     }
 
     @GetMapping("/getUserDtoList")
@@ -55,13 +58,10 @@ public class UserController {
 
     @GetMapping("/export")
     @ApiOperation(value = "导出")
-    public String exportUsers(HttpServletResponse response) throws IOException, IllegalAccessException {
-        //XlsDataWorkBook workBook = XlsDataWorkBook.get().addDataList(UserXio.class, "用户", new ArrayList<>());
-        XlsDataSheet<UserXio> sheet = XlsDataSheet.get(UserXio.class).setDataList(new ArrayList()).setTitle("user");
-
-        response.setHeader("content-type", "application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment;filename=" + "user.xls");
-        XlsUtils.exportToXlsOutputStream(sheet, response.getOutputStream());
+    public String exportUsers(HttpServletResponse response) {
+        XlsDataWorkBook workBook = XlsDataWorkBook.get()
+                .addDataList(UserXio.class, "用户", userMapper.toDtoList(userService.findAll()));
+        LocalXlsUtils.writeToResponse("user", response, workBook);
         return "export success.";
     }
 

@@ -1,6 +1,4 @@
-package com.mars.edu.web.locallibs;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package com.mars.edu.web.locallibs.base;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;

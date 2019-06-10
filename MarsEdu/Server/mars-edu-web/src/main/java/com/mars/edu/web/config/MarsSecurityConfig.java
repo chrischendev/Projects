@@ -56,7 +56,7 @@ public class MarsSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/role/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
                 .csrf().disable();
     }

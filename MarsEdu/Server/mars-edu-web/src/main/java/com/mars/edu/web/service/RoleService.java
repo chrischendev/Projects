@@ -1,7 +1,7 @@
 package com.mars.edu.web.service;
 
 import com.mars.edu.web.dao.RoleRepository;
-import com.mars.edu.web.locallibs.BaseService;
+import com.mars.edu.web.locallibs.base.BaseService;
 import com.mars.edu.web.model.orm.SysRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

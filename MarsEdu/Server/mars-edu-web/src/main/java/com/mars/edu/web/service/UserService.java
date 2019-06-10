@@ -1,6 +1,7 @@
 package com.mars.edu.web.service;
 
 import com.mars.edu.web.dao.UserRepository;
+import com.mars.edu.web.locallibs.base.BaseService;
 import com.mars.edu.web.model.orm.SysUserEntity;
 import com.mars.edu.web.model.xio.UserXio;
 import org.springframework.beans.BeanUtils;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Transactional
-public class UserService implements UserDetailsService {
+public class UserService implements UserDetailsService, BaseService<SysUserEntity, Integer, UserRepository> {
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -33,33 +34,51 @@ public class UserService implements UserDetailsService {
     @Autowired
     EntityManager em;
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return new User(username, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,ROLE_USER"));
+    }
+
+    @Override
+    public UserRepository getRepository() {
+        return userRepository;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
+    @Override
+    public SysUserEntity createEntity() {
+        return new SysUserEntity();
+    }
+
+    @Override
+    public SysUserEntity addId(SysUserEntity entity, Integer integer) {
+        entity.setId(integer);
+        return entity;
+    }
+
+    @Override
+    public boolean existId(SysUserEntity entity) {
+        return entity.getId() > 0;
+    }
+
     public SysUserEntity reg(SysUserEntity user) {
         return userRepository.saveAndFlush(user);
     }
 
     public boolean addXioList(List<UserXio> userVioList) {
-        return addEntityList(userVioList.stream().map(userXio -> {
+        return addBatch(userVioList.stream().map(userXio -> {
             SysUserEntity userEntity = new SysUserEntity();
             BeanUtils.copyProperties(userXio, userEntity);
             return userEntity;
         }).collect(Collectors.toList()));
     }
 
-    public boolean addEntityList(List<SysUserEntity> userEntityList) {
-        for (SysUserEntity userEntity : userEntityList) {
-            em.merge(userEntity);
-        }
-        em.flush();
-        em.clear();
-        return true;
-    }
-
-    public SysUserEntity getUser(String username, String password) {
+    public SysUserEntity findUserByUsernameAndPassword(String username, String password) {
         return userRepository.findFirstByNameAndPassword(username, password);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User(username, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,ROLE_USER"));
-    }
 }

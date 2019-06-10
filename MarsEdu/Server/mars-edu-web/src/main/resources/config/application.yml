@@ -18,4 +18,4 @@ swagger:
     email: chriachen2018@163.com
 spring:
   profiles:
-    active: aliyun
+    active: office

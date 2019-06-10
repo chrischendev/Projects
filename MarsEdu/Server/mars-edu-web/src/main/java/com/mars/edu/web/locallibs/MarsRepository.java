@@ -1,5 +1,6 @@
 package com.mars.edu.web.locallibs;
 
+import com.mars.edu.web.locallibs.base.BaseRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
 /**
