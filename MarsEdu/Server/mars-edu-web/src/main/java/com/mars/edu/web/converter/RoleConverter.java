@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Create by Chris Chan
  * Create on 2019/6/10 17:27
- * Use for: 权限 数据转换器
+ * Use for: 角色 数据转换器
  */
 @Service
 public class RoleConverter implements BaseConverter<SysRoleEntity, RoleXio> {
@@ -32,8 +32,8 @@ public class RoleConverter implements BaseConverter<SysRoleEntity, RoleXio> {
     @Override
     public RoleXio toDto(SysRoleEntity entity) {
         RoleXio roleXio = new RoleXio();
-//        roleXio.setName(entity.getName());
-//        roleXio.setCode(entity.getCode());
+        roleXio.setName(entity.getName());
+        roleXio.setCode(entity.getCode());
         return roleXio;
     }
 

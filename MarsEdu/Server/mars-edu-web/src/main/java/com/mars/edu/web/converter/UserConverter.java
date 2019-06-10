@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Create by Chris Chan
  * Create on 2019/6/10 16:31
- * Use for:
+ * Use for: 用户 数据转换器
  */
 @Service
 public class UserConverter implements BaseConverter<SysUserEntity, UserXio> {

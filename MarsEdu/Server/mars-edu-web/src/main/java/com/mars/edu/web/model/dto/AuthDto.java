@@ -14,9 +14,9 @@ import javax.persistence.Id;
  * Use for:
  */
 @Entity(name = "sys_auth")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class AuthDto {
     @Id
     @Column(name = "id")
@@ -27,4 +27,36 @@ public class AuthDto {
     private String name;
     @Column(name = "status")
     private byte status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(byte status) {
+        this.status = status;
+    }
 }

@@ -15,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,6 @@ import java.util.stream.Collectors;
  * Use for: 基本service封装
  */
 @Service
-@Transactional
 public class UserService implements UserDetailsService, BaseService<SysUserEntity, Integer, UserRepository> {
     @Autowired
     UserRepository userRepository;

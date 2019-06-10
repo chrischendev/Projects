@@ -3,6 +3,8 @@ package com.mars.edu.web.api;
 import com.mars.edu.web.converter.RoleConverter;
 import com.mars.edu.web.dao.RoleDtoRepository;
 import com.mars.edu.web.locallibs.base.BaseSwaggerController;
+import com.mars.edu.web.locallibs.mars.MarsBaseController;
+import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.dto.RoleDto;
 import com.mars.edu.web.model.orm.SysRoleEntity;
 import com.mars.edu.web.model.xio.RoleXio;
@@ -24,27 +26,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/role")
 @Api(value = "role", tags = "02. Role", description = "角色")
-public class RoleController implements BaseSwaggerController<SysRoleEntity, Integer, RoleXio, RoleService, RoleConverter> {
+public class RoleController implements MarsBaseController<SysRoleEntity, Integer, RoleXio> {
     @Autowired
     RoleService roleService;
     @Autowired
-    RoleDtoRepository roleDtoRepository;
-    @Autowired
     RoleConverter roleConverter;
+    @Autowired
+    RoleDtoRepository roleDtoRepository;
 
     @Override
-    public RoleService getService() {
-        return roleService;
-    }
-
-    @Override
-    public RoleConverter getConverter() {
-        return roleConverter;
-    }
-
-    @Override
-    public Class<RoleXio> getDtoClass() {
-        return RoleXio.class;
+    public BusinessHandler<SysRoleEntity, Integer, RoleXio> getBusinessHandler() {
+        return new BusinessHandler(roleService,RoleXio.class,roleConverter);
     }
 
     @GetMapping("/getRoleDtoList")
@@ -52,4 +44,7 @@ public class RoleController implements BaseSwaggerController<SysRoleEntity, Inte
     public List<RoleDto> getRoleDtoList() {
         return roleDtoRepository.findAll();
     }
+
+
+
 }

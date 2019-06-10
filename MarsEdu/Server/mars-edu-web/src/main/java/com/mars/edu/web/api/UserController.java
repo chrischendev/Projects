@@ -1,25 +1,20 @@
 package com.mars.edu.web.api;
 
-import com.chris.poi.xls.XlsDataWorkBook;
-import com.chris.poi.xls.XlsUtils;
 import com.google.gson.Gson;
 import com.mars.edu.web.converter.UserConverter;
 import com.mars.edu.web.dao.UserDtoRepository;
-import com.mars.edu.web.locallibs.base.BaseSwaggerController;
+import com.mars.edu.web.locallibs.mars.MarsBaseController;
+import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.dto.UserDto;
 import com.mars.edu.web.model.orm.SysUserEntity;
 import com.mars.edu.web.model.xio.UserXio;
 import com.mars.edu.web.service.UserService;
-import com.mars.edu.web.utils.LocalXlsUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -30,29 +25,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Api(value = "user", tags = "01. User", description = "用户")
-public class UserController implements BaseSwaggerController<SysUserEntity, Integer, UserXio, UserService, UserConverter> {
+public class UserController implements MarsBaseController<SysUserEntity, Integer, UserXio> {
     @Autowired
     UserService userService;
     @Autowired
-    UserDtoRepository userDtoRepository;
-    @Autowired
     UserConverter userConverter;
+    @Autowired
+    UserDtoRepository userDtoRepository;
     @Autowired
     Gson gson;
 
     @Override
-    public UserService getService() {
-        return userService;
-    }
-
-    @Override
-    public UserConverter getConverter() {
-        return userConverter;
-    }
-
-    @Override
-    public Class<UserXio> getDtoClass() {
-        return UserXio.class;
+    public BusinessHandler<SysUserEntity, Integer, UserXio> getBusinessHandler() {
+        return new BusinessHandler(userService, UserXio.class, userConverter);
     }
 
     @PostMapping("/reg")
@@ -74,30 +59,6 @@ public class UserController implements BaseSwaggerController<SysUserEntity, Inte
         List<UserDto> userDtoList = userDtoRepository.findAll();
         System.out.println(gson.toJson(userDtoList));
         return ResponseEntity.ok().body(userDtoList);
-    }
-
-    @GetMapping("/findAllUserDto")
-    @ApiOperation(value = "获取所有 DTO")
-    public List<UserDto> findAllUserDto() {
-        return userDtoRepository.findAll();
-    }
-
-    @GetMapping("/export")
-    @ApiOperation(value = "导出")
-    public void exportUsers(HttpServletResponse response) {
-        List<SysUserEntity> userEntityList = userService.findAll();
-        List<UserXio> userXioList = userConverter.toSameDtoList(userEntityList);
-        XlsDataWorkBook workBook = XlsDataWorkBook.get()
-                .addDataList(UserXio.class, "用户", userXioList);
-        LocalXlsUtils.writeToResponse("user", response, workBook);
-    }
-
-    @PostMapping("/import")
-    @ApiOperation(value = "导入")
-    public String importUsers(@RequestPart("file") MultipartFile file) throws IOException, IllegalAccessException, InstantiationException {
-        List<UserXio> userXioList = XlsUtils.readXlsxFromInputStream(file.getInputStream(), UserXio.class);
-        System.out.println(gson.toJson(userXioList));
-        return userService.addXioList(userXioList) ? "import success." : "import failed.";
     }
 }
 
