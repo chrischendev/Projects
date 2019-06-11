@@ -1,13 +1,13 @@
 package com.mars.edu.web.api;
 
-import com.mars.edu.web.dao.RoleAuthRepository;
+import com.mars.edu.web.converter.RoleAuthConverter;
+import com.mars.edu.web.locallibs.mars.MarsBaseController;
+import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.orm.SysRoleAuthEntity;
+import com.mars.edu.web.model.xio.RoleAuthXio;
 import com.mars.edu.web.service.RoleAuthService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,21 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/roleAuth")
 @Api(value = "roleAuth", tags = "05. RoleAuth", description = "角色权限")
-public class RoleAuthController {
-    @Autowired
-    RoleAuthRepository roleAuthRepository;
+public class RoleAuthController implements MarsBaseController<SysRoleAuthEntity, RoleAuthXio> {
     @Autowired
     RoleAuthService roleAuthService;
+    @Autowired
+    RoleAuthConverter roleAuthConverter;
 
-    @PostMapping("/add")
-    @ApiOperation(value = "添加")
-    public SysRoleAuthEntity add(@RequestBody SysRoleAuthEntity roleAuth) {
-        return roleAuthRepository.saveAndFlush(roleAuth);
-    }
-
-    @PostMapping("/addBatch")
-    @ApiOperation(value = "批量添加")
-    public Boolean addBatch(int roleId, int[] authIds) {
-        return roleAuthService.add(roleId, authIds);
+    @Override
+    public BusinessHandler<SysRoleAuthEntity, Integer, RoleAuthXio> getBusinessHandler() {
+        return new BusinessHandler(roleAuthService, RoleAuthXio.class, roleAuthConverter);
     }
 }

@@ -1,6 +1,6 @@
 package com.mars.edu.web.dao;
 
-import com.mars.edu.web.locallibs.mars.MarsRepository;
+import com.mars.edu.web.locallibs.mars.MarsBaseRepository;
 import com.mars.edu.web.model.dto.UserDto;
 
 /**
@@ -8,5 +8,5 @@ import com.mars.edu.web.model.dto.UserDto;
  * Create on 2019/6/6 16:33
  * Use for:
  */
-public interface UserDtoRepository extends MarsRepository<UserDto> {
+public interface UserDtoRepository extends MarsBaseRepository<UserDto> {
 }

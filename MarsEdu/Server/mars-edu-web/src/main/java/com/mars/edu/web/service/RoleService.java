@@ -1,7 +1,8 @@
 package com.mars.edu.web.service;
 
 import com.mars.edu.web.dao.RoleRepository;
-import com.mars.edu.web.locallibs.base.BaseService;
+import com.mars.edu.web.locallibs.mars.MarsBaseService;
+import com.mars.edu.web.locallibs.model.DataSourceHandler;
 import com.mars.edu.web.model.orm.SysRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,35 +15,14 @@ import javax.persistence.EntityManager;
  * Use for:
  */
 @Service
-public class RoleService implements BaseService<SysRoleEntity, Integer, RoleRepository> {
+public class RoleService implements MarsBaseService<SysRoleEntity> {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
     EntityManager em;
 
     @Override
-    public RoleRepository getRepository() {
-        return roleRepository;
-    }
-
-    @Override
-    public EntityManager getEntityManager() {
-        return em;
-    }
-
-    @Override
-    public SysRoleEntity createEntity() {
-        return new SysRoleEntity();
-    }
-
-    @Override
-    public SysRoleEntity addId(SysRoleEntity entity, Integer integer) {
-        entity.setId(integer);
-        return entity;
-    }
-
-    @Override
-    public boolean existId(SysRoleEntity entity) {
-        return entity.getId() > 0;
+    public DataSourceHandler<SysRoleEntity, Integer> getDataSourceHandler() {
+        return new DataSourceHandler<>(em, roleRepository, new SysRoleEntity());
     }
 }

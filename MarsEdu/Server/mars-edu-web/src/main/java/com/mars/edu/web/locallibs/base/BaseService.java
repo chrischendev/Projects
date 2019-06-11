@@ -1,8 +1,11 @@
 package com.mars.edu.web.locallibs.base;
 
+import com.mars.edu.web.locallibs.model.DataSourceHandler;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -11,17 +14,15 @@ import java.util.*;
  * use for:
  */
 @Transactional
-public interface BaseService<T, ID extends Serializable, R extends BaseRepository<T, ID>> {
-    R getRepository();
-
-    EntityManager getEntityManager();
+public interface BaseService<T, ID extends Serializable> {
+    DataSourceHandler<T, ID> getDataSourceHandler();
 
     //增加
     default boolean add(T entity) {
         if (null == entity) {
             throw new NullPointerException("entity is null");
         }
-        getRepository().saveAndFlush(entity);
+        getDataSourceHandler().getRepository().saveAndFlush(entity);
         return true;
     }
 
@@ -31,7 +32,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
             throw new NullPointerException("entities is null");
         }
         Iterator<T> iterator = entities.iterator();
-        EntityManager entityManager = getEntityManager();
+        EntityManager entityManager = getDataSourceHandler().getEntityManager();
         while (iterator.hasNext()) {
             T entity = iterator.next();
             entityManager.merge(entity);
@@ -50,17 +51,30 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
     }
 
     //创建一个空的实体对象
-    T createEntity();
+//    T createEntity();
 
     //给实体类添加id
-    T addId(T entity, ID id);
+    default T addId(T entity, ID id) {
+        Class<?> entityClass = entity.getClass();
+        try {
+            Field idField = entityClass.getField("id");
+            idField.setAccessible(true);
+            idField.set(entity, id);//赋值
+            idField.setAccessible(false);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return entity;
+    }
 
     //删除 按照ID删除 删除没办法确定主键 所以可以删除对象
     default boolean delete(ID id) {
         if (null == id) {
             throw new NullPointerException("id is null");
         }
-        getRepository().deleteById(id);
+        getDataSourceHandler().getRepository().deleteById(id);
         return true;
     }
 
@@ -73,7 +87,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
         Iterator<ID> iterator = ids.iterator();
         while (iterator.hasNext()) {
             ID id = iterator.next();
-            T entity = createEntity();
+            T entity = getDataSourceHandler().getNewEntity();
             addId(entity, id);
             entityList.add(entity);
         }
@@ -94,7 +108,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
         if (null == entity) {
             throw new NullPointerException("entity is null");
         }
-        getRepository().delete(entity);
+        getDataSourceHandler().getRepository().delete(entity);
         return true;
     }
 
@@ -103,7 +117,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
         if (null == entities) {
             throw new NullPointerException("entities is null");
         }
-        getRepository().deleteAll(entities);
+        getDataSourceHandler().getRepository().deleteAll(entities);
         return true;
     }
 
@@ -139,7 +153,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
         if (!existId(entity)) {
             throw new NullPointerException("id is null ");
         }
-        getRepository().saveAndFlush(entity);
+        getDataSourceHandler().getRepository().saveAndFlush(entity);
         return true;
     }
 
@@ -165,7 +179,7 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
         if (null == id) {
             return null;
         }
-        Optional<T> optional = getRepository().findById(id);
+        Optional<T> optional = getDataSourceHandler().getRepository().findById(id);
         if (optional.isPresent()) {
             return optional.get();
         } else {
@@ -175,6 +189,6 @@ public interface BaseService<T, ID extends Serializable, R extends BaseRepositor
 
     //查询所有
     default List<T> findAll() {
-        return getRepository().findAll();
+        return getDataSourceHandler().getRepository().findAll();
     }
 }
