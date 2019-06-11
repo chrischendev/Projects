@@ -1,7 +1,6 @@
 package com.mars.edu.web.api;
 
 import com.google.gson.Gson;
-import com.mars.edu.web.converter.UserConverter;
 import com.mars.edu.web.dao.UserDtoRepository;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
@@ -29,15 +28,11 @@ public class UserController implements MarsBaseController<SysUserEntity, UserXio
     @Autowired
     UserService userService;
     @Autowired
-    UserConverter userConverter;
-    @Autowired
     UserDtoRepository userDtoRepository;
-    @Autowired
-    Gson gson;
 
     @Override
     public BusinessHandler<SysUserEntity, Integer, UserXio> getBusinessHandler() {
-        return new BusinessHandler(userService, UserXio.class, userConverter);
+        return new BusinessHandler(userService, userService);
     }
 
     @PostMapping("/reg")
@@ -58,9 +53,9 @@ public class UserController implements MarsBaseController<SysUserEntity, UserXio
     @ApiOperation(value = "获取所有用户数据")
     public ResponseEntity<?> getUserDtoList() {
         List<UserDto> userDtoList = userDtoRepository.findAll();
-        System.out.println(gson.toJson(userDtoList));
         return ResponseEntity.ok().body(userDtoList);
     }
 }
+
 
 

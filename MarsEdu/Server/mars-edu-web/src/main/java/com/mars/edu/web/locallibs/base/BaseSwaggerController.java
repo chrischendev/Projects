@@ -19,7 +19,7 @@ import java.util.List;
  * C converter 数据转换器
  */
 public interface BaseSwaggerController<E, ID extends Serializable> {
-    BaseService<E, ID, BaseRepository<E, ID>> getService();//业务层
+    BaseService<E, ID> getService();//业务层
 
     //增加
     @PostMapping("/add")

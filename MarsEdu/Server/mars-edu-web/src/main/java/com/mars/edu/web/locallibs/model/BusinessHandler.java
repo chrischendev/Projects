@@ -1,8 +1,7 @@
 package com.mars.edu.web.locallibs.model;
 
-import com.mars.edu.web.locallibs.base.BaseConverter;
-import com.mars.edu.web.locallibs.base.BaseRepository;
 import com.mars.edu.web.locallibs.base.BaseService;
+import com.mars.edu.web.locallibs.base.BaseXlsProcess;
 
 import java.io.Serializable;
 
@@ -12,40 +11,30 @@ import java.io.Serializable;
  * use for: 业务持有者
  */
 public class BusinessHandler<E, ID extends Serializable, X> {
-    private BaseService<E, ID, BaseRepository<E, ID>> service;
-    private Class<X> xlsClass;
-    private BaseConverter<E, X> converter;
+    private BaseService<E, ID> service;
+    private BaseXlsProcess<E, X, ID> xlsService;
 
     public BusinessHandler() {
     }
 
-    public BusinessHandler(BaseService<E, ID, BaseRepository<E, ID>> service, Class<X> xlsClass, BaseConverter<E, X> converter) {
+    public BusinessHandler(BaseService<E, ID> service, BaseXlsProcess<E, X, ID> xlsService) {
         this.service = service;
-        this.xlsClass = xlsClass;
-        this.converter = converter;
+        this.xlsService = xlsService;
     }
 
-    public BaseService<E, ID, BaseRepository<E, ID>> getService() {
+    public BaseService<E, ID> getService() {
         return service;
     }
 
-    public void setService(BaseService<E, ID, BaseRepository<E, ID>> service) {
+    public void setService(BaseService<E, ID> service) {
         this.service = service;
     }
 
-    public Class<X> getXlsClass() {
-        return xlsClass;
+    public BaseXlsProcess<E, X, ID> getXlsService() {
+        return xlsService;
     }
 
-    public void setXlsClass(Class<X> xlsClass) {
-        this.xlsClass = xlsClass;
-    }
-
-    public BaseConverter<E, X> getConverter() {
-        return converter;
-    }
-
-    public void setConverter(BaseConverter<E, X> converter) {
-        this.converter = converter;
+    public void setXlsService(BaseXlsProcess<E, X, ID> xlsService) {
+        this.xlsService = xlsService;
     }
 }

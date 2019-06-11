@@ -1,6 +1,7 @@
 package com.mars.edu.web.api;
 
 import com.mars.edu.web.converter.RoleAuthConverter;
+import com.mars.edu.web.locallibs.base.BaseXlsProcess;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.orm.SysRoleAuthEntity;
@@ -22,11 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleAuthController implements MarsBaseController<SysRoleAuthEntity, RoleAuthXio> {
     @Autowired
     RoleAuthService roleAuthService;
-    @Autowired
-    RoleAuthConverter roleAuthConverter;
 
     @Override
     public BusinessHandler<SysRoleAuthEntity, Integer, RoleAuthXio> getBusinessHandler() {
-        return new BusinessHandler(roleAuthService, RoleAuthXio.class, roleAuthConverter);
+        return new BusinessHandler(roleAuthService, roleAuthService);
     }
 }

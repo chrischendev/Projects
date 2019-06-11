@@ -1,10 +1,13 @@
 package com.mars.edu.web.service;
 
+import com.mars.edu.web.converter.UserConverter;
 import com.mars.edu.web.dao.UserRepository;
-import com.mars.edu.web.locallibs.base.BaseService;
-import com.mars.edu.web.locallibs.mars.MarsBaseService;
+import com.mars.edu.web.locallibs.mars.DataSourceHandlerBox;
+import com.mars.edu.web.locallibs.mars.MarsXlsService;
 import com.mars.edu.web.locallibs.model.DataSourceHandler;
+import com.mars.edu.web.locallibs.model.XlsProcessHandler;
 import com.mars.edu.web.model.orm.SysUserEntity;
+import com.mars.edu.web.model.xio.UserXio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -22,17 +25,20 @@ import javax.persistence.EntityManager;
  * Use for: 基本service封装
  */
 @Service
-public class UserService implements UserDetailsService, MarsBaseService<SysUserEntity> {
+public class UserService implements UserDetailsService, MarsXlsService<SysUserEntity, UserXio> {
     @Autowired
     EntityManager em;
     @Autowired
     UserRepository userRepository;
     @Autowired
+    UserConverter userConverter;
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Override
-    public DataSourceHandler<SysUserEntity, Integer> getDataSourceHandler() {
-        return new DataSourceHandler<>(em, userRepository,new SysUserEntity());
+    public DataSourceHandlerBox<SysUserEntity, UserXio> getDataSourceHandlerBox() {
+        return new DataSourceHandlerBox(new DataSourceHandler<>(em, userRepository, new SysUserEntity()),
+                new XlsProcessHandler(this, userConverter, UserXio.class));
     }
 
     @Override

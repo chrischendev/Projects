@@ -1,7 +1,7 @@
 package com.mars.edu.web.locallibs.mars;
 
 import com.mars.edu.web.locallibs.base.BaseService;
-import com.mars.edu.web.locallibs.model.DataSourceHandler;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Field;
 
@@ -10,12 +10,8 @@ import java.lang.reflect.Field;
  * create on: 2019/6/11 7:03
  * use for: mars-edu基本业务处理
  */
+@Transactional
 public interface MarsBaseService<T> extends BaseService<T, Integer> {
-    @Override
-    default DataSourceHandler<T, Integer> getDataSourceHandler() {
-        return null;
-    }
-
     @Override
     default boolean existId(T entity) {
         Class<?> entityClass = entity.getClass();

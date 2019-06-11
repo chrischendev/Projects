@@ -2,6 +2,7 @@ package com.mars.edu.web.api;
 
 import com.mars.edu.web.converter.RoleConverter;
 import com.mars.edu.web.dao.RoleDtoRepository;
+import com.mars.edu.web.locallibs.base.BaseXlsProcess;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.dto.RoleDto;
@@ -29,13 +30,11 @@ public class RoleController implements MarsBaseController<SysRoleEntity, RoleXio
     @Autowired
     RoleService roleService;
     @Autowired
-    RoleConverter roleConverter;
-    @Autowired
     RoleDtoRepository roleDtoRepository;
 
     @Override
     public BusinessHandler<SysRoleEntity, Integer, RoleXio> getBusinessHandler() {
-        return new BusinessHandler(roleService, RoleXio.class, roleConverter);
+        return new BusinessHandler(roleService, roleService);
     }
 
     @GetMapping("/getRoleDtoList")
@@ -43,6 +42,5 @@ public class RoleController implements MarsBaseController<SysRoleEntity, RoleXio
     public List<RoleDto> getRoleDtoList() {
         return roleDtoRepository.findAll();
     }
-
 
 }

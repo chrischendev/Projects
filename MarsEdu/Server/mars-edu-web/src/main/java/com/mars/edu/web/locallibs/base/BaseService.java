@@ -1,9 +1,9 @@
 package com.mars.edu.web.locallibs.base;
 
 import com.mars.edu.web.locallibs.model.DataSourceHandler;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.*;

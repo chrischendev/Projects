@@ -1,6 +1,7 @@
 package com.mars.edu.web.api;
 
 import com.mars.edu.web.converter.AuthConverter;
+import com.mars.edu.web.locallibs.base.BaseXlsProcess;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.orm.SysAuthEntity;
@@ -22,11 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController implements MarsBaseController<SysAuthEntity, AuthXio> {
     @Autowired
     AuthService authService;
-    @Autowired
-    AuthConverter authConverter;
 
     @Override
     public BusinessHandler<SysAuthEntity, Integer, AuthXio> getBusinessHandler() {
-        return new BusinessHandler(authService, AuthXio.class, authConverter);
+        return new BusinessHandler(authService,authService);
     }
 }

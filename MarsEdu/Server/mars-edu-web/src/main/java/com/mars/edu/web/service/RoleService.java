@@ -1,9 +1,13 @@
 package com.mars.edu.web.service;
 
+import com.mars.edu.web.converter.RoleConverter;
 import com.mars.edu.web.dao.RoleRepository;
-import com.mars.edu.web.locallibs.mars.MarsBaseService;
+import com.mars.edu.web.locallibs.mars.DataSourceHandlerBox;
+import com.mars.edu.web.locallibs.mars.MarsXlsService;
 import com.mars.edu.web.locallibs.model.DataSourceHandler;
+import com.mars.edu.web.locallibs.model.XlsProcessHandler;
 import com.mars.edu.web.model.orm.SysRoleEntity;
+import com.mars.edu.web.model.xio.RoleXio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +19,17 @@ import javax.persistence.EntityManager;
  * Use for:
  */
 @Service
-public class RoleService implements MarsBaseService<SysRoleEntity> {
+public class RoleService implements MarsXlsService<SysRoleEntity, RoleXio> {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
     EntityManager em;
+    @Autowired
+    RoleConverter roleConverter;
 
     @Override
-    public DataSourceHandler<SysRoleEntity, Integer> getDataSourceHandler() {
-        return new DataSourceHandler<>(em, roleRepository, new SysRoleEntity());
+    public DataSourceHandlerBox<SysRoleEntity, RoleXio> getDataSourceHandlerBox() {
+        return new DataSourceHandlerBox(new DataSourceHandler<>(em, roleRepository, new SysRoleEntity()),
+                new XlsProcessHandler(this, roleConverter, RoleXio.class));
     }
 }
