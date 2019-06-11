@@ -1,6 +1,8 @@
 package com.mars.edu.web.service;
 
 import com.mars.edu.web.dao.RoleAuthRepository;
+import com.mars.edu.web.locallibs.mars.MarsBaseService;
+import com.mars.edu.web.locallibs.model.DataSourceHandler;
 import com.mars.edu.web.model.orm.SysRoleAuthEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +16,14 @@ import javax.persistence.PersistenceContext;
  * Use for:
  */
 @Service
-public class RoleAuthService {
+public class RoleAuthService implements MarsBaseService<SysRoleAuthEntity> {
     @PersistenceContext
     EntityManager em;
-
     @Autowired
     RoleAuthRepository roleAuthRepository;
 
-    public boolean add(int roleId, int[] authIds) {
-        for (int authId : authIds) {
-            em.merge(new SysRoleAuthEntity(roleId, authId));
-        }
-        em.flush();
-        em.clear();
-        return true;
+    @Override
+    public DataSourceHandler<SysRoleAuthEntity, Integer> getDataSourceHandler() {
+        return new DataSourceHandler<>(em, roleAuthRepository, new SysRoleAuthEntity());
     }
 }

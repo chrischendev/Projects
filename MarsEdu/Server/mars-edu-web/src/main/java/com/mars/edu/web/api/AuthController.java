@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 @Api(value = "auth", tags = "04. Auth", description = "权限")
-public class AuthController implements MarsBaseController<SysAuthEntity, Integer, AuthXio> {
+public class AuthController implements MarsBaseController<SysAuthEntity, AuthXio> {
     @Autowired
     AuthService authService;
     @Autowired

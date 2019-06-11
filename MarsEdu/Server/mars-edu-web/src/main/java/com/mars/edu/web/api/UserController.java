@@ -25,7 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Api(value = "user", tags = "01. User", description = "用户")
-public class UserController implements MarsBaseController<SysUserEntity, Integer, UserXio> {
+public class UserController implements MarsBaseController<SysUserEntity, UserXio> {
     @Autowired
     UserService userService;
     @Autowired
@@ -42,15 +42,16 @@ public class UserController implements MarsBaseController<SysUserEntity, Integer
 
     @PostMapping("/reg")
     @ApiOperation(value = "注册")
-    public SysUserEntity reg(@RequestBody SysUserEntity user) {
-        return userService.reg(user);
+    public ResponseEntity<?> reg(@RequestBody SysUserEntity user) {
+        return ResponseEntity.ok().body(userService.add(user));
     }
 
     @ResponseBody
     @GetMapping("/login")
     @ApiOperation(value = "登录")
-    public String login(String username, String password) {
-        return null != userService.findUserByUsernameAndPassword(username, password) ? "login success!" : "login failed.";
+    public ResponseEntity<?> login(String username, String password) {
+        String result = null != userService.findUserByUsernameAndPassword(username, password) ? "login success!" : "login failed.";
+        return ResponseEntity.ok().body(result);
     }
 
     @GetMapping("/getUserDtoList")

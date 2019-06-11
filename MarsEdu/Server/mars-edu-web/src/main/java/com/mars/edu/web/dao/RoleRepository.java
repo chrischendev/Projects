@@ -1,6 +1,6 @@
 package com.mars.edu.web.dao;
 
-import com.mars.edu.web.locallibs.mars.MarsRepository;
+import com.mars.edu.web.locallibs.mars.MarsBaseRepository;
 import com.mars.edu.web.model.orm.SysRoleEntity;
 
 /**
@@ -8,5 +8,5 @@ import com.mars.edu.web.model.orm.SysRoleEntity;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface RoleRepository extends MarsRepository<SysRoleEntity> {
+public interface RoleRepository extends MarsBaseRepository<SysRoleEntity> {
 }

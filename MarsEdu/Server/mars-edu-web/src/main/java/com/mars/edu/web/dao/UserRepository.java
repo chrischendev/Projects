@@ -1,6 +1,6 @@
 package com.mars.edu.web.dao;
 
-import com.mars.edu.web.locallibs.mars.MarsRepository;
+import com.mars.edu.web.locallibs.mars.MarsBaseRepository;
 import com.mars.edu.web.model.orm.SysUserEntity;
 
 /**
@@ -8,6 +8,6 @@ import com.mars.edu.web.model.orm.SysUserEntity;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface UserRepository extends MarsRepository<SysUserEntity> {
+public interface UserRepository extends MarsBaseRepository<SysUserEntity> {
     SysUserEntity findFirstByNameAndPassword(String username, String password);
 }

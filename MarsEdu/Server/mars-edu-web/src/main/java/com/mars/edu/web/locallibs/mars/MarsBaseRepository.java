@@ -9,5 +9,5 @@ import org.springframework.data.repository.NoRepositoryBean;
  * use for:
  */
 @NoRepositoryBean
-public interface MarsRepository<T> extends BaseRepository<T, Integer> {
+public interface MarsBaseRepository<T> extends BaseRepository<T, Integer> {
 }

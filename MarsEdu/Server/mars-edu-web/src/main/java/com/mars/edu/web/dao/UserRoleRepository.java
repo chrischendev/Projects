@@ -1,6 +1,6 @@
 package com.mars.edu.web.dao;
 
-import com.mars.edu.web.locallibs.mars.MarsRepository;
+import com.mars.edu.web.locallibs.mars.MarsBaseRepository;
 import com.mars.edu.web.model.orm.SysUserRoleEntity;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * Create on 2019/6/6 13:25
  * Use for:
  */
-public interface UserRoleRepository extends MarsRepository<SysUserRoleEntity> {
+public interface UserRoleRepository extends MarsBaseRepository<SysUserRoleEntity> {
     /**
      * 根据用户id查询角色
      *
