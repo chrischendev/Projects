@@ -1,7 +1,5 @@
 package com.mars.edu.web.api;
 
-import com.mars.edu.web.converter.AuthConverter;
-import com.mars.edu.web.locallibs.base.BaseXlsProcess;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
 import com.mars.edu.web.model.orm.SysAuthEntity;
@@ -26,6 +24,6 @@ public class AuthController implements MarsBaseController<SysAuthEntity, AuthXio
 
     @Override
     public BusinessHandler<SysAuthEntity, Integer, AuthXio> getBusinessHandler() {
-        return new BusinessHandler(authService,authService);
+        return new BusinessHandler(authService, authService);
     }
 }

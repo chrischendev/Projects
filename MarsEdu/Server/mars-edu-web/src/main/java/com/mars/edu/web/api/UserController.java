@@ -1,6 +1,6 @@
 package com.mars.edu.web.api;
 
-import com.google.gson.Gson;
+import com.mars.edu.web.converter.UserConverter;
 import com.mars.edu.web.dao.UserDtoRepository;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
@@ -29,6 +29,8 @@ public class UserController implements MarsBaseController<SysUserEntity, UserXio
     UserService userService;
     @Autowired
     UserDtoRepository userDtoRepository;
+    @Autowired
+    UserConverter userConverter;
 
     @Override
     public BusinessHandler<SysUserEntity, Integer, UserXio> getBusinessHandler() {

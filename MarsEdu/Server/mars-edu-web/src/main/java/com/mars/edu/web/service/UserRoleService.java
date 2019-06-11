@@ -10,6 +10,7 @@ import com.mars.edu.web.model.orm.SysUserRoleEntity;
 import com.mars.edu.web.model.xio.UserRoleXio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,6 +21,7 @@ import javax.persistence.PersistenceContext;
  * Use for:
  */
 @Service
+@Transactional
 public class UserRoleService implements MarsXlsService<SysUserRoleEntity, UserRoleXio> {
     @Autowired
     EntityManager em;
