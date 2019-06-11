@@ -1,0 +1,17 @@
+# 开放修改参数
+port: 6002
+# 开放修改参数
+server:
+  port: ${port}
+  tomcat:
+    max-threads: 7 #最大BOSS线程数
+spring:
+  profiles:
+    active: office
+
+
+
+
+
+
+
