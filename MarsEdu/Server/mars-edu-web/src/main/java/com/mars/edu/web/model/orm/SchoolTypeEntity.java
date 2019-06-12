@@ -12,11 +12,11 @@ import java.util.Objects;
 @Table(name = "sys_school_type", schema = "db_mars_edu", catalog = "")
 public class SchoolTypeEntity {
     private int id;
-    private byte code;
+    private int code;
     private String name;
-    private byte level;
+    private int level;
     private String description;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +31,11 @@ public class SchoolTypeEntity {
 
     @Basic
     @Column(name = "code", nullable = false)
-    public byte getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(byte code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -51,11 +51,11 @@ public class SchoolTypeEntity {
 
     @Basic
     @Column(name = "level", nullable = false)
-    public byte getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -71,11 +71,11 @@ public class SchoolTypeEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

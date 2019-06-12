@@ -15,12 +15,12 @@ public class StudentEntity {
     private String code;
     private String firstName;
     private String lastName;
-    private Byte age;
+    private Integer age;
     private String address;
     private String custodianName;
     private String custodianPhone;
     private String description;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,11 +65,11 @@ public class StudentEntity {
 
     @Basic
     @Column(name = "age", nullable = true)
-    public Byte getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(Byte age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -115,11 +115,11 @@ public class StudentEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

@@ -12,9 +12,9 @@ import java.util.Objects;
 @Table(name = "sys_images_type", schema = "db_mars_edu", catalog = "")
 public class ImagesTypeEntity {
     private int id;
-    private byte code;
+    private int code;
     private String name;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class ImagesTypeEntity {
 
     @Basic
     @Column(name = "code", nullable = false)
-    public byte getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(byte code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
@@ -49,11 +49,11 @@ public class ImagesTypeEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

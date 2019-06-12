@@ -14,7 +14,7 @@ public class RoleAuthEntity {
     private int id;
     private int roleId;
     private int authId;
-    private byte status;
+    private int status;
 
     public RoleAuthEntity() {
     }
@@ -24,7 +24,7 @@ public class RoleAuthEntity {
         this.authId = authId;
     }
 
-    public RoleAuthEntity(int id, int roleId, int authId, byte status) {
+    public RoleAuthEntity(int id, int roleId, int authId, int status) {
         this.id = id;
         this.roleId = roleId;
         this.authId = authId;
@@ -64,11 +64,11 @@ public class RoleAuthEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

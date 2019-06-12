@@ -64,25 +64,4 @@ public class SchoolGradeConverter implements BaseConverter<SchoolGradeEntity, Sc
         }
         return entityList.stream().map(entity -> toDto(entity)).collect(Collectors.toList());
     }
-
-    @Override
-    public SchoolGradeEntity fromSameDto(SchoolGradeXio dto) {
-        if (null == dto) {
-            return null;
-        }
-        SchoolGradeEntity entity = createEntity();
-        BeanUtils.copyProperties(dto, entity);
-        entity.setLevel(Byte.valueOf(String.valueOf(dto.getLevel())));
-        return entity;
-    }
-
-    @Override
-    public List<SchoolGradeEntity> fromSameDtoList(List<SchoolGradeXio> dtoList) {
-        if (CollectionUtils.isEmpty(dtoList)) {
-            return Collections.EMPTY_LIST;
-        }
-        List<SchoolGradeEntity> entityList = new ArrayList<>();
-        dtoList.stream().forEach(dto -> entityList.add(fromSameDto(dto)));
-        return entityList;
-    }
 }

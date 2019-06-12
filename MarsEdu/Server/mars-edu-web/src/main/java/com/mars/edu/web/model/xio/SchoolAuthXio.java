@@ -8,7 +8,7 @@ import com.chris.poi.xls.XlsSheet;
  * Create on 2019/6/12 9:15
  * Use for:
  */
-@XlsSheet("school")
+@XlsSheet("school_auth")
 public class SchoolAuthXio {
     @XlsColumn("学校ID")
     private int schoolId;
