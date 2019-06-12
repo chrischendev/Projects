@@ -1,7 +1,7 @@
 package com.mars.edu.web.mapstruct;
 
 import com.mars.edu.web.locallibs.base.BaseMapStruct;
-import com.mars.edu.web.model.orm.SysUserEntity;
+import com.mars.edu.web.model.orm.UserEntity;
 import com.mars.edu.web.model.xio.UserXio;
 import org.mapstruct.Mapper;
 
@@ -12,6 +12,6 @@ import org.mapstruct.Mapper;
  * @author chris
  */
 @Mapper(componentModel = "spring", uses = {})
-public interface UserMapper extends BaseMapStruct<SysUserEntity, UserXio> {
+public interface UserMapper extends BaseMapStruct<UserEntity, UserXio> {
 
 }

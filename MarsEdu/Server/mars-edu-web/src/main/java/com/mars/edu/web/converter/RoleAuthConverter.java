@@ -1,22 +1,26 @@
 package com.mars.edu.web.converter;
 
 import com.mars.edu.web.locallibs.base.BaseConverter;
-import com.mars.edu.web.model.orm.SysRoleAuthEntity;
+import com.mars.edu.web.model.orm.RoleAuthEntity;
 import com.mars.edu.web.model.xio.RoleAuthXio;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Create by Chris Chan
- * Create on 2019/6/10 17:27
- * Use for: 角色 数据转换器
+ * Create on 2019/6/12 9:18
+ * Use for: 角色权限关联 数据转换器
  */
 @Service
-public class RoleAuthConverter implements BaseConverter<SysRoleAuthEntity, RoleAuthXio> {
+public class RoleAuthConverter implements BaseConverter<RoleAuthEntity, RoleAuthXio> {
     @Override
-    public SysRoleAuthEntity createEntity() {
-        return new SysRoleAuthEntity();
+    public RoleAuthEntity createEntity() {
+        return new RoleAuthEntity();
     }
 
     @Override
@@ -25,22 +29,38 @@ public class RoleAuthConverter implements BaseConverter<SysRoleAuthEntity, RoleA
     }
 
     @Override
-    public SysRoleAuthEntity fromDto(RoleAuthXio dto) {
-        return null;
+    public RoleAuthEntity fromDto(RoleAuthXio dto) {
+        if (null == dto) {
+            return null;
+        }
+        RoleAuthEntity entity = createEntity();
+        BeanUtils.copyProperties(dto, entity);
+        return entity;
     }
 
     @Override
-    public RoleAuthXio toDto(SysRoleAuthEntity entity) {
-        return null;
+    public RoleAuthXio toDto(RoleAuthEntity entity) {
+        if (null == entity) {
+            return null;
+        }
+        RoleAuthXio dto = createDto();
+        BeanUtils.copyProperties(entity, dto);
+        return dto;
     }
 
     @Override
-    public List<SysRoleAuthEntity> fromDtoList(List<RoleAuthXio> dtoList) {
-        return null;
+    public List<RoleAuthEntity> fromDtoList(List<RoleAuthXio> dtoList) {
+        if (CollectionUtils.isEmpty(dtoList)) {
+            return Collections.EMPTY_LIST;
+        }
+        return dtoList.stream().map(dto -> fromDto(dto)).collect(Collectors.toList());
     }
 
     @Override
-    public List<RoleAuthXio> toDtoList(List<SysRoleAuthEntity> entityList) {
-        return null;
+    public List<RoleAuthXio> toDtoList(List<RoleAuthEntity> entityList) {
+        if (CollectionUtils.isEmpty(entityList)) {
+            return Collections.EMPTY_LIST;
+        }
+        return entityList.stream().map(entity -> toDto(entity)).collect(Collectors.toList());
     }
 }

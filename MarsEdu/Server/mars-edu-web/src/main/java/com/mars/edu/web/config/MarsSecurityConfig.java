@@ -1,6 +1,6 @@
 package com.mars.edu.web.config;
 
-import com.mars.edu.web.service.UserService;
+import com.mars.edu.web.service.main.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

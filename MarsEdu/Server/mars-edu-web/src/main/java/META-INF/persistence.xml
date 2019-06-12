@@ -3,25 +3,25 @@
 
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.mars.edu.web.model.orm.SchClassEntity</class>
-        <class>com.mars.edu.web.model.orm.SchClassStudentEntity</class>
-        <class>com.mars.edu.web.model.orm.SchClassSubjectEntity</class>
-        <class>com.mars.edu.web.model.orm.SchGradeEntity</class>
-        <class>com.mars.edu.web.model.orm.SchStaffEntity</class>
-        <class>com.mars.edu.web.model.orm.SchStudentEntity</class>
-        <class>com.mars.edu.web.model.orm.SchSubjectEntity</class>
-        <class>com.mars.edu.web.model.orm.SysAdminEntity</class>
-        <class>com.mars.edu.web.model.orm.SysImagesTypeEntity</class>
-        <class>com.mars.edu.web.model.orm.SysSchoolEntity</class>
-        <class>com.mars.edu.web.model.orm.SysSchoolImagesEntity</class>
-        <class>com.mars.edu.web.model.orm.SysSchoolInfoEntity</class>
-        <class>com.mars.edu.web.model.orm.SysSchoolTypeEntity</class>
-        <class>com.mars.edu.web.model.orm.SysUserEntity</class>
-        <class>com.mars.edu.web.model.orm.SysUserInfoEntity</class>
-        <class>com.mars.edu.web.model.orm.SysAuthEntity</class>
-        <class>com.mars.edu.web.model.orm.SysRoleEntity</class>
-        <class>com.mars.edu.web.model.orm.SysRoleAuthEntity</class>
-        <class>com.mars.edu.web.model.orm.SysUserRoleEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolClassEntity</class>
+        <class>com.mars.edu.web.model.orm.ClassStudentEntity</class>
+        <class>com.mars.edu.web.model.orm.ClassSubjectEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolGradeEntity</class>
+        <class>com.mars.edu.web.model.orm.StaffEntity</class>
+        <class>com.mars.edu.web.model.orm.StudentEntity</class>
+        <class>com.mars.edu.web.model.orm.SubjectEntity</class>
+        <class>com.mars.edu.web.model.orm.AdminEntity</class>
+        <class>com.mars.edu.web.model.orm.ImagesTypeEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolImagesEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolInfoEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolTypeEntity</class>
+        <class>com.mars.edu.web.model.orm.UserEntity</class>
+        <class>com.mars.edu.web.model.orm.UserInfoEntity</class>
+        <class>com.mars.edu.web.model.orm.AuthEntity</class>
+        <class>com.mars.edu.web.model.orm.RoleEntity</class>
+        <class>com.mars.edu.web.model.orm.RoleAuthEntity</class>
+        <class>com.mars.edu.web.model.orm.UserRoleEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://10.16.17.39:3307"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
