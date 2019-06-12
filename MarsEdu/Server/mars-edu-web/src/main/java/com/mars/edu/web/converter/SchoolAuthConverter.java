@@ -1,9 +1,8 @@
 package com.mars.edu.web.converter;
 
 import com.mars.edu.web.locallibs.base.BaseConverter;
-import com.mars.edu.web.model.orm.SchoolEntity;
+import com.mars.edu.web.model.orm.SchoolAuthEntity;
 import com.mars.edu.web.model.xio.SchoolAuthXio;
-import com.mars.edu.web.model.xio.SchoolXio;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -15,42 +14,42 @@ import java.util.stream.Collectors;
 /**
  * Create by Chris Chan
  * Create on 2019/6/12 9:18
- * Use for: 学校 数据转换器
+ * Use for: 学校授权码 数据转换器
  */
 @Service
-public class SchoolConverter implements BaseConverter<SchoolEntity, SchoolXio> {
+public class SchoolAuthConverter implements BaseConverter<SchoolAuthEntity, SchoolAuthXio> {
     @Override
-    public SchoolEntity createEntity() {
-        return new SchoolEntity();
+    public SchoolAuthEntity createEntity() {
+        return new SchoolAuthEntity();
     }
 
     @Override
-    public SchoolXio createDto() {
-        return new SchoolXio();
+    public SchoolAuthXio createDto() {
+        return new SchoolAuthXio();
     }
 
     @Override
-    public SchoolEntity fromDto(SchoolXio dto) {
+    public SchoolAuthEntity fromDto(SchoolAuthXio dto) {
         if (null == dto) {
             return null;
         }
-        SchoolEntity entity = createEntity();
+        SchoolAuthEntity entity = createEntity();
         BeanUtils.copyProperties(dto, entity);
         return entity;
     }
 
     @Override
-    public SchoolXio toDto(SchoolEntity entity) {
+    public SchoolAuthXio toDto(SchoolAuthEntity entity) {
         if (null == entity) {
             return null;
         }
-        SchoolXio dto = createDto();
+        SchoolAuthXio dto = createDto();
         BeanUtils.copyProperties(entity, dto);
         return dto;
     }
 
     @Override
-    public List<SchoolEntity> fromDtoList(List<SchoolXio> dtoList) {
+    public List<SchoolAuthEntity> fromDtoList(List<SchoolAuthXio> dtoList) {
         if (CollectionUtils.isEmpty(dtoList)) {
             return Collections.EMPTY_LIST;
         }
@@ -58,7 +57,7 @@ public class SchoolConverter implements BaseConverter<SchoolEntity, SchoolXio> {
     }
 
     @Override
-    public List<SchoolXio> toDtoList(List<SchoolEntity> entityList) {
+    public List<SchoolAuthXio> toDtoList(List<SchoolAuthEntity> entityList) {
         if (CollectionUtils.isEmpty(entityList)) {
             return Collections.EMPTY_LIST;
         }

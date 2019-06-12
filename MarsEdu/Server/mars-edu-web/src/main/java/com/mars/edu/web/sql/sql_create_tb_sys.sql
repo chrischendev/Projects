@@ -78,8 +78,8 @@ create table if not exists sys_school_images
 );
 
 # 学校 授权码 超级管理员添加学校之后 可以获取学校的授权码将其发送给学校 学校可以凭借该授权码注册其他用户
-drop table if exists sys_school;
-create table if not exists sys_school
+drop table if exists sys_school_auth;
+create table if not exists sys_school_auth
 (
   id        int(10)      not null primary key auto_increment comment 'ID',
   school_id int(10)      not null comment '学校ID 外键',

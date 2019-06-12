@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/schoolImages")
-@Api(value = "schoolImages", tags = "11. SchoolImages", description = "学校图片")
+@Api(value = "schoolImages", tags = "12. SchoolImages", description = "学校图片")
 public class SchoolImagesController implements MarsBaseController<SchoolImagesEntity, SchoolImagesXio> {
     @Autowired
     SchoolImagesService schoolImagesService;

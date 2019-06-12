@@ -12,7 +12,7 @@
         <class>com.mars.edu.web.model.orm.SubjectEntity</class>
         <class>com.mars.edu.web.model.orm.AdminEntity</class>
         <class>com.mars.edu.web.model.orm.ImagesTypeEntity</class>
-        <class>com.mars.edu.web.model.orm.SchoolEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolAuthEntity</class>
         <class>com.mars.edu.web.model.orm.SchoolImagesEntity</class>
         <class>com.mars.edu.web.model.orm.SchoolInfoEntity</class>
         <class>com.mars.edu.web.model.orm.SchoolTypeEntity</class>
@@ -22,8 +22,9 @@
         <class>com.mars.edu.web.model.orm.RoleEntity</class>
         <class>com.mars.edu.web.model.orm.RoleAuthEntity</class>
         <class>com.mars.edu.web.model.orm.UserRoleEntity</class>
+        <class>com.mars.edu.web.model.orm.SchoolEntity</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mysql://10.16.17.39:3307"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://10.16.17.60:3307"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.username" value=""/>
             <property name="hibernate.connection.password" value=""/>

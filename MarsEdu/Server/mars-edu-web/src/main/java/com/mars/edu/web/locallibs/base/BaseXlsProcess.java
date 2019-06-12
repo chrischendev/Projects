@@ -6,6 +6,7 @@ import com.chris.poi.xls.XlsSheet;
 import com.chris.poi.xls.XlsUtils;
 import com.chris.servlet.poi.XlsIOUtils;
 import com.mars.edu.web.locallibs.model.XlsProcessHandler;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -63,7 +64,7 @@ public interface BaseXlsProcess<E, X, ID extends Serializable> {
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    default boolean importData(MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException {
+    default boolean importData(MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException, InvalidFormatException {
         List<X> xioList = XlsUtils.readXlsxFromInputStream(xlsxFile.getInputStream(), getXlsProcessHandler().getDtoClass());
         List<E> entityList = getXlsProcessHandler().getConverter().fromSameDtoList(xioList);
         return getXlsProcessHandler().getXlsService().addBatch(entityList);

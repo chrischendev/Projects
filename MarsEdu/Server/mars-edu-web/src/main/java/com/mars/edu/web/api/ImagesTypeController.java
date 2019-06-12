@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/imagesType")
-@Api(value = "imagesType", tags = "12. ImagesType", description = "图片类型")
+@Api(value = "imagesType", tags = "20. ImagesType", description = "图片类型")
 public class ImagesTypeController implements MarsBaseController<ImagesTypeEntity, ImagesTypeXio> {
     @Autowired
     ImagesTypeService imagesTypeService;
