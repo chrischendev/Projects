@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,7 +56,7 @@ public interface BaseXlsApi<E, X, ID extends Serializable> {
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    @GetMapping("/import")
+    @PostMapping("/import")
     @ApiOperation(value = "导入")
     default ResponseEntity<?> importData(@RequestPart("file") MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException, InvalidFormatException {
         return ResponseEntity.ok().body(getXlsService().importData(xlsxFile) ? "import success." : "import failed.");

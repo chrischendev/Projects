@@ -40,6 +40,7 @@ public class MarsSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .antMatchers("/v2/**")
+                .antMatchers("/webjars/**")
                 .antMatchers("/swagger-resources/**");
     }
 
@@ -53,10 +54,10 @@ public class MarsSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/logout").permitAll().logoutSuccessUrl("/login.html")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/user/**").permitAll()
-                .antMatchers("/role/**").permitAll()
+//                .antMatchers("/user/**").permitAll()
+//                .antMatchers("/role/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
-                //.anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
     }
