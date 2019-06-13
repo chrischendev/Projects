@@ -15,10 +15,10 @@ public class SchoolClassEntity {
     private int gradeId;
     private String code;
     private String name;
-    private byte level;
+    private int level;
     private Integer managerId;
     private String description;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,11 +63,11 @@ public class SchoolClassEntity {
 
     @Basic
     @Column(name = "level", nullable = false)
-    public byte getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -93,11 +93,11 @@ public class SchoolClassEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

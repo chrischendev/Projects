@@ -17,7 +17,7 @@ public class StaffXio {
     @XlsColumn("名")
     private String lastName;
     @XlsColumn("级别")
-    private Byte level;
+    private int level;
     @XlsColumn("身份证号码")
     private String identityCardCode;
     @XlsColumn("手机")
@@ -55,11 +55,11 @@ public class StaffXio {
         this.lastName = lastName;
     }
 
-    public Byte getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(Byte level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 

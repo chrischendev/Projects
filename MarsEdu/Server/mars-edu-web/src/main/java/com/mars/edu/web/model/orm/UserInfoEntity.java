@@ -15,12 +15,12 @@ public class UserInfoEntity {
     private int userId;
     private String nickName;
     private String photoUrl;
-    private byte gender;
+    private int gender;
     private String identityCardCode;
     private String qqCode;
     private String siteUrl;
     private String description;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,11 +65,11 @@ public class UserInfoEntity {
 
     @Basic
     @Column(name = "gender", nullable = false)
-    public byte getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(byte gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -115,11 +115,11 @@ public class UserInfoEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

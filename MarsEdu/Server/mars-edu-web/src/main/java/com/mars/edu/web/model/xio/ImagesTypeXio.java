@@ -11,15 +11,15 @@ import com.chris.poi.xls.XlsSheet;
 @XlsSheet("images_type")
 public class ImagesTypeXio {
     @XlsColumn("编码")
-    private byte code;
+    private Integer code;
     @XlsColumn("名称")
     private String name;
 
-    public byte getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(byte code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 

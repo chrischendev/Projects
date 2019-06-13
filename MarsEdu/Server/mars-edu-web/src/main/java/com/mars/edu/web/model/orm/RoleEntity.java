@@ -14,7 +14,7 @@ public class RoleEntity {
     private int id;
     private String code;
     private String name;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,11 +49,11 @@ public class RoleEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

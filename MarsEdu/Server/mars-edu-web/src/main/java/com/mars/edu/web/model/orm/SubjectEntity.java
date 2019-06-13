@@ -15,8 +15,8 @@ public class SubjectEntity {
     private int schoolId;
     private String code;
     private String name;
-    private byte level;
-    private byte status;
+    private int level;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,21 +61,21 @@ public class SubjectEntity {
 
     @Basic
     @Column(name = "level", nullable = false)
-    public byte getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

@@ -11,19 +11,19 @@ import com.chris.poi.xls.XlsSheet;
 @XlsSheet("school_type")
 public class SchoolTypeXio {
     @XlsColumn("编码")
-    private byte code;
+    private Integer code;
     @XlsColumn("名称")
     private String name;
     @XlsColumn("级别")
-    private byte level;
+    private Integer level;
     @XlsColumn("描述")
     private String description;
 
-    public byte getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(byte code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -35,11 +35,11 @@ public class SchoolTypeXio {
         this.name = name;
     }
 
-    public byte getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 

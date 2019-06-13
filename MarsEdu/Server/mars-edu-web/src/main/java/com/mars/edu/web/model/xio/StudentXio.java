@@ -17,7 +17,7 @@ public class StudentXio {
     @XlsColumn("名")
     private String lastName;
     @XlsColumn("年龄")
-    private Byte age;
+    private Integer age;
     @XlsColumn("地址")
     private String address;
     @XlsColumn("监护人姓名")
@@ -51,11 +51,11 @@ public class StudentXio {
         this.lastName = lastName;
     }
 
-    public Byte getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(Byte age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

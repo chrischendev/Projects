@@ -15,14 +15,14 @@ public class StaffEntity {
     private int schoolId;
     private String firstName;
     private String lastName;
-    private Byte level;
+    private Integer level;
     private String identityCardCode;
     private String cell;
     private String email;
     private String qqCode;
     private String wechatCode;
     private String siteUrl;
-    private byte status;
+    private int status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,11 +67,11 @@ public class StaffEntity {
 
     @Basic
     @Column(name = "level", nullable = true)
-    public Byte getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(Byte level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
@@ -137,11 +137,11 @@ public class StaffEntity {
 
     @Basic
     @Column(name = "status", nullable = false)
-    public byte getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

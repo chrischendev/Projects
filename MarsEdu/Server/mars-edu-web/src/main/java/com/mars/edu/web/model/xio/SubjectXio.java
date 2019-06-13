@@ -17,7 +17,7 @@ public class SubjectXio {
     @XlsColumn("名称")
     private String name;
     @XlsColumn("级别")
-    private byte level;
+    private Integer level;
 
     public int getSchoolId() {
         return schoolId;
@@ -43,11 +43,11 @@ public class SubjectXio {
         this.name = name;
     }
 
-    public byte getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 }
