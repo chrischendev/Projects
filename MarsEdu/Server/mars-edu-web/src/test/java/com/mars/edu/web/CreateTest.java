@@ -7,6 +7,7 @@ import com.chris.framework.builder.utils.DatabaseUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.codec.binary.StringUtils;
 
 import java.sql.Connection;
 
