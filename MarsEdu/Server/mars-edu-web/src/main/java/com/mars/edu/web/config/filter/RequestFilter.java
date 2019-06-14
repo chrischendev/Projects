@@ -17,8 +17,8 @@ import java.io.IOException;
 public class RequestFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("请求过滤器~~~");
-        System.out.println(((HttpServletRequest)servletRequest).getQueryString());
+        //System.out.println("请求过滤器~~~");
+        //System.out.println(((HttpServletRequest)servletRequest).getQueryString());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

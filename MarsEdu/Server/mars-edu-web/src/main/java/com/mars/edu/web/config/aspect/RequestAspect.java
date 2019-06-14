@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Component
 public class RequestAspect {
-    @Pointcut("execution(public * com.mars.edu.web.api..*(..))")
+    //@Pointcut("execution(public * com.mars.edu.web.api..*(..))")
+    @Pointcut("@within(org.springframework.web.bind.annotation.RequestMapping)")
     public void log() {
     }
 

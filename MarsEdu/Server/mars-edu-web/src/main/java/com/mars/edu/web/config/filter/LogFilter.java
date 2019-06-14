@@ -16,7 +16,7 @@ import java.io.IOException;
 public class LogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("日志过滤器~~~");
+        //System.out.println("日志过滤器~~~");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
