@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">火星教育</string>
+    <string name="navigation_drawer_open">打开侧滑菜单</string>
+    <string name="navigation_drawer_close">关闭侧滑菜单</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">设置</string>
+
+    <string name="menu_home">首页</string>
+    <string name="menu_gallery">相册</string>
+    <string name="menu_slideshow">幻灯片</string>
+    <string name="menu_tools">工具</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_send">Send</string>
+</resources>

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://10.16.17.60:3307/db_mars_edu?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://10.16.17.143:3307/db_mars_edu?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
   jpa:
