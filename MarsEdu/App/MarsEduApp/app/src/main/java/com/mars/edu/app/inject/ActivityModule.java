@@ -8,8 +8,13 @@ import java.util.List;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * @author Chris Chan
+ * on 2019/7/5 14:51
+ * use for:
+ */
 @Module
-public class InjectModule {
+public class ActivityModule {
     @Provides
     public User user() {
         return new User("kaly", 40);
