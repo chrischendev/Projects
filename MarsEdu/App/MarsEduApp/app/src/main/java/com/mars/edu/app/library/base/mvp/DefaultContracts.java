@@ -1,4 +1,4 @@
-package com.mars.edu.app.base;
+package com.mars.edu.app.library.base.mvp;
 
 public interface DefaultContracts {
     interface View extends BaseView {
