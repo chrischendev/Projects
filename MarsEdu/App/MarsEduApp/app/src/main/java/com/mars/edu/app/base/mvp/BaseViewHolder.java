@@ -1,4 +1,4 @@
-package com.mars.edu.app.base;
+package com.mars.edu.app.base.mvp;
 
 import android.content.Context;
 import android.view.LayoutInflater;

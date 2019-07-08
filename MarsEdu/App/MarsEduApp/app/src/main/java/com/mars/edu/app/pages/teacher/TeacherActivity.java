@@ -1,21 +1,19 @@
 package com.mars.edu.app.pages.teacher;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
+import com.mars.edu.app.base.BaseActivity;
 import com.mars.edu.app.inject.DaggerActivityComponent;
-import com.mars.edu.app.pages.User;
+import com.mars.edu.app.model.User;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TeacherActivity extends AppCompatActivity implements TeacherContracts.View {
+public class TeacherActivity extends BaseActivity<TeacherViewHolder> implements TeacherContracts.View {
     @Inject
     User user;
     @Inject
@@ -23,24 +21,18 @@ public class TeacherActivity extends AppCompatActivity implements TeacherContrac
     @Inject
     TeacherPresenter presenter;
 
-    private TeacherViewHolder viewHolder;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        viewHolder = new TeacherViewHolder(this);
-        setContentView(viewHolder.getView());
-        ButterKnife.bind(this);
-
-        initInject();
-        initView();
+    protected TeacherViewHolder createViewHolder() {
+        return new TeacherViewHolder(this);
     }
 
-    private void initInject() {
+    @Override
+    protected void initInject() {
         DaggerActivityComponent.create().inject(this);
     }
 
-    private void initView() {
+    @Override
+    protected void initViewAndListener() {
         presenter.bind(this);
         viewHolder.tvInfo.setText("Hello，Android！");
         presenter.show(this);

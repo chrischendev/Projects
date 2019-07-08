@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.base.BaseViewHolder;
+import com.mars.edu.app.base.mvp.BaseViewHolder;
 
 import butterknife.BindView;
 

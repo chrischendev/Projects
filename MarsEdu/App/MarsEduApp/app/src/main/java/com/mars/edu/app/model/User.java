@@ -1,4 +1,4 @@
-package com.mars.edu.app.pages;
+package com.mars.edu.app.model;
 
 public class User {
     public String name;

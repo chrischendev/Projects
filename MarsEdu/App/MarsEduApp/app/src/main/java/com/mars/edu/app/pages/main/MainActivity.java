@@ -1,4 +1,4 @@
-package com.mars.edu.app;
+package com.mars.edu.app.pages.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.mars.edu.app.R;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 public class MainActivity extends AppCompatActivity

@@ -1,6 +1,6 @@
 package com.mars.edu.app.inject;
 
-import com.mars.edu.app.pages.User;
+import com.mars.edu.app.model.User;
 
 import java.util.Arrays;
 import java.util.List;
