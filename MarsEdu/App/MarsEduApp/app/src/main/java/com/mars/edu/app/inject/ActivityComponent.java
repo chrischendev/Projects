@@ -1,5 +1,6 @@
 package com.mars.edu.app.inject;
 
+import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 import javax.inject.Singleton;
@@ -14,5 +15,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {ActivityModule.class})
 public interface ActivityComponent {
-    void inject(TeacherActivity teacherActivity);
+    void inject(LoginActivity activity);
+
+    void inject(TeacherActivity activity);
 }

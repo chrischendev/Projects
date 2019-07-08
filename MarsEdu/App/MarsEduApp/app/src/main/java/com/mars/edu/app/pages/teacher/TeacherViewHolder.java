@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.base.mvp.BaseViewHolder;
+import com.mars.edu.app.library.base.viewholder.BaseViewHolder;
 
 import butterknife.BindView;
 
@@ -14,7 +14,6 @@ import butterknife.BindView;
  * use for:
  */
 public class TeacherViewHolder extends BaseViewHolder {
-
     @BindView(R.id.tv_info)
     TextView tvInfo;
 
