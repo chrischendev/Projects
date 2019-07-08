@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.mars.edu.app.R;
 import com.mars.edu.app.inject.DaggerActivityComponent;
-import com.mars.edu.app.pages.User;
+import com.mars.edu.app.model.User;
 
 import java.util.List;
 

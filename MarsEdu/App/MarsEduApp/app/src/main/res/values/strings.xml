@@ -7,10 +7,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">设置</string>
 
-    <string name="menu_home">首页</string>
-    <string name="menu_gallery">相册</string>
-    <string name="menu_slideshow">幻灯片</string>
+    <string name="menu_user_info">用户信息</string>
+    <string name="menu_wallet">钱包</string>
+    <string name="menu_album">相册</string>
     <string name="menu_tools">工具</string>
     <string name="menu_share">分享</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_contact">联系</string>
 </resources>
