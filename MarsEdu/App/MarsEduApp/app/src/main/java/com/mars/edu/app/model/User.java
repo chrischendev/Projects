@@ -1,14 +1,14 @@
 package com.mars.edu.app.model;
 
 public class User {
-    public String name;
-    public int age;
+    public String username;
+    public String password;
 
     public User() {
     }
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }
