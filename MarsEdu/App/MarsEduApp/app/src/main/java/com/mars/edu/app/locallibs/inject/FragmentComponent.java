@@ -1,4 +1,4 @@
-package com.mars.edu.app.inject;
+package com.mars.edu.app.locallibs.inject;
 
 import javax.inject.Singleton;
 

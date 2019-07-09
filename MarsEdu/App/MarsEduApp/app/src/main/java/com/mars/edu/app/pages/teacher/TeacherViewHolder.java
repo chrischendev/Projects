@@ -1,6 +1,7 @@
 package com.mars.edu.app.pages.teacher;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mars.edu.app.R;
@@ -19,6 +20,10 @@ public class TeacherViewHolder extends BaseViewHolder {
 
     public TeacherViewHolder(Context context) {
         super(context);
+    }
+
+    public TeacherViewHolder(View view) {
+        super(view);
     }
 
     @Override

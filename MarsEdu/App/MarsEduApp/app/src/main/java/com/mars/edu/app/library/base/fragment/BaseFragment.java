@@ -1,11 +1,10 @@
 package com.mars.edu.app.library.base.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,7 +26,6 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @SuppressLint("ResourceType")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,7 +33,7 @@ public abstract class BaseFragment extends Fragment {
         return this.contentView;
     }
 
-    protected abstract @IdRes
+    protected abstract @LayoutRes
     int layoutId();
 
     @Override

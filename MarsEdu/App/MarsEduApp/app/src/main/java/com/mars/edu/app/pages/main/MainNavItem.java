@@ -1,6 +1,9 @@
 package com.mars.edu.app.pages.main;
 
+import android.annotation.SuppressLint;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
+import android.support.annotation.RawRes;
 
 /**
  * @author Chris Chan
@@ -29,7 +32,8 @@ public class MainNavItem {
         this.title = title;
     }
 
-    public static MainNavItem create(String code, @IdRes int imgId, String title) {
+    @SuppressLint("ResourceType")
+    public static MainNavItem create(String code, @RawRes @DrawableRes int imgId, String title) {
         return new MainNavItem(code, imgId, title);
     }
 }

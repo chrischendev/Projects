@@ -1,6 +1,5 @@
 package com.mars.edu.app.pages.home;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +8,7 @@ import android.view.View;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.mars.edu.app.R;
-import com.mars.edu.app.inject.DaggerActivityComponent;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
 
@@ -43,7 +42,6 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
         DaggerActivityComponent.create().inject(this);
     }
 
-    @SuppressLint("ResourceType")
     @Override
     public int layoutId() {
         return R.layout.act_home;
@@ -84,7 +82,6 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
 
     }
 
-    @SuppressLint("ResourceType")
     public List<HomeModels.NavItem> initNavItemList() {
         List<HomeModels.NavItem> navItemList = new ArrayList<>();
 

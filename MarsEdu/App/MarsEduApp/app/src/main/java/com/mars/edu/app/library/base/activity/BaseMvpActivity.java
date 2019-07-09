@@ -1,5 +1,6 @@
 package com.mars.edu.app.library.base.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -84,5 +85,10 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
     @Override
     public void createViewHolder() {
         super.createViewHolder();
+    }
+
+    @Override
+    public Context getOwnContext() {
+        return this;
     }
 }

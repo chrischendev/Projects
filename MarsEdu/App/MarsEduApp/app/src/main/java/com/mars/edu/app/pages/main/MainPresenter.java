@@ -35,14 +35,15 @@ public class MainPresenter implements MainContracts.Presenter {
     public List<MainNavItem> initMainNavItemList() {
         List<MainNavItem> mainNavItemList = new ArrayList<>();
 
-        mainNavItemList.add(MainNavItem.create("school", R.mipmap.main_item_chat, "学校"));
-        mainNavItemList.add(MainNavItem.create("teacher", R.mipmap.main_item_chat, "教师"));
-        mainNavItemList.add(MainNavItem.create("studio", R.mipmap.main_item_chat, "学生"));
-        mainNavItemList.add(MainNavItem.create("score", R.mipmap.main_item_chat, "成绩"));
-        mainNavItemList.add(MainNavItem.create("activation", R.mipmap.main_item_chat, "活动"));
-        mainNavItemList.add(MainNavItem.create("practice", R.mipmap.main_item_chat, "成绩"));
-        mainNavItemList.add(MainNavItem.create("picture", R.mipmap.main_item_chat, "成绩"));
-        mainNavItemList.add(MainNavItem.create("example", R.mipmap.main_item_chat, "考试"));
+        mainNavItemList.add(MainNavItem.create("news", R.mipmap.icon_main_news, "资讯"));
+        mainNavItemList.add(MainNavItem.create("school", R.mipmap.icon_main_school, "学校"));
+        mainNavItemList.add(MainNavItem.create("teacher", R.mipmap.icon_main_teacher, "教师"));
+        mainNavItemList.add(MainNavItem.create("studio", R.mipmap.icon_main_stu, "学生"));
+        mainNavItemList.add(MainNavItem.create("score", R.mipmap.icon_main_score, "成绩"));
+        mainNavItemList.add(MainNavItem.create("activation", R.mipmap.icon_main_activation, "活动"));
+        mainNavItemList.add(MainNavItem.create("practice", R.mipmap.icon_main_practice, "实践"));
+        mainNavItemList.add(MainNavItem.create("picture", R.mipmap.icon_main_album, "剪影"));
+//        mainNavItemList.add(MainNavItem.create("example", R.mipmap.main_item_chat, "考试"));
 
         return mainNavItemList;
     }

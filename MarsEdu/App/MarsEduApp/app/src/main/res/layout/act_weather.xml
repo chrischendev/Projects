@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_weather_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="城市名"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="天气"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="气温"
+        android:textColor="@color/weather_info_text"
+
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="湿度"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_direct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="风向"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="风力"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+
+    <TextView
+        android:id="@+id/tv_weather_aqi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/weather_info_margin"
+        android:text="空气质量指数"
+        android:textColor="@color/weather_info_text"
+        android:textSize="@dimen/weather_info_text" />
+</LinearLayout>

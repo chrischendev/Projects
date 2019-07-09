@@ -1,7 +1,7 @@
 package com.mars.edu.app.library.base.mvp;
 
-public interface BaseDataView extends BaseView {
-    void loadData();
+public interface BaseDataView<T> extends BaseView {
+    void loadData(T data);
 
-    void updateData();
+    void updateData(T data);
 }

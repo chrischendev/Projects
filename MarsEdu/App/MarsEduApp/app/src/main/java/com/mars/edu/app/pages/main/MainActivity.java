@@ -19,13 +19,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mars.edu.app.R;
-import com.mars.edu.app.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.utils.SharedPreferencesUtils;
+import com.mars.edu.app.library.utils.GlideUtils;
+import com.mars.edu.app.library.utils.SPUtils;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
+import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 import java.util.List;
@@ -50,7 +52,6 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         return mainPresenter;
     }
 
-    @SuppressLint("ResourceType")
     @Override
     protected View createViewHolderByLayoutId() {
         contentView = getLayoutInflater().inflate(layoutId(), null);
@@ -63,7 +64,6 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         DaggerActivityComponent.create().inject(this);
     }
 
-    @SuppressLint("ResourceType")
     @Override
     public int layoutId() {
         return R.layout.act_main;
@@ -114,16 +114,19 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         });
 
         //判断登录状态
-        String username = SharedPreferencesUtils.read("username", null);
+        String username = SPUtils.read("username", null);
         if (null == username) {
             nvh.tvMainLoginReg.setVisibility(View.VISIBLE);
             nvh.tvMainUserName.setVisibility(View.GONE);
             nvh.tvMainUserEmail.setVisibility(View.GONE);
+
+            GlideUtils.load(this, R.mipmap.nav_header_photo, nvh.ivMainUserPhoto);
         } else {
             nvh.tvMainLoginReg.setVisibility(View.GONE);
             nvh.tvMainUserName.setVisibility(View.VISIBLE);
             nvh.tvMainUserEmail.setVisibility(View.VISIBLE);
 
+            GlideUtils.load(this, R.mipmap.nav_header_photo_1, nvh.ivMainUserPhoto);
             nvh.tvMainUserName.setText(username);
             nvh.tvMainUserEmail.setText("chris@mars.com");
         }
@@ -193,6 +196,9 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
     @Override
     public void onItemClick(View itemView, int position, MainNavItem item) {
         switch (item.code) {
+            case "news":
+                startActivity(NewsActivity.class);
+                break;
             case "school":
                 startActivity(HomeActivity.class);
                 break;
@@ -232,8 +238,6 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
      */
     static
     class NavHeaderViewHolder {
-
-
         @BindView(R.id.iv_main_user_photo)
         ImageView ivMainUserPhoto;
         @BindView(R.id.tv_main_login_reg)

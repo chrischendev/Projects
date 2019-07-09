@@ -1,9 +1,5 @@
 package com.mars.edu.app.pages.login;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,10 +7,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.inject.DaggerActivityComponent;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.utils.SharedPreferencesUtils;
+import com.mars.edu.app.library.utils.SPUtils;
 import com.mars.edu.app.model.User;
 import com.mars.edu.app.pages.main.MainActivity;
 
@@ -47,7 +43,6 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         return loginPresenter;
     }
 
-    @SuppressLint("ResourceType")
     @Override
     protected View createViewHolderByLayoutId() {
         contentView = getLayoutInflater().inflate(layoutId(), null);
@@ -55,7 +50,6 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         return contentView;
     }
 
-    @SuppressLint("ResourceType")
     @Override
     public int layoutId() {
         return R.layout.act_login;
@@ -71,29 +65,20 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         //loginPresenter.requestData();
 
         ////读取登录用户
-        String username = SharedPreferencesUtils.read("username", null);
+        String username = SPUtils.read("username", null);
         if (null != username) {
             startActivityAndFinished(MainActivity.class);
         }
     }
 
-    @Override
-    public void loadData() {
-
-    }
-
-    @Override
-    public void updateData() {
-        Toast.makeText(this, "执行成功", Toast.LENGTH_SHORT).show();
-    }
 
     @OnClick({R.id.btn_login})
     public void onClick(View view) {
         String username = vh.tvUsername.getText().toString().trim();
         String password = vh.tvPassword.getText().toString().trim();
         if (loginUser.username.equalsIgnoreCase(username) && loginUser.password.equalsIgnoreCase(password)) {
-            SharedPreferencesUtils.save("username", username);
-            SharedPreferencesUtils.save("password", password);
+            SPUtils.save("username", username);
+            SPUtils.save("password", password);
             startActivityAndFinished(MainActivity.class);
         } else {
             Toast.makeText(this, "用户名或者密码错误", Toast.LENGTH_SHORT).show();
@@ -103,6 +88,16 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
             vh.tvUsername.setFocusableInTouchMode(true);
             vh.tvUsername.requestFocus();
         }
+    }
+
+    @Override
+    public void loadData(User data) {
+
+    }
+
+    @Override
+    public void updateData(User data) {
+
     }
 
     static

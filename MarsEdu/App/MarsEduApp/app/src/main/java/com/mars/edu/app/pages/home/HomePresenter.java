@@ -32,7 +32,6 @@ public class HomePresenter implements HomeContracts.Presenter {
         this.view = null;
     }
 
-    @SuppressLint("ResourceType")
     public List<MainNavItem> initMainNavItemList() {
         List<MainNavItem> mainNavItemList = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package com.mars.edu.app.common;
+package com.mars.edu.app.locallibs.common;
 
 import com.mars.edu.app.library.base.application.BaseApplication;
 import com.mars.edu.app.library.manager.UtilsManager;

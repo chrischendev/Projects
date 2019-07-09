@@ -26,6 +26,6 @@ public class LoginPresenter implements LoginContracts.Presenter {
 
     @Override
     public void requestData() {
-        view.updateData();
+        view.updateData(null);
     }
 }

@@ -10,7 +10,7 @@ import com.mars.edu.app.library.manager.UtilsManager;
  * on 2019/7/9 10:13
  * use for: SharedPreferences 工具
  */
-public class SharedPreferencesUtils extends UtilsManager {
+public class SPUtils extends UtilsManager {
     private static SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 
     /**

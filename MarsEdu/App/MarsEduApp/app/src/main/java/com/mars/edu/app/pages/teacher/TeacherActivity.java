@@ -1,11 +1,9 @@
 package com.mars.edu.app.pages.teacher;
 
-import android.annotation.SuppressLint;
-import android.view.View;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.inject.DaggerActivityComponent;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.model.User;
@@ -26,7 +24,6 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
 
     private TeacherViewHolder vh;
 
-    @SuppressLint("ResourceType")
     @Override
     public int layoutId() {
         return R.layout.act_teacher;
@@ -42,10 +39,16 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
         return teacherPresenter;
     }
 
+//    @Override
+//    protected View createViewHolderByLayoutId() {
+//        vh = new TeacherViewHolder(this);
+//        return vh.getView();
+//    }
+
+
     @Override
-    protected View createViewHolderByLayoutId() {
-        vh = new TeacherViewHolder(this);
-        return vh.getView();
+    public void createViewHolder() {
+        vh = new TeacherViewHolder(getContentView());
     }
 
     @Override

@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">设置</string>
 
-    <string name="menu_user_info">用户信息</string>
+    <string name="menu_user_info">账户</string>
     <string name="menu_wallet">钱包</string>
     <string name="menu_album">相册</string>
     <string name="menu_tools">工具</string>

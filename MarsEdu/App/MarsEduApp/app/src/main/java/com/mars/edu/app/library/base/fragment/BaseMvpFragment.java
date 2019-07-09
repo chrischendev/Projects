@@ -1,5 +1,6 @@
 package com.mars.edu.app.library.base.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,5 +29,10 @@ public abstract class BaseMvpFragment extends BaseInjectFragment implements Base
         if (null != getPresenter()) {
             getPresenter().unbind();
         }
+    }
+
+    @Override
+    public Context getOwnContext() {
+        return getBaseContext();
     }
 }

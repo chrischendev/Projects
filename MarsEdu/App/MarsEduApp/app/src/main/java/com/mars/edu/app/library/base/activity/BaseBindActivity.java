@@ -1,8 +1,7 @@
 package com.mars.edu.app.library.base.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.view.View;
 
 import butterknife.ButterKnife;
@@ -18,7 +17,7 @@ public abstract class BaseBindActivity extends BaseActivity {
 
     @Override
     public View createContentView() {
-        @SuppressLint("ResourceType") View view = getLayoutInflater().inflate(layoutId(), null);
+        View view = getLayoutInflater().inflate(layoutId(), null);
         return view;
     }
 
@@ -27,7 +26,7 @@ public abstract class BaseBindActivity extends BaseActivity {
      *
      * @return
      */
-    public abstract @IdRes
+    public abstract @LayoutRes
     int layoutId();
 
     @Override

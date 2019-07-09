@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_user_info"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/slide_menu_account"
             android:title="@string/menu_user_info" />
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@mipmap/slide_menu_wallet"
             android:title="@string/menu_wallet" />
         <item
             android:id="@+id/nav_album"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@mipmap/slide_menu_album"
             android:title="@string/menu_album" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/slide_menu_tools"
             android:title="@string/menu_tools" />
     </group>
 
@@ -26,11 +26,11 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@mipmap/slide_menu_shared"
                 android:title="@string/menu_share" />
             <item
                 android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@mipmap/slide_menu_mail"
                 android:title="@string/menu_contact" />
         </menu>
     </item>
