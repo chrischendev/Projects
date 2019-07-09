@@ -1,5 +1,7 @@
 package com.mars.edu.app.library.base.activity;
 
+import android.os.Bundle;
+
 /**
  * @author Chris Chan
  * on 2019/7/8 10:36
@@ -8,7 +10,7 @@ package com.mars.edu.app.library.base.activity;
  */
 public abstract class BaseInjectActivity extends BaseBindActivity {
     @Override
-    public void init() {
+    public void init(Bundle savedInstanceState) {
         initInject();
     }
 

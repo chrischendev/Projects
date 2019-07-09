@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.base.BaseActivity;
 import com.mars.edu.app.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
@@ -29,7 +28,7 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
 
     @SuppressLint("ResourceType")
     @Override
-    public int getLayoutId() {
+    public int layoutId() {
         return R.layout.act_teacher;
     }
 
@@ -58,16 +57,6 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
     public void onViewClicked() {
         Toast.makeText(this, "OK!" + user.username, Toast.LENGTH_SHORT).show();
         vh.tvInfo.setText(nameList.get(1));
-    }
-
-    @Override
-    public void loadData() {
-
-    }
-
-    @Override
-    public void updateData() {
-
     }
 
 }

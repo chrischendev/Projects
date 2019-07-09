@@ -1,6 +1,7 @@
 package com.mars.edu.app.library.base.activity;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
 
@@ -14,7 +15,7 @@ import butterknife.ButterKnife;
 public abstract class BaseBindActivity extends BaseActivity {
     @Override
     public View createContentView() {
-        @SuppressLint("ResourceType") View view = getLayoutInflater().inflate(getLayoutId(), null);
+        @SuppressLint("ResourceType") View view = getLayoutInflater().inflate(layoutId(), null);
         return view;
     }
 
@@ -24,21 +25,22 @@ public abstract class BaseBindActivity extends BaseActivity {
      * @return
      */
     public abstract @IdRes
-    int getLayoutId();
+    int layoutId();
 
     @Override
-    public void postContentView() {
+    public void postContentView(Bundle savedInstanceState) {
         ButterKnife.bind(this);
         createViewHolder();
         createDataHolder();
         createListenerHolder();
-        init();
+        init(savedInstanceState);
     }
 
     /**
      * 初始化操作
+     * @param savedInstanceState
      */
-    public abstract void init();
+    public abstract void init(Bundle savedInstanceState);
 
     /**
      * 创建监听器持有者

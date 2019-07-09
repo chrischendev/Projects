@@ -14,6 +14,7 @@ import com.mars.edu.app.R;
 import com.mars.edu.app.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.mars.edu.app.library.utils.SharedPreferencesUtils;
 import com.mars.edu.app.model.User;
 import com.mars.edu.app.pages.main.MainActivity;
 
@@ -46,16 +47,17 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         return loginPresenter;
     }
 
+    @SuppressLint("ResourceType")
     @Override
     protected View createViewHolderByLayoutId() {
-        contentView = getLayoutInflater().inflate(R.layout.act_login, null);
+        contentView = getLayoutInflater().inflate(layoutId(), null);
         vh = new ViewHolder(contentView);
         return contentView;
     }
 
     @SuppressLint("ResourceType")
     @Override
-    public int getLayoutId() {
+    public int layoutId() {
         return R.layout.act_login;
     }
 
@@ -69,11 +71,9 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         //loginPresenter.requestData();
 
         ////读取登录用户
-        SharedPreferences localuser = getSharedPreferences("localuser", Context.MODE_PRIVATE);
-        String username = localuser.getString("username", null);
+        String username = SharedPreferencesUtils.read("username", null);
         if (null != username) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            startActivityAndFinished(MainActivity.class);
         }
     }
 
@@ -92,13 +92,9 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         String username = vh.tvUsername.getText().toString().trim();
         String password = vh.tvPassword.getText().toString().trim();
         if (loginUser.username.equalsIgnoreCase(username) && loginUser.password.equalsIgnoreCase(password)) {
-            SharedPreferences localuser = getSharedPreferences("localuser", Context.MODE_PRIVATE);
-            SharedPreferences.Editor edit = localuser.edit();
-            edit.putString("username", username);
-            edit.putString("password", password);
-            edit.commit();
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            SharedPreferencesUtils.save("username", username);
+            SharedPreferencesUtils.save("password", password);
+            startActivityAndFinished(MainActivity.class);
         } else {
             Toast.makeText(this, "用户名或者密码错误", Toast.LENGTH_SHORT).show();
             vh.tvUsername.setText(null);

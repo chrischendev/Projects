@@ -1,6 +1,6 @@
 package com.mars.edu.app.pages.main;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -8,46 +8,143 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mars.edu.app.R;
+import com.mars.edu.app.inject.DaggerActivityComponent;
+import com.mars.edu.app.library.base.activity.BaseMvpActivity;
+import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
+import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.mars.edu.app.library.utils.SharedPreferencesUtils;
+import com.mars.edu.app.pages.home.HomeActivity;
+import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.List;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends BaseMvpActivity implements NavigationView.OnNavigationItemSelectedListener, MainContracts.View, BaseRecyclerAdapter.OnItemClickListener<MainNavItem> {
+
+    @Inject
+    MainPresenter mainPresenter;
+
+    private List<MainNavItem> mainNavItemList;
+    private MainRvAdapter mainRvAdapter;
+    private ViewHolder vh;
+    private NavHeaderViewHolder nvh;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+    protected BasePresenter getPresenter() {
+        return mainPresenter;
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    protected View createViewHolderByLayoutId() {
+        contentView = getLayoutInflater().inflate(layoutId(), null);
+        vh = new ViewHolder(contentView);
+        return contentView;
+    }
+
+    @Override
+    public void initInject() {
+        DaggerActivityComponent.create().inject(this);
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public int layoutId() {
+        return R.layout.act_main;
+    }
+
+    @Override
+    public void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        //工具条
+        setSupportActionBar(vh.toolbar);
+        //浮动按钮
+        initFloatButton();
+        //侧滑菜单
+        initDrawer();
+        //主体布局
+        initMainLayout();
+    }
+
+    private void initMainLayout() {
+        //广告
+        Glide.with(this).load(R.mipmap.fj001).into(vh.ivMainAd);
+
+        //数据
+        mainNavItemList = mainPresenter.initMainNavItemList();
+
+        //适配器
+        mainRvAdapter = new MainRvAdapter(this, mainNavItemList);
+        mainRvAdapter.setOnItemClickListener(this);
+        //显示控件
+        vh.rvMainNav.setLayoutManager(new GridLayoutManager(this, 4));
+        vh.rvMainNav.setAdapter(mainRvAdapter);
+
+    }
+
+    private void initDrawer() {
+        //开关
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, vh.drawer, vh.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        vh.drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        vh.navView.setNavigationItemSelectedListener(this);
+        //侧滑菜单头部控件数据持有者
+        nvh = new NavHeaderViewHolder(vh.navView.getHeaderView(0));
+        nvh.tvMainLoginReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityFromTo(MainActivity.this, LoginActivity.class);
+            }
+        });
+
+        //判断登录状态
+        String username = SharedPreferencesUtils.read("username", null);
+        if (null == username) {
+            nvh.tvMainLoginReg.setVisibility(View.VISIBLE);
+            nvh.tvMainUserName.setVisibility(View.GONE);
+            nvh.tvMainUserEmail.setVisibility(View.GONE);
+        } else {
+            nvh.tvMainLoginReg.setVisibility(View.GONE);
+            nvh.tvMainUserName.setVisibility(View.VISIBLE);
+            nvh.tvMainUserEmail.setVisibility(View.VISIBLE);
+
+            nvh.tvMainUserName.setText(username);
+            nvh.tvMainUserEmail.setText("chris@mars.com");
+        }
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void initFloatButton() {
+        vh.fab.setVisibility(View.GONE);
+        vh.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (vh.drawer.isDrawerOpen(GravityCompat.START)) {
+            vh.drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -55,19 +152,14 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -75,28 +167,81 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            startActivity(new Intent(this, TeacherActivity.class));
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_user_info) {
+            startActivity(HomeActivity.class);
+        } else if (id == R.id.nav_wallet) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_album) {
 
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_contact) {
 
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onItemClick(View itemView, int position, MainNavItem item) {
+        switch (item.code) {
+            case "teacher":
+                startActivity(TeacherActivity.class);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 主要控件
+     */
+    static
+    class ViewHolder {
+        @BindView(R.id.toolbar)
+        Toolbar toolbar;
+        @BindView(R.id.iv_main_ad)
+        ImageView ivMainAd;
+        @BindView(R.id.rv_main_nav)
+        RecyclerView rvMainNav;
+        @BindView(R.id.fab)
+        FloatingActionButton fab;
+        @BindView(R.id.nav_view)
+        NavigationView navView;
+        @BindView(R.id.drawer_layout)
+        DrawerLayout drawer;
+
+        ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+
+    /**
+     * 侧滑菜单头部控件
+     */
+    static
+    class NavHeaderViewHolder {
+
+
+        @BindView(R.id.iv_main_user_photo)
+        ImageView ivMainUserPhoto;
+        @BindView(R.id.tv_main_login_reg)
+        TextView tvMainLoginReg;
+        @BindView(R.id.tv_main_user_name)
+        TextView tvMainUserName;
+        @BindView(R.id.tv_main_user_email)
+        TextView tvMainUserEmail;
+
+        NavHeaderViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }

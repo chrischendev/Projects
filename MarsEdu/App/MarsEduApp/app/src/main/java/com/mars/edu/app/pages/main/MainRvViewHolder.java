@@ -1,5 +1,6 @@
 package com.mars.edu.app.pages.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ public class MainRvViewHolder extends BaseRecyclerHolder<MainNavItem> {
         //itemView.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
     }
 
+    @SuppressLint("ResourceType")
     @Override
     protected void refreshView(MainNavItem item) {
         Glide.with(mContext).load(item.imgId).into(ivPic);

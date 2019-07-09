@@ -1,9 +1,13 @@
 package com.mars.edu.app.library.base.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.io.Serializable;
 
 /**
  * @author Chris Chan
@@ -19,10 +23,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preSetContentView();
+        preSetContentView(savedInstanceState);
         contentView = createContentView();
         setContentView(contentView);
-        postContentView();
+        postContentView(savedInstanceState);
         onReady();
     }
 
@@ -33,8 +37,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 在设置完主要内容控件之后执行
+     *
+     * @param savedInstanceState
      */
-    public abstract void postContentView();
+    public abstract void postContentView(Bundle savedInstanceState);
 
     /**
      * 创建主要内容布局
@@ -46,8 +52,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 在设置主要内容布局之前执行
+     *
+     * @param savedInstanceState
      */
-    public abstract void preSetContentView();
+    public abstract void preSetContentView(Bundle savedInstanceState);
 
     /**
      * 获取主要内容布局
@@ -56,5 +64,100 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public View getContentView() {
         return contentView;
+    }
+
+    /**
+     * 跳转到其他的Activity
+     * 适用于内部类
+     *
+     * @param packageContext
+     * @param clazz
+     */
+    protected void startActivityFromTo(Context packageContext, Class clazz) {
+        startActivity(new Intent(packageContext, clazz));
+    }
+
+    /**
+     * 跳转到其他的Activity并结束
+     * 适用于内部类
+     *
+     * @param clazz
+     */
+    protected void startActivityFromToAndFinished(Context packageContext, Class clazz) {
+        startActivity(new Intent(packageContext, clazz));
+        finish();
+    }
+
+    /**
+     * 跳转到其他的Activity
+     *
+     * @param clazz
+     */
+    protected void startActivity(Class clazz) {
+        startActivity(new Intent(this, clazz));
+    }
+
+    /**
+     * 跳转到其他的Activity并且结束当前的Activity
+     *
+     * @param clazz
+     */
+    protected void startActivityAndFinished(Class clazz) {
+        startActivity(clazz);
+        finish();
+    }
+
+    /**
+     * 跳转到其他的Activity并且携带数据
+     *
+     * @param clazz
+     * @param key
+     * @param value
+     */
+    protected void startActivityWithExtra(Class clazz, String key, Serializable value) {
+        Intent intent = new Intent(this, clazz);
+        intent.putExtra(key, value);
+        startActivity(intent);
+    }
+
+    /**
+     * 携带数据跳转到其他的Activity，并且结束当前Activity
+     *
+     * @param clazz
+     * @param key
+     * @param value
+     */
+    protected void startActivityWithExtraAndFinished(Class clazz, String key, Serializable value) {
+        startActivityWithExtra(clazz, key, value);
+        finish();
+    }
+
+    /**
+     * 通过Intent对象跳转到其他Activity，并且结束当前Activity
+     *
+     * @param intent
+     */
+    protected void startActivityIntentAndFinished(Intent intent) {
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * 跳转到其他Activity并处理返回结果
+     *
+     * @param clazz
+     * @param requestCode
+     */
+    protected void startActivityForResult(Class clazz, int requestCode) {
+        startActivityForResult(new Intent(this, clazz), requestCode);
+    }
+
+    /**
+     * 跳转到其他Activity并处理返回结果
+     *
+     * @param clazz
+     */
+    protected void startActivityForResult(Class clazz) {
+        startActivityForResult(new Intent(this, clazz), 0);
     }
 }

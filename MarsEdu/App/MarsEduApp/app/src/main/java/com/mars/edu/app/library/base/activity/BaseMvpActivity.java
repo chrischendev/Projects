@@ -1,5 +1,6 @@
 package com.mars.edu.app.library.base.activity;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.mars.edu.app.library.base.mvp.BasePresenter;
@@ -14,10 +15,19 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
 
     protected abstract BasePresenter getPresenter();
 
+    /**
+     * 默认使用layoutId创建
+     * 否则使用ViewHolder创建
+     *
+     * @return
+     */
     @Override
     public View createContentView() {
-        contentView = createViewHolderByLayoutId();
-        return contentView;
+        View contentView = createViewHolderByLayoutId();
+        if (null == contentView) {
+            this.contentView = super.createContentView();
+        }
+        return this.contentView;
     }
 
     /**
@@ -26,11 +36,13 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
      *
      * @return
      */
-    protected abstract View createViewHolderByLayoutId();
+    protected View createViewHolderByLayoutId() {
+        return null;
+    }
 
     @Override
-    public void init() {
-        super.init();
+    public void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
         if (null != getPresenter()) {
             getPresenter().bind(this);
         }
@@ -45,7 +57,7 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
     }
 
     @Override
-    public void preSetContentView() {
+    public void preSetContentView(Bundle savedInstanceState) {
 
     }
 
@@ -55,8 +67,8 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
     }
 
     @Override
-    public void postContentView() {
-        super.postContentView();
+    public void postContentView(Bundle savedInstanceState) {
+        super.postContentView(savedInstanceState);
     }
 
     @Override
