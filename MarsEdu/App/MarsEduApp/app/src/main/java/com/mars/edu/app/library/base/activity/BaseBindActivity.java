@@ -46,11 +46,15 @@ public abstract class BaseBindActivity extends BaseActivity {
     public void createListenerHolder() {
     }
 
+    ;
+
     /**
      * 创建数据持有者
      */
     public void createDataHolder() {
     }
+
+    ;
 
     /**
      * 创建ViewHolder
@@ -58,4 +62,5 @@ public abstract class BaseBindActivity extends BaseActivity {
     public void createViewHolder() {
     }
 
+    ;
 }

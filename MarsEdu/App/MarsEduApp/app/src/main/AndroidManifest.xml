@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name=".pages.login.LoginActivity"
-            android:label="Mars Edu"
+            android:label="Login"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,10 +22,9 @@
 
     <TextView
         android:id="@+id/tv_main_login_reg"
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录/注册"
+        android:text="Login/Reg"
         android:visibility="gone" />
 
     <TextView

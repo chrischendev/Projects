@@ -1,63 +1,56 @@
 package com.mars.edu.app.pages.teacher;
 
-import android.annotation.SuppressLint;
-import android.view.View;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
 import com.mars.edu.app.base.BaseActivity;
 import com.mars.edu.app.inject.DaggerActivityComponent;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.model.User;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TeacherActivity extends BaseMvpActivity implements TeacherContracts.View {
+public class TeacherActivity extends AppCompatActivity implements TeacherContracts.View {
     @Inject
     User user;
     @Inject
     List<String> nameList;
     @Inject
-    TeacherPresenter teacherPresenter;
+    TeacherPresenter presenter;
 
-    private TeacherViewHolder vh;
+    private TeacherViewHolder viewHolder;
 
-    @SuppressLint("ResourceType")
     @Override
-    public int getLayoutId() {
-        return R.layout.act_teacher;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewHolder = new TeacherViewHolder(this);
+        setContentView(viewHolder.getView());
+        ButterKnife.bind(this);
+
+        initInject();
+        initView();
     }
 
-    @Override
-    public void initInject() {
+    private void initInject() {
         DaggerActivityComponent.create().inject(this);
     }
 
-    @Override
-    protected BasePresenter getPresenter() {
-        return teacherPresenter;
-    }
-
-    @Override
-    protected View createViewHolderByLayoutId() {
-        vh = new TeacherViewHolder(this);
-        return vh.getView();
-    }
-
-    @Override
-    protected void onReady() {
-        vh.tvInfo.setText("教师管理");
+    private void initView() {
+        presenter.bind(this);
+        viewHolder.tvInfo.setText("Hello，Android！");
+        presenter.show(this);
     }
 
     @OnClick(R.id.tv_info)
     public void onViewClicked() {
-        Toast.makeText(this, "OK!" + user.username, Toast.LENGTH_SHORT).show();
-        vh.tvInfo.setText(nameList.get(1));
+        Toast.makeText(this, "OK!" + user.name, Toast.LENGTH_SHORT).show();
+        viewHolder.tvInfo.setText(nameList.get(1));
     }
 
     @Override
@@ -70,4 +63,9 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
 
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.unbind();
+        super.onDestroy();
+    }
 }

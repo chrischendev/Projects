@@ -19,14 +19,7 @@ public abstract class BaseViewHolder {
         ButterKnife.bind(this, view);
     }
 
-    public BaseViewHolder(View view) {
-        this.view = view;
-        ButterKnife.bind(this, view);
-    }
-
-    protected int getLayoutId() {
-        return 0;
-    }
+    protected abstract int getLayoutId();
 
     public View getView() {
         return view;

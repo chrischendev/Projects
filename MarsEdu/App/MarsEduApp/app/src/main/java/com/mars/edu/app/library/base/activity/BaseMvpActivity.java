@@ -1,7 +1,5 @@
 package com.mars.edu.app.library.base.activity;
 
-import android.view.View;
-
 import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.library.base.mvp.BaseView;
 
@@ -13,20 +11,6 @@ import com.mars.edu.app.library.base.mvp.BaseView;
 public abstract class BaseMvpActivity extends BaseInjectActivity implements BaseView {
 
     protected abstract BasePresenter getPresenter();
-
-    @Override
-    public View createContentView() {
-        contentView = createViewHolderByLayoutId();
-        return contentView;
-    }
-
-    /**
-     * 在setcontentView之前通过创建ViewHolder创建view
-     * 调用此方法之后，就不可以再用createViewHolder方法
-     *
-     * @return
-     */
-    protected abstract View createViewHolderByLayoutId();
 
     @Override
     public void init() {
@@ -46,11 +30,6 @@ public abstract class BaseMvpActivity extends BaseInjectActivity implements Base
 
     @Override
     public void preSetContentView() {
-
-    }
-
-    @Override
-    protected void onReady() {
 
     }
 
