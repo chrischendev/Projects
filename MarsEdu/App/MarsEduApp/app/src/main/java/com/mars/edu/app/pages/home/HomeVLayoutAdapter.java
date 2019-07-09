@@ -13,6 +13,7 @@ import com.alibaba.android.vlayout.layout.OnePlusNLayoutHelper;
 import com.mars.edu.app.R;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Chris Chan
@@ -43,21 +44,22 @@ public class HomeVLayoutAdapter extends DelegateAdapter.Adapter<HomeRvViewHolder
                 gridLayoutHelper.setItemCount(12);
                 //gridLayoutHelper.setMargin(20, 20, 20, 20);
                 gridLayoutHelper.setGap(1);
-                gridLayoutHelper.setPadding(20, 20, 20, 20);
+                gridLayoutHelper.setAutoExpand(false);
+                //gridLayoutHelper.setPadding(20, 20, 20, 20);
                 gridLayoutHelper.setSpanSizeLookup(new GridLayoutHelper.SpanSizeLookup() {
                     @Override
                     public int getSpanSize(int position) {
-//                        if (position % 2 == 0) {
-//                            return 2;
-//                        }
+                        if (new Random().nextInt(getItemCount()) == getItemCount() - 1) {
+                            return 2;
+                        }
                         return 1;
                     }
                 });
                 return gridLayoutHelper;
             case 2:
                 OnePlusNLayoutHelper onePlusNLayoutHelper = new OnePlusNLayoutHelper(5);
-                //onePlusNLayoutHelper.setColWeights(new float[]{10f});
-                //onePlusNLayoutHelper.setRowWeight(30f);
+                onePlusNLayoutHelper.setColWeights(new float[]{10f});
+                onePlusNLayoutHelper.setRowWeight(30f);
                 return onePlusNLayoutHelper;
             default:
                 return null;

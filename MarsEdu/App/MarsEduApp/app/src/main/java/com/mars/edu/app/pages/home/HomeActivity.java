@@ -69,6 +69,11 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
 
         List<DelegateAdapter.Adapter> adapterList = new LinkedList<>();
         adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
         adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0,5),2));
         delegateAdapter.addAdapters(adapterList);
 
