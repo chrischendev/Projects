@@ -6,6 +6,7 @@ import android.support.annotation.IdRes;
 import android.view.View;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * @author Chris Chan
@@ -13,6 +14,8 @@ import butterknife.ButterKnife;
  * use for: 包含butterknife基本处理的封装
  */
 public abstract class BaseBindActivity extends BaseActivity {
+    protected Unbinder unbinder;
+
     @Override
     public View createContentView() {
         @SuppressLint("ResourceType") View view = getLayoutInflater().inflate(layoutId(), null);
@@ -29,15 +32,24 @@ public abstract class BaseBindActivity extends BaseActivity {
 
     @Override
     public void postContentView(Bundle savedInstanceState) {
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         createViewHolder();
         createDataHolder();
         createListenerHolder();
         init(savedInstanceState);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != this.unbinder) {
+            this.unbinder.unbind();
+        }
+    }
+
     /**
      * 初始化操作
+     *
      * @param savedInstanceState
      */
     public abstract void init(Bundle savedInstanceState);
