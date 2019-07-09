@@ -1,6 +1,7 @@
 package com.mars.edu.app.pages.home;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.mars.edu.app.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,14 +68,35 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
         vh.rvHome.setAdapter(delegateAdapter);
 
         List<DelegateAdapter.Adapter> adapterList = new LinkedList<>();
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0,5),2));
         delegateAdapter.addAdapters(adapterList);
-
 
     }
 
     @Override
     protected void onReady() {
 
+    }
+
+    @SuppressLint("ResourceType")
+    public List<HomeModels.NavItem> initNavItemList() {
+        List<HomeModels.NavItem> navItemList = new ArrayList<>();
+
+        navItemList.add(new HomeModels.NavItem("标题", Color.BLUE));
+        navItemList.add(new HomeModels.NavItem("标题", Color.YELLOW));
+        navItemList.add(new HomeModels.NavItem("标题", Color.GREEN));
+        navItemList.add(new HomeModels.NavItem("标题", Color.WHITE));
+        navItemList.add(new HomeModels.NavItem("标题", Color.GRAY));
+        navItemList.add(new HomeModels.NavItem("标题", Color.CYAN));
+
+
+        return navItemList;
     }
 
 

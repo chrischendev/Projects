@@ -193,6 +193,9 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
     @Override
     public void onItemClick(View itemView, int position, MainNavItem item) {
         switch (item.code) {
+            case "school":
+                startActivity(HomeActivity.class);
+                break;
             case "teacher":
                 startActivity(TeacherActivity.class);
                 break;

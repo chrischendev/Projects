@@ -1,5 +1,13 @@
 package com.mars.edu.app.pages.home;
 
+import android.annotation.SuppressLint;
+
+import com.mars.edu.app.R;
+import com.mars.edu.app.pages.main.MainNavItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -23,4 +31,21 @@ public class HomePresenter implements HomeContracts.Presenter {
     public void unbind() {
         this.view = null;
     }
+
+    @SuppressLint("ResourceType")
+    public List<MainNavItem> initMainNavItemList() {
+        List<MainNavItem> mainNavItemList = new ArrayList<>();
+
+        mainNavItemList.add(MainNavItem.create("school", R.mipmap.main_item_chat, "学校"));
+        mainNavItemList.add(MainNavItem.create("teacher", R.mipmap.main_item_chat, "教师"));
+        mainNavItemList.add(MainNavItem.create("studio", R.mipmap.main_item_chat, "学生"));
+        mainNavItemList.add(MainNavItem.create("score", R.mipmap.main_item_chat, "成绩"));
+        mainNavItemList.add(MainNavItem.create("activation", R.mipmap.main_item_chat, "活动"));
+        mainNavItemList.add(MainNavItem.create("practice", R.mipmap.main_item_chat, "成绩"));
+        mainNavItemList.add(MainNavItem.create("picture", R.mipmap.main_item_chat, "成绩"));
+        mainNavItemList.add(MainNavItem.create("example", R.mipmap.main_item_chat, "考试"));
+
+        return mainNavItemList;
+    }
+
 }
