@@ -56,4 +56,12 @@ dependencies {
     //事件总线库
     implementation 'com.hwangjr.rxbus:rxbus:1.0.5'
 
+
+
+    ////
+    //vlayout
+    implementation ('com.alibaba.android:vlayout:1.2.8@aar') {
+        transitive = true
+    }
+
 }
