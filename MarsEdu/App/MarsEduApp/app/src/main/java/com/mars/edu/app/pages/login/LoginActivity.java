@@ -14,6 +14,7 @@ import com.mars.edu.app.R;
 import com.mars.edu.app.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.mars.edu.app.model.User;
 import com.mars.edu.app.pages.main.MainActivity;
 
 import javax.inject.Inject;
@@ -30,6 +31,8 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseMvpActivity implements LoginContracts.View {
     @Inject
     LoginPresenter loginPresenter;
+    @Inject
+    User loginUser;
 
     private ViewHolder vh;
 
@@ -41,6 +44,13 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
     @Override
     protected BasePresenter getPresenter() {
         return loginPresenter;
+    }
+
+    @Override
+    protected View createViewHolderByLayoutId() {
+        contentView = getLayoutInflater().inflate(R.layout.act_login, null);
+        vh = new ViewHolder(contentView);
+        return contentView;
     }
 
     @SuppressLint("ResourceType")
@@ -61,7 +71,7 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         ////读取登录用户
         SharedPreferences localuser = getSharedPreferences("localuser", Context.MODE_PRIVATE);
         String username = localuser.getString("username", null);
-        if (null == username) {
+        if (null != username) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
@@ -81,7 +91,7 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
     public void onClick(View view) {
         String username = vh.tvUsername.getText().toString().trim();
         String password = vh.tvPassword.getText().toString().trim();
-        if ("chris".equalsIgnoreCase(username) && "123456".equalsIgnoreCase(password)) {
+        if (loginUser.username.equalsIgnoreCase(username) && loginUser.password.equalsIgnoreCase(password)) {
             SharedPreferences localuser = getSharedPreferences("localuser", Context.MODE_PRIVATE);
             SharedPreferences.Editor edit = localuser.edit();
             edit.putString("username", username);
@@ -94,6 +104,8 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
             vh.tvUsername.setText(null);
             vh.tvPassword.setText(null);
             vh.tvUsername.setFocusable(true);
+            vh.tvUsername.setFocusableInTouchMode(true);
+            vh.tvUsername.requestFocus();
         }
     }
 

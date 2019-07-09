@@ -17,7 +17,7 @@ import dagger.Provides;
 public class ActivityModule {
     @Provides
     public User user() {
-        return new User("kaly", 40);
+        return new User("chris", "123456");
     }
 
     @Provides

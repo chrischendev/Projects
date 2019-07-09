@@ -14,7 +14,6 @@ import butterknife.BindView;
  * use for:
  */
 public class TeacherViewHolder extends BaseViewHolder {
-
     @BindView(R.id.tv_info)
     TextView tvInfo;
 
