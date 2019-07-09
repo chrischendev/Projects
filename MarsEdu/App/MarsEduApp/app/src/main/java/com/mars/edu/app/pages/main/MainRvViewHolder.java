@@ -32,7 +32,7 @@ public class MainRvViewHolder extends BaseRecyclerHolder<MainNavItem> {
     @SuppressLint("ResourceType")
     @Override
     protected void refreshView(MainNavItem item) {
-        Glide.with(mContext).load(item.imgId).into(ivPic);
+        Glide.with(context).load(item.imgId).into(ivPic);
         tvTitle.setText(item.title);
     }
 

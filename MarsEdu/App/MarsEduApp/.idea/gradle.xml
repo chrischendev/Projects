@@ -6,9 +6,9 @@
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT" />
         </compositeConfiguration>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="E:/softs/gradle-4.4-all" />
+        <option name="gradleHome" value="E:/softs/gradle-5.3.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />

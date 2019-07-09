@@ -13,11 +13,11 @@ import butterknife.ButterKnife;
 
 public abstract class BaseRecyclerHolder<D> extends RecyclerView.ViewHolder {
     protected View itemView;
-    protected Context mContext;
+    protected Context context;
 
     public BaseRecyclerHolder(Context context, View itemView) {
         super(itemView);
-        this.mContext = context;
+        this.context = context;
         this.itemView = itemView;
         ButterKnife.bind(this, itemView);
     }
