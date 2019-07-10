@@ -29,6 +29,8 @@ public abstract class BaseBindActivity extends BaseActivity {
     public abstract @LayoutRes
     int layoutId();
 
+
+
     @Override
     public void postContentView(Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this);

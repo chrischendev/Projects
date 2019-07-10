@@ -59,6 +59,10 @@ public abstract class BaseFragment extends Fragment {
         this.context = activity;
     }
 
+    public View getContentView() {
+        return contentView;
+    }
+
     public Context getBaseContext() {
         return this.context;
     }

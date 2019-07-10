@@ -1,16 +1,14 @@
 package com.mars.edu.app.pages.news;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.mars.edu.app.library.base.activity.BaseInjectActivity;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
-import com.mars.edu.app.locallibs.net.NewsItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,18 +21,12 @@ import butterknife.ButterKnife;
  * create on 2019/7/10 0:06
  * use for :
  */
-public class NewsActivity extends BaseMvpActivity implements NewsContracts.View {
+public class NewsActivity extends BaseInjectActivity {
     @Inject
-    NewsPresenter newsPresenter;
+    List<NewsFragment> fragmentList;
 
     private ViewHolder vh;
-    private List<NewsItem> newsItemList;
-    private NewsRvAdapter newsRvAdapter;
-
-    @Override
-    protected BasePresenter getPresenter() {
-        return newsPresenter;
-    }
+    private NewsFragmentAdapter newsFragmentAdapter;
 
     @Override
     public void initInject() {
@@ -43,7 +35,7 @@ public class NewsActivity extends BaseMvpActivity implements NewsContracts.View 
 
     @Override
     public int layoutId() {
-        return R.layout.fra_news_list;
+        return R.layout.act_news;
     }
 
     @Override
@@ -53,32 +45,44 @@ public class NewsActivity extends BaseMvpActivity implements NewsContracts.View 
 
     @Override
     protected void onReady() {
-        newsItemList = new ArrayList<>();
-        newsRvAdapter = new NewsRvAdapter(this, newsItemList);
-        vh.rvNewsList.setLayoutManager(new LinearLayoutManager(this));
-        vh.rvNewsList.setAdapter(newsRvAdapter);
-        newsPresenter.requestData();//请求网络数据
-    }
+        //ViewPager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        newsFragmentAdapter = new NewsFragmentAdapter(fragmentManager, fragmentList);
+        vh.vpNews.setOffscreenPageLimit(4);
+        vh.vpNews.setAdapter(newsFragmentAdapter);
+        //TabLayout
+        vh.tabNewsType.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
 
-    @Override
-    public void loadMore(List<NewsItem> dataList) {
+            }
 
-    }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-    @Override
-    public void loadData(List<NewsItem> dataList) {
+            }
 
-    }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
-    @Override
-    public void updateData(List<NewsItem> dataList) {
-        newsRvAdapter.updateData(dataList);
+            }
+        });
+        vh.tabNewsType.setupWithViewPager(vh.vpNews);
+        vh.tabNewsType.removeAllTabs();
+        for (int i = 0, len = fragmentList.size(); i < len; i++) {
+            TabLayout.Tab tab = vh.tabNewsType.newTab();
+            tab.setText(fragmentList.get(i).getTypeName());
+            vh.tabNewsType.addTab(tab);
+        }
+
     }
 
     static
     class ViewHolder {
-        @BindView(R.id.news_list)
-        RecyclerView rvNewsList;
+        @BindView(R.id.tab_news_type)
+        TabLayout tabNewsType;
+        @BindView(R.id.vp_news)
+        ViewPager vpNews;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

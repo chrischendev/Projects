@@ -4,6 +4,7 @@ import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.main.MainActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
+import com.mars.edu.app.pages.news.NewsDetailActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 import javax.inject.Singleton;
@@ -27,4 +28,6 @@ public interface ActivityComponent {
     void inject(HomeActivity activity);
 
     void inject(NewsActivity activity);
+
+    void inject(NewsDetailActivity activity);
 }

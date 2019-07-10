@@ -15,5 +15,6 @@ public interface NewsContracts {
     }
 
     interface Presenter extends BaseRequestPresenter<View> {
+        void getNewsList(String type);
     }
 }

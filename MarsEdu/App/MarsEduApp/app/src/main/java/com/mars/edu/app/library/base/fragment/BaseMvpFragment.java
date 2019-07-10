@@ -19,6 +19,10 @@ public abstract class BaseMvpFragment extends BaseInjectFragment implements Base
         if (null != getPresenter()) {
             getPresenter().bind(this);
         }
+        onReady();
+    }
+
+    protected void onReady() {
     }
 
     protected abstract BasePresenter getPresenter();
@@ -34,5 +38,25 @@ public abstract class BaseMvpFragment extends BaseInjectFragment implements Base
     @Override
     public Context getOwnContext() {
         return getBaseContext();
+    }
+
+    @Override
+    protected void createViewHolder() {
+
+    }
+
+    @Override
+    protected void createDataHolder() {
+
+    }
+
+    @Override
+    protected void createListenerHolder() {
+
+    }
+
+    @Override
+    protected void init(View view, Bundle savedInstanceState) {
+
     }
 }

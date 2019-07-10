@@ -17,7 +17,19 @@ public abstract class BaseBindFragment extends BaseFragment {
     @Override
     protected void postViewCreated(View view, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
+        createViewHolder();
+        createDataHolder();
+        createListenerHolder();
+        init(view,savedInstanceState);
     }
+
+    protected abstract void createViewHolder();
+
+    protected abstract void createDataHolder();
+
+    protected abstract void createListenerHolder();
+
+    protected abstract void init(View view, Bundle savedInstanceState);
 
     @Override
     public void onDestroyView() {

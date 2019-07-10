@@ -40,7 +40,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param savedInstanceState
      */
-    public abstract void postContentView(Bundle savedInstanceState);
+    public void postContentView(Bundle savedInstanceState) {
+    }
 
     /**
      * 创建主要内容布局
@@ -55,7 +56,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param savedInstanceState
      */
-    public abstract void preSetContentView(Bundle savedInstanceState);
+    public void preSetContentView(Bundle savedInstanceState) {
+    }
 
     /**
      * 获取主要内容布局

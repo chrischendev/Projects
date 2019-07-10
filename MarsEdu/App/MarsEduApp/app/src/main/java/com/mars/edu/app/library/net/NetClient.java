@@ -38,7 +38,7 @@ public class NetClient {
     public static OkHttpClient getClient() {
         if (client == null) {
             client = new OkHttpClient.Builder()
-                    .addInterceptor(new NetInterceptor())
+                    //.addInterceptor(new NetInterceptor())
                     .connectTimeout(10, TimeUnit.SECONDS)
                     .readTimeout(10, TimeUnit.SECONDS)
                     .writeTimeout(10, TimeUnit.SECONDS)

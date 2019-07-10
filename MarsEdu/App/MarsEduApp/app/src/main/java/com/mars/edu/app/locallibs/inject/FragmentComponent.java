@@ -1,5 +1,7 @@
 package com.mars.edu.app.locallibs.inject;
 
+import com.mars.edu.app.pages.news.NewsFragment;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -12,4 +14,5 @@ import dagger.Component;
 @Singleton
 @Component(modules = {FragmentModule.class})
 public interface FragmentComponent {
+    void inject(NewsFragment fragment);
 }
