@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_qrcode"
+        android:orderInCategory="100"
+        android:title="扫一扫"
+        app:showAsAction="never" />
 </menu>

@@ -7,10 +7,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mars.edu.app.R;
-import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.library.utils.SPUtils;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.model.User;
 import com.mars.edu.app.pages.main.MainActivity;
 
@@ -26,6 +26,8 @@ import butterknife.OnClick;
  * use for:
  */
 public class LoginActivity extends BaseMvpActivity implements LoginContracts.View {
+    private static final String def_username = "chris";
+    private static final String def_upassword = "123456";
     @Inject
     LoginPresenter loginPresenter;
     @Inject
@@ -68,6 +70,9 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
         String username = SPUtils.read("username", null);
         if (null != username) {
             startActivityAndFinished(MainActivity.class);
+        } else {
+            vh.tvUsername.setText(def_username);
+            vh.tvPassword.setText(def_upassword);
         }
     }
 
@@ -87,6 +92,9 @@ public class LoginActivity extends BaseMvpActivity implements LoginContracts.Vie
             vh.tvUsername.setFocusable(true);
             vh.tvUsername.setFocusableInTouchMode(true);
             vh.tvUsername.requestFocus();
+
+            vh.tvUsername.setText(def_username);
+            vh.tvPassword.setText(def_upassword);
         }
     }
 

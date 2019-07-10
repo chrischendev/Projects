@@ -49,7 +49,7 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
     //动态权限
-    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     //retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
@@ -61,6 +61,10 @@ dependencies {
     //事件总线库
     implementation 'com.hwangjr.rxbus:rxbus:1.0.5'
 
+    //二维码扫描库
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    implementation 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
 
 
     ////

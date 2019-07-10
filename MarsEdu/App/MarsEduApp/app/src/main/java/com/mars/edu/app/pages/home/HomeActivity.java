@@ -8,9 +8,9 @@ import android.view.View;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.mars.edu.app.R;
-import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.library.base.activity.BaseMvpActivity;
 import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -66,13 +66,11 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
         vh.rvHome.setAdapter(delegateAdapter);
 
         List<DelegateAdapter.Adapter> adapterList = new LinkedList<>();
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(),1));
-        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0,5),2));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList(), 1));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0, 5), 2));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0, 4), 2));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0, 3), 2));
+        adapterList.add(new HomeVLayoutAdapter(this, initNavItemList().subList(0, 5), 2));
         delegateAdapter.addAdapters(adapterList);
 
     }
@@ -85,12 +83,12 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
     public List<HomeModels.NavItem> initNavItemList() {
         List<HomeModels.NavItem> navItemList = new ArrayList<>();
 
-        navItemList.add(new HomeModels.NavItem("标题", Color.BLUE));
-        navItemList.add(new HomeModels.NavItem("标题", Color.YELLOW));
-        navItemList.add(new HomeModels.NavItem("标题", Color.GREEN));
-        navItemList.add(new HomeModels.NavItem("标题", Color.WHITE));
-        navItemList.add(new HomeModels.NavItem("标题", Color.GRAY));
-        navItemList.add(new HomeModels.NavItem("标题", Color.CYAN));
+        navItemList.add(new HomeModels.NavItem("旅游", Color.parseColor("#00aa00")));
+        navItemList.add(new HomeModels.NavItem("阅读", Color.parseColor("#00aa11")));
+        navItemList.add(new HomeModels.NavItem("运动", Color.parseColor("#11aa22")));
+        navItemList.add(new HomeModels.NavItem("学习", Color.parseColor("#00bb33")));
+        navItemList.add(new HomeModels.NavItem("游泳", Color.parseColor("#55aa44")));
+        navItemList.add(new HomeModels.NavItem("社交", Color.parseColor("#00cc55")));
 
 
         return navItemList;

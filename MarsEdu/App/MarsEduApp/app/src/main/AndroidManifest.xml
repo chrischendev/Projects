@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
@@ -50,6 +51,10 @@
         <activity
             android:name=".pages.news.NewsDetailActivity"
             android:label="新闻"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".pages.scan.ScanActivity"
+            android:label="扫一扫"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

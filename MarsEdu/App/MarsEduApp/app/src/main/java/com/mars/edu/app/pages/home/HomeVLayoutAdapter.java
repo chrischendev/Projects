@@ -13,7 +13,6 @@ import com.alibaba.android.vlayout.layout.OnePlusNLayoutHelper;
 import com.mars.edu.app.R;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author Chris Chan
@@ -49,7 +48,7 @@ public class HomeVLayoutAdapter extends DelegateAdapter.Adapter<HomeRvViewHolder
                 gridLayoutHelper.setSpanSizeLookup(new GridLayoutHelper.SpanSizeLookup() {
                     @Override
                     public int getSpanSize(int position) {
-                        if (new Random().nextInt(getItemCount()) == getItemCount() - 1) {
+                        if (position > 3) {
                             return 2;
                         }
                         return 1;
@@ -60,6 +59,7 @@ public class HomeVLayoutAdapter extends DelegateAdapter.Adapter<HomeRvViewHolder
                 OnePlusNLayoutHelper onePlusNLayoutHelper = new OnePlusNLayoutHelper(5);
                 onePlusNLayoutHelper.setColWeights(new float[]{10f});
                 onePlusNLayoutHelper.setRowWeight(30f);
+                onePlusNLayoutHelper.setMargin(1,1,1,1);
                 return onePlusNLayoutHelper;
             default:
                 return null;

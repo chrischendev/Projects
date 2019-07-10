@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mars.edu.app.R;
@@ -28,6 +29,7 @@ import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
+import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 import java.util.List;
@@ -163,10 +165,16 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_qrcode:
+                startActivity(ScanActivity.class);
+                break;
+            default:
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
