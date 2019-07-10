@@ -1,6 +1,7 @@
 package com.mars.edu.app.pages.teacher;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,8 +16,8 @@ import butterknife.BindView;
  * use for:
  */
 public class TeacherViewHolder extends BaseViewHolder {
-    @BindView(R.id.tv_info)
-    TextView tvInfo;
+    @BindView(R.id.rv_teacher)
+    RecyclerView rvTeacher;
 
     public TeacherViewHolder(Context context) {
         super(context);

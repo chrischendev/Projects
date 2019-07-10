@@ -10,9 +10,9 @@ import retrofit2.Response;
 /**
  * create by Chris Chan
  * create on 2019/7/9 23:27
- * use for :
+ * use for : 必须用NetResult包裹
  */
-public abstract class NetCallback<T> implements Callback<T> {
+public abstract class NetResultCallback<T> implements Callback<NetResult<T>> {
     //需要查看未经过json格式转换工厂的返回数据，可以打开拦截器查看
     @Override
     public void onResponse(Call call, Response response) {
@@ -23,7 +23,7 @@ public abstract class NetCallback<T> implements Callback<T> {
             //Logger.d("请求的URL===>" + requestUrl);
             //解析json
             NetResult<T> result = (NetResult<T>) response.body();
-            //Logger.d("返回的json===>" + JsonUtils.objToJson(result));
+            LoggerUtils.d("返回的json===>" + JsonUtils.objToJson(result));
             //todo 检测API请求返回数据结构是否正确
             LoggerUtils.d("MobileAPI:" + requestUrl + "  数据结构没问题");
 
@@ -31,14 +31,14 @@ public abstract class NetCallback<T> implements Callback<T> {
             if (result.code == 0) {
                 //如果数据不为空
                 if (result.data != null) {
-                    onComplete(new NetResponse<>(call, true, NetStatus.SUCCESS, result.data));
+                    onComplete(new NetResponse<T>(call, true, NetStatus.SUCCESS, result.data));
                 } else {
                     //如果数据为空
-                    onComplete(new NetResponse<T>(call, true, NetStatus.DATA_EMPTY, null));
+                    onComplete(new NetResponse<>(call, true, NetStatus.DATA_EMPTY, null));
                 }
 
             } else {
-                onComplete(new NetResponse<T>(call, false, NetStatus.DATA_ERROR, null));
+                onComplete(new NetResponse<>(call, false, NetStatus.DATA_ERROR, null));
             }
         }
     }

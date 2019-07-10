@@ -7,15 +7,15 @@ package com.mars.edu.app.library.net;
  */
 public class NetResult<T> {
     public int code;
-    public String message;
+    public String msg;
     public T data;
 
     public NetResult() {
     }
 
-    public NetResult(int code, String message, T data) {
+    public NetResult(int code, String msg, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 }

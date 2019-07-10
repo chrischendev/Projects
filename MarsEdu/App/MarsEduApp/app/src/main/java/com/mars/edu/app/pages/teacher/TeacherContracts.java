@@ -1,12 +1,13 @@
 package com.mars.edu.app.pages.teacher;
 
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.base.mvp.BaseView;
+import com.mars.edu.app.library.base.mvp.BaseDataListView;
+import com.mars.edu.app.library.base.mvp.BaseRequestPresenter;
+import com.mars.edu.app.model.TeacherModel;
 
 public interface TeacherContracts {
-    interface View extends BaseView {
+    interface View extends BaseDataListView<TeacherModel> {
     }
 
-    interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BaseRequestPresenter<View> {
     }
 }

@@ -1,7 +1,12 @@
 package com.mars.edu.app.pages.teacher;
 
-import android.content.Context;
-import android.widget.Toast;
+import com.mars.edu.app.api.teacher.TeacherApi;
+import com.mars.edu.app.library.net.NetResultCallback;
+import com.mars.edu.app.library.net.NetResponse;
+import com.mars.edu.app.library.net.NetResult;
+import com.mars.edu.app.model.TeacherModel;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,7 +27,15 @@ public class TeacherPresenter implements TeacherContracts.Presenter {
         this.view = null;
     }
 
-    public void show(Context context) {
-        Toast.makeText(context, "哈哈哈哈！", Toast.LENGTH_SHORT).show();
+    @Override
+    public void requestData() {
+        TeacherApi.getTeacherList(new NetResultCallback<List<TeacherModel>>() {
+            @Override
+            protected void onComplete(NetResponse<List<TeacherModel>> netResponse) {
+                if (netResponse.isSuccess) {
+                    view.updateData(netResponse.data);
+                }
+            }
+        });
     }
 }
