@@ -2,21 +2,13 @@
 
 buildscript {
     repositories {
-        flatDir {
-            dirs 'libs' // 指定aar存放的路径
-        }
-
-        //mavenCentral()
         google()
         jcenter()
-//        maven{
-//            //url "http://maven.ai-ways.com/nexus/content/repositories/snapshots/"
-//            url "F:\\maven\\.m2\\repository"
-//        }
+        
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
-
+        
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -26,7 +18,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        
     }
 }
 

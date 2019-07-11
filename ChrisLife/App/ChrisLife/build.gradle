@@ -2,6 +2,9 @@
 
 buildscript {
     repositories {
+        flatDir {
+            dirs 'libs' // 指定aar存放的路径
+        }
         google()
         jcenter()
         
