@@ -3,8 +3,8 @@ package com.mars.edu.app.pages.teacher;
 import android.content.Context;
 import android.view.View;
 
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
 import com.mars.edu.app.model.TeacherModel;
 
 import java.util.List;

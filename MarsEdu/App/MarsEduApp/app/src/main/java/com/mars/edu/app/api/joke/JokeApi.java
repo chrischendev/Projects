@@ -1,6 +1,6 @@
 package com.mars.edu.app.api.joke;
 
-import com.mars.edu.app.library.net.NetClient;
+import com.chris.base.library.net.NetClient;
 import com.mars.edu.app.locallibs.net.JokeItem;
 import com.mars.edu.app.locallibs.net.juhe.JuheResponse;
 import com.mars.edu.app.locallibs.net.juhe.UrlConsts;

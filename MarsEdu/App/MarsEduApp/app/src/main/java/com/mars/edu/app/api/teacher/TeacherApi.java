@@ -1,8 +1,8 @@
 package com.mars.edu.app.api.teacher;
 
-import com.mars.edu.app.library.net.NetResultCallback;
-import com.mars.edu.app.library.net.NetClient;
-import com.mars.edu.app.library.net.NetResult;
+import com.chris.base.library.net.NetClient;
+import com.chris.base.library.net.NetResult;
+import com.chris.base.library.net.NetResultCallback;
 import com.mars.edu.app.locallibs.net.juhe.UrlConsts;
 import com.mars.edu.app.model.TeacherModel;
 
@@ -20,6 +20,7 @@ public class TeacherApi implements UrlConsts {
 
     /**
      * 获取教职工集合
+     *
      * @param callback
      */
     public static void getTeacherList(NetResultCallback<List<TeacherModel>> callback) {

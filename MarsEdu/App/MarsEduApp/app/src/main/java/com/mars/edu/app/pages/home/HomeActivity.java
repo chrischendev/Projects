@@ -7,9 +7,9 @@ import android.view.View;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.mvp.BasePresenter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
 import java.util.ArrayList;

@@ -3,8 +3,8 @@ package com.mars.edu.app.pages.news;
 import android.content.Context;
 import android.view.View;
 
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
 import com.mars.edu.app.locallibs.net.NewsItem;
 
 import java.util.List;

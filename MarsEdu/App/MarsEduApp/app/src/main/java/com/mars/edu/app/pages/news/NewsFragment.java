@@ -6,10 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
+import com.chris.base.library.base.fragment.BaseMvpFragment;
+import com.chris.base.library.base.mvp.BasePresenter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
-import com.mars.edu.app.library.base.fragment.BaseMvpFragment;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.locallibs.inject.DaggerFragmentComponent;
 import com.mars.edu.app.locallibs.net.NewsItem;
 

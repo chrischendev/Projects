@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.chris.base.library.base.activity.BaseInjectActivity;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseInjectActivity;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
 import butterknife.BindView;

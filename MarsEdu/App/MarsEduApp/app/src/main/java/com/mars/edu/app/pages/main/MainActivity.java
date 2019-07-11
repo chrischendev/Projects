@@ -19,12 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
+import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.base.library.utils.GlideUtils;
+import com.chris.base.library.utils.SPUtils;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.utils.GlideUtils;
-import com.mars.edu.app.library.utils.SPUtils;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;

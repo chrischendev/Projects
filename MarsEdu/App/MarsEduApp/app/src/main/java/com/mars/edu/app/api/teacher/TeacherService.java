@@ -1,6 +1,6 @@
 package com.mars.edu.app.api.teacher;
 
-import com.mars.edu.app.library.net.NetResult;
+import com.chris.base.library.net.NetResult;
 import com.mars.edu.app.model.TeacherModel;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.mars.edu.app.pages.home;
 
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.base.mvp.BaseView;
+import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.base.library.base.mvp.BaseView;
 
 /**
  * @author Chris Chan

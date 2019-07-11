@@ -7,9 +7,9 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.mvp.BasePresenter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.tbruyelle.rxpermissions.RxPermissions;
 

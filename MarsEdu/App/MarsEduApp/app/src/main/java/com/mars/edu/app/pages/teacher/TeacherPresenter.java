@@ -1,9 +1,8 @@
 package com.mars.edu.app.pages.teacher;
 
+import com.chris.base.library.net.NetResponse;
+import com.chris.base.library.net.NetResultCallback;
 import com.mars.edu.app.api.teacher.TeacherApi;
-import com.mars.edu.app.library.net.NetResultCallback;
-import com.mars.edu.app.library.net.NetResponse;
-import com.mars.edu.app.library.net.NetResult;
 import com.mars.edu.app.model.TeacherModel;
 
 import java.util.List;

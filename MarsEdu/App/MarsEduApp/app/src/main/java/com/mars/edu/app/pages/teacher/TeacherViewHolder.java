@@ -3,10 +3,9 @@ package com.mars.edu.app.pages.teacher;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
+import com.chris.base.library.base.viewholder.BaseViewHolder;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.viewholder.BaseViewHolder;
 
 import butterknife.BindView;
 

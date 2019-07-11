@@ -1,6 +1,6 @@
 package com.mars.edu.app.api.weather;
 
-import com.mars.edu.app.library.net.NetClient;
+import com.chris.base.library.net.NetClient;
 import com.mars.edu.app.locallibs.net.juhe.JuheApisResponse;
 import com.mars.edu.app.locallibs.net.juhe.UrlConsts;
 import com.mars.edu.app.locallibs.net.weather.WeatherInfo;
