@@ -1,1 +1,1 @@
-include ':app', ':chrisbaselibrary'
+include ':app'
