@@ -2,9 +2,9 @@
 
 buildscript {
     repositories {
-        flatDir {
-            dirs 'libs'
-        }
+//        flatDir {
+//            dirs 'libs'
+//        }
         google()
         jcenter()
 

@@ -31,6 +31,7 @@ import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
+import com.mars.edu.chat.ChatActivity;
 
 import java.util.List;
 
@@ -185,7 +186,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         if (id == R.id.nav_user_info) {
             startActivity(HomeActivity.class);
         } else if (id == R.id.nav_wallet) {
-
+            startActivity(ChatActivity.class);
         } else if (id == R.id.nav_album) {
 
         } else if (id == R.id.nav_tools) {
