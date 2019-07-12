@@ -63,7 +63,7 @@ dependencies {
 
     //二维码扫描库
     implementation 'com.google.zxing:core:3.2.1'
-    implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    implementation 'cn.bingoogolapple:bga-qrcodecore:1.1.9@aar'
     implementation 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
 
 
