@@ -73,4 +73,6 @@ dependencies {
         transitive = true
     }
 
+    implementation 'com.chris:gradle-demo:1.0.0-SNAPSHOT'
+
 }

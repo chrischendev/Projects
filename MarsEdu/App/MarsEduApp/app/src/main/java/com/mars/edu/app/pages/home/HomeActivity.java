@@ -9,6 +9,7 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.chris.base.library.base.activity.BaseMvpActivity;
 import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.gradle.ChrisGradleTest;
 import com.mars.edu.app.R;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
@@ -77,7 +78,7 @@ public class HomeActivity extends BaseMvpActivity implements HomeContracts.View 
 
     @Override
     protected void onReady() {
-
+        ChrisGradleTest.call();
     }
 
     public List<HomeModels.NavItem> initNavItemList() {

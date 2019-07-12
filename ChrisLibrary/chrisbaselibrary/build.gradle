@@ -28,6 +28,7 @@ android {
 
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -58,5 +59,33 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.6.0'
 
 
-
 }
+
+//maven插件
+apply plugin: 'maven'
+
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+artifacts {
+    archives androidSourcesJar
+}
+//上传到Maven仓库的task
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //指定maven仓库url 如果使用快照库需要注意版本号的后缀
+            repository(url: "http://maven.ai-ways.com/nexus/content/repositories/releases/") {
+                //nexus登录默认用户名和密码 userName大小写要匹配
+                authentication(userName: "admin", password: "Aa1111111")
+            }
+            pom.groupId = 'com.chris'
+            pom.artifactId = 'base-library'
+            pom.version = '1.0.0'
+        }
+    }
+}
+

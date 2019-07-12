@@ -16,6 +16,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'http://maven.ai-ways.com/nexus/content/repositories/releases'
+        }
         google()
         jcenter()
         
