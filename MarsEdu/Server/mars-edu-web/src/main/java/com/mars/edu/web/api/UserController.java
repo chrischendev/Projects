@@ -1,5 +1,6 @@
 package com.mars.edu.web.api;
 
+import com.mars.edu.web.config.enhance.IncludeHeader;
 import com.mars.edu.web.dao.repository.UserDtoRepository;
 import com.mars.edu.web.locallibs.mars.MarsBaseController;
 import com.mars.edu.web.locallibs.model.BusinessHandler;
@@ -49,11 +50,12 @@ public class UserController implements MarsBaseController<UserEntity, UserXio> {
         return ResponseEntity.ok().body(result);
     }
 
+    //@IncludeHeader
     @GetMapping("/getUserDtoList")
     @ApiOperation(value = "获取所有用户数据")
     public ResponseEntity<?> getUserDtoList() {
         List<UserDto> userDtoList = userDtoRepository.findAll();
-        return ResponseEntity.ok().body(userDtoList);
+        return ResponseEntity.ok().header("info","Hello,World!").body(userDtoList);
     }
 }
 
