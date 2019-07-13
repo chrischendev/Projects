@@ -1,7 +1,7 @@
 package com.mars.edu.app.pages.main;
 
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.base.mvp.BaseView;
+import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.base.library.base.mvp.BaseView;
 
 /**
  * @author Chris Chan
@@ -9,6 +9,9 @@ import com.mars.edu.app.library.base.mvp.BaseView;
  * use for:
  */
 public interface MainContracts {
-    interface View extends BaseView{}
-    interface Presenter extends BasePresenter<View>{}
+    interface View extends BaseView {
+    }
+
+    interface Presenter extends BasePresenter<View> {
+    }
 }

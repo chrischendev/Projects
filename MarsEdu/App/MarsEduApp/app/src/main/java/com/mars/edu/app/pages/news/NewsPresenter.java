@@ -2,8 +2,8 @@ package com.mars.edu.app.pages.news;
 
 import android.widget.Toast;
 
+import com.chris.base.library.utils.LoggerUtils;
 import com.mars.edu.app.api.news.NewsApi;
-import com.mars.edu.app.library.utils.LoggerUtils;
 import com.mars.edu.app.locallibs.net.NewsItem;
 import com.mars.edu.app.locallibs.net.juhe.JuheResponse;
 import com.mars.edu.app.locallibs.net.juhe.JuheResult;

@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chris.base.library.base.viewholder.BaseRecyclerHolder;
+import com.chris.base.library.utils.GlideUtils;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.viewholder.BaseRecyclerHolder;
-import com.mars.edu.app.library.utils.GlideUtils;
 import com.mars.edu.app.locallibs.net.NewsItem;
 
 import butterknife.BindView;

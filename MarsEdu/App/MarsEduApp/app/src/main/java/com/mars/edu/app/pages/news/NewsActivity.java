@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.chris.base.library.base.activity.BaseInjectActivity;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseInjectActivity;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
 import java.util.List;

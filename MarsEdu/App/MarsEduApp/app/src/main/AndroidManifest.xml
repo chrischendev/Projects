@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mars.edu.app">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,6 +19,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/icon_img_02"
         android:supportsRtl="true"
+        tools:replace="android:icon, android:theme, android:label,android:roundIcon"
         android:theme="@style/AppTheme">
         <activity
             android:name=".pages.login.LoginActivity"

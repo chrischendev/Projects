@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.chris.base.library.base.viewholder.BaseRecyclerHolder;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.viewholder.BaseRecyclerHolder;
 
 import butterknife.BindView;
 

@@ -1,7 +1,5 @@
 package com.mars.edu.app.pages.home;
 
-import android.annotation.SuppressLint;
-
 import com.mars.edu.app.R;
 import com.mars.edu.app.pages.main.MainNavItem;
 

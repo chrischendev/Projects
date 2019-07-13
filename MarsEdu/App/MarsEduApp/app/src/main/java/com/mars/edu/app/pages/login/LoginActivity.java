@@ -6,10 +6,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.base.library.utils.SPUtils;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.utils.SPUtils;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.model.User;
 import com.mars.edu.app.pages.main.MainActivity;

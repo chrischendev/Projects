@@ -5,8 +5,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.chris.base.library.base.viewholder.BaseRecyclerHolder;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.viewholder.BaseRecyclerHolder;
 
 import butterknife.BindView;
 

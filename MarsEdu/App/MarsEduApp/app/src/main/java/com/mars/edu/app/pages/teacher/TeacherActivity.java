@@ -5,12 +5,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
+import com.chris.base.library.base.mvp.BasePresenter;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.net.JsonUtils;
-import com.mars.edu.app.library.utils.LoggerUtils;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.model.TeacherModel;
 
@@ -74,8 +72,6 @@ public class TeacherActivity extends BaseMvpActivity implements TeacherContracts
 
     @Override
     public void updateData(List<TeacherModel> dataList) {
-        LoggerUtils.d("shujushoudao ");
-        LoggerUtils.d(JsonUtils.objToJson(dataList));
         teacherRvAdapter.updateData(dataList);
     }
 

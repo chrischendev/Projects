@@ -1,7 +1,7 @@
 package com.mars.edu.app.pages.login;
 
-import com.mars.edu.app.library.base.mvp.BaseDataView;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
+import com.chris.base.library.base.mvp.BaseDataView;
+import com.chris.base.library.base.mvp.BasePresenter;
 import com.mars.edu.app.model.User;
 
 /**

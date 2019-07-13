@@ -1,7 +1,7 @@
 package com.mars.edu.app.pages.news;
 
-import com.mars.edu.app.library.base.mvp.BaseDataListView;
-import com.mars.edu.app.library.base.mvp.BaseRequestPresenter;
+import com.chris.base.library.base.mvp.BaseDataListView;
+import com.chris.base.library.base.mvp.BaseRequestPresenter;
 import com.mars.edu.app.locallibs.net.NewsItem;
 
 /**

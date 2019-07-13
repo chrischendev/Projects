@@ -1,7 +1,7 @@
 package com.mars.edu.app.locallibs.common;
 
-import com.mars.edu.app.library.base.application.BaseApplication;
-import com.mars.edu.app.library.manager.UtilsManager;
+import com.chris.base.library.base.application.BaseApplication;
+import com.chris.base.library.manager.UtilsManager;
 
 /**
  * @author Chris Chan

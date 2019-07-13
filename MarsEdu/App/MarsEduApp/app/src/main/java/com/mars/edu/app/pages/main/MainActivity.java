@@ -19,18 +19,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chris.base.library.base.activity.BaseMvpActivity;
+import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
+import com.chris.base.library.base.mvp.BasePresenter;
+import com.chris.base.library.utils.GlideUtils;
+import com.chris.base.library.utils.SPUtils;
 import com.mars.edu.app.R;
-import com.mars.edu.app.library.base.activity.BaseMvpActivity;
-import com.mars.edu.app.library.base.adapter.BaseRecyclerAdapter;
-import com.mars.edu.app.library.base.mvp.BasePresenter;
-import com.mars.edu.app.library.utils.GlideUtils;
-import com.mars.edu.app.library.utils.SPUtils;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
+import com.mars.edu.chat.ChatActivity;
 
 import java.util.List;
 
@@ -185,7 +186,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         if (id == R.id.nav_user_info) {
             startActivity(HomeActivity.class);
         } else if (id == R.id.nav_wallet) {
-
+            startActivity(ChatActivity.class);
         } else if (id == R.id.nav_album) {
 
         } else if (id == R.id.nav_tools) {
