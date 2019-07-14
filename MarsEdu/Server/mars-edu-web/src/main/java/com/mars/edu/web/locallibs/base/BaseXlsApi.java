@@ -59,7 +59,7 @@ public interface BaseXlsApi<E, X, ID extends Serializable> {
     @PostMapping("/import")
     @ApiOperation(value = "导入")
     default ResponseEntity<?> importData(@RequestPart("file") MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException, InvalidFormatException {
-        return ResponseEntity.ok().body(getXlsService().importData(xlsxFile) ? "import success." : "import failed.");
+        return ResponseEntity.ok().body(getXlsService().importData(xlsxFile));
     }
 
 }

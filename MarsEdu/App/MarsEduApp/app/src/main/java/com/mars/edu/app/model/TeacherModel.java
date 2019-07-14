@@ -8,6 +8,7 @@ package com.mars.edu.app.model;
 public class TeacherModel {
     public int id;
     public int schoolId;
+    public String schoolName;
     public String firstName;
     public String lastName;
     public Integer level;

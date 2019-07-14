@@ -7,6 +7,9 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+@Route(path = "/chat/MainActivity")
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
 
@@ -15,16 +18,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+            int i = item.getItemId();
+            if (i == R.id.navigation_home) {
+                mTextMessage.setText(R.string.title_home);
+                return true;
+            } else if (i == R.id.navigation_dashboard) {
+                mTextMessage.setText(R.string.title_dashboard);
+                return true;
+            } else if (i == R.id.navigation_notifications) {
+                mTextMessage.setText(R.string.title_notifications);
+                return true;
             }
             return false;
         }

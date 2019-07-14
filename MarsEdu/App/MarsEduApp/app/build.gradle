@@ -4,12 +4,19 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-        //applicationId "com.mars.edu.app"
+        applicationId "com.mars.edu.app"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -24,7 +31,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:design:28.0.0'
@@ -50,14 +57,17 @@ dependencies {
 
     //动态权限
     implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+
     //retrofit2
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.6.0'
+
     //Rx库
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'io.reactivex:rxjava:1.3.8'
+
     //事件总线库
     implementation 'com.hwangjr.rxbus:rxbus:1.0.5'
 
@@ -69,10 +79,15 @@ dependencies {
 
     ////
     //vlayout
-    implementation ('com.alibaba.android:vlayout:1.2.8@aar') {
+    implementation('com.alibaba.android:vlayout:1.2.8@aar') {
         transitive = true
     }
 
     api project(':chat')
+
+    implementation 'com.alibaba:arouter-api:1.2.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
+    //annotationProcessor 'com.alibaba:arouter-annotation:1.0.3'
+
 
 }

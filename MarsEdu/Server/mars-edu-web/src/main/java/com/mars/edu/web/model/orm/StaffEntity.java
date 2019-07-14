@@ -1,5 +1,7 @@
 package com.mars.edu.web.model.orm;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -10,6 +12,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "sch_staff", schema = "db_mars_edu", catalog = "")
+@Where(clause = "status = 0")
 public class StaffEntity {
     private int id;
     private int schoolId;
@@ -23,6 +26,11 @@ public class StaffEntity {
     private String wechatCode;
     private String siteUrl;
     private int status;
+    /**
+     * 学校名称
+     * 约定大于配置 school_name
+     */
+    private String schoolName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -143,6 +151,14 @@ public class StaffEntity {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     @Override

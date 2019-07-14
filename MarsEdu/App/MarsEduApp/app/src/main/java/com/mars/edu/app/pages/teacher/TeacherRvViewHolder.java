@@ -30,8 +30,8 @@ public class TeacherRvViewHolder extends BaseRecyclerHolder<TeacherModel> {
     TextView tvCell;
     @BindView(R.id.tv_email)
     TextView tvEmail;
-    @BindView(R.id.tv_qq)
-    TextView tvQq;
+    @BindView(R.id.tv_wx)
+    TextView tvWx;
 
     public TeacherRvViewHolder(Context context, View itemView) {
         super(context, itemView);
@@ -42,9 +42,9 @@ public class TeacherRvViewHolder extends BaseRecyclerHolder<TeacherModel> {
         GlideUtils.load(context, R.mipmap.nav_header_photo_0, ivPhoto);
         tvTeacherName.setText(item.firstName + item.lastName);
         tvIdentityCardCode.setText(item.identityCardCode);
-        tvSchoolId.setText("" + item.schoolId);
+        tvSchoolId.setText(item.schoolName);
         tvCell.setText(item.cell);
         tvEmail.setText(item.email);
-        tvQq.setText(item.qqCode);
+        tvWx.setText(item.wechatCode);
     }
 }

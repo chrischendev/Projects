@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:outlineAmbientShadowColor="#9C27B0"
-    android:outlineSpotShadowColor="#B82525"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="10dp">
+    android:outlineAmbientShadowColor="#C0BBC1"
+    android:outlineSpotShadowColor="#BAACAC"
+    android:layout_margin="2dp"
+    app:cardCornerRadius="5dp">
     <!-- 整体一个线性布局 -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,6 +26,42 @@
                 android:layout_height="120dp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <!-- 姓名 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名" />
+            <!-- 身份证号码 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="证件" />
+            <!-- 学校 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学校" />
+            <!-- 手机号码 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机" />
+            <!-- 电子邮件 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="邮箱" />
+            <!-- QQ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微信" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -37,38 +73,32 @@
             <TextView
                 android:id="@+id/tv_teacher_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
+                android:layout_height="wrap_content"/>
             <!-- 身份证号码 -->
             <TextView
                 android:id="@+id/tv_identity_card_code"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
-            <!-- 学校id -->
+                android:layout_height="wrap_content" />
+            <!-- 学校 -->
             <TextView
                 android:id="@+id/tv_school_id"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
+                android:layout_height="wrap_content"/>
             <!-- 手机号码 -->
             <TextView
                 android:id="@+id/tv_cell"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
-            <!-- 身电子邮件 -->
+                android:layout_height="wrap_content"/>
+            <!-- 电子邮件 -->
             <TextView
                 android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
-            <!-- QQ -->
+                android:layout_height="wrap_content"/>
+            <!-- 微信 -->
             <TextView
-                android:id="@+id/tv_qq"
+                android:id="@+id/tv_wx"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="姓名" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 

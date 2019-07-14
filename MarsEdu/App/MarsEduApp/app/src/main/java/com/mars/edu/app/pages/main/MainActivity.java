@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.chris.base.library.base.activity.BaseMvpActivity;
 import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
@@ -31,7 +32,6 @@ import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
-import com.mars.edu.chat.ChatActivity;
 
 import java.util.List;
 
@@ -186,15 +186,19 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         if (id == R.id.nav_user_info) {
             startActivity(HomeActivity.class);
         } else if (id == R.id.nav_wallet) {
-            startActivity(ChatActivity.class);
-        } else if (id == R.id.nav_album) {
 
+        } else if (id == R.id.nav_album) {
+            Toast.makeText(this, "跳转到相册", Toast.LENGTH_SHORT).show();
+            //startActivity(AlbumActivity.class);
+            ARouter.getInstance().build("/app/AlbumActivity").navigation();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_contact) {
-
+            Toast.makeText(this, "跳转到聊天", Toast.LENGTH_SHORT).show();
+            //startActivity(com.mars.edu.chat.ChatActivity.class);
+            ARouter.getInstance().build("/chat/ChatActivity").navigation();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

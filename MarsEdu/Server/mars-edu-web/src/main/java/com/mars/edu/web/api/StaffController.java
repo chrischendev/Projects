@@ -6,9 +6,13 @@ import com.mars.edu.web.model.orm.StaffEntity;
 import com.mars.edu.web.model.xio.StaffXio;
 import com.mars.edu.web.service.main.StaffService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Create by Chris Chan
@@ -25,6 +29,12 @@ public class StaffController implements MarsBaseController<StaffEntity, StaffXio
     @Override
     public BusinessHandler<StaffEntity, Integer, StaffXio> getBusinessHandler() {
         return new BusinessHandler(staffService, staffService);
+    }
+
+    @GetMapping("/searchAllStaffList")
+    @ApiOperation(value = "获取所有教职工信息")
+    public List<StaffEntity> searchAllStaffList() {
+        return staffService.searchAllStaffList();
     }
 }
 

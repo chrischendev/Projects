@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 /**
  * Create by Chris Chan
@@ -36,4 +37,7 @@ public class StaffService implements MarsXlsService<StaffEntity, StaffXio> {
                 new XlsProcessHandler(this, staffConverter, StaffXio.class));
     }
 
+    public List<StaffEntity> searchAllStaffList() {
+        return staffRepository.searchAllStaffList();
+    }
 }

@@ -14,6 +14,6 @@ import retrofit2.http.GET;
  * use for:
  */
 public interface TeacherService {
-    @GET("staff/findAll")
+    @GET("staff/searchAllStaffList")
     Call<NetResult<List<TeacherModel>>> getTeacherList();
 }

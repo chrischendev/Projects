@@ -2,9 +2,9 @@
 
 buildscript {
     repositories {
-//        flatDir {
-//            dirs 'libs'
-//        }
+        flatDir {
+            dirs 'libs'
+        }
         google()
         jcenter()
 
@@ -19,9 +19,9 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url 'http://maven.ai-ways.com/nexus/content/repositories/snapshots/'
-        }
+//        maven {
+//            url 'http://maven.ai-ways.com/nexus/content/repositories/snapshots/'
+//        }
         google()
         jcenter()
 

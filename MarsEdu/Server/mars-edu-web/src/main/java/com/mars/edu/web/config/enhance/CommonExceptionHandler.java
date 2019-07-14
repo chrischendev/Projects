@@ -21,6 +21,7 @@ public class CommonExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public NetResult handleException(RuntimeException e) {
+        e.printStackTrace();
         return ResultUtils.buildError(e.getMessage());
     }
 

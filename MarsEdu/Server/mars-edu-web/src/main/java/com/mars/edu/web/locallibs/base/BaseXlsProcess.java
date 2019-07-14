@@ -64,7 +64,7 @@ public interface BaseXlsProcess<E, X, ID extends Serializable> {
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    default boolean importData(MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException, InvalidFormatException {
+    default Boolean importData(MultipartFile xlsxFile) throws IOException, IllegalAccessException, InstantiationException, InvalidFormatException {
         List<X> xioList = XlsUtils.readXlsxFromInputStream(xlsxFile.getInputStream(), getXlsProcessHandler().getDtoClass());
         List<E> entityList = getXlsProcessHandler().getConverter().fromSameDtoList(xioList);
         return getXlsProcessHandler().getXlsService().addBatch(entityList);
