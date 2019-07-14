@@ -32,6 +32,7 @@ import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
+import com.mars.edu.chat.ChatActivity;
 
 import java.util.List;
 
@@ -109,12 +110,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         vh.navView.setNavigationItemSelectedListener(this);
         //侧滑菜单头部控件数据持有者
         nvh = new NavHeaderViewHolder(vh.navView.getHeaderView(0));
-        nvh.tvMainLoginReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityFromTo(MainActivity.this, LoginActivity.class);
-            }
-        });
+        nvh.tvMainLoginReg.setOnClickListener(view -> startActivityFromTo(MainActivity.this, LoginActivity.class));
 
         //判断登录状态
         String username = SPUtils.read("username", null);
@@ -138,13 +134,8 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
     @SuppressLint("RestrictedApi")
     private void initFloatButton() {
         vh.fab.setVisibility(View.GONE);
-        vh.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        vh.fab.setOnClickListener(view -> Snackbar.make(view, "替换为你的动作", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
     }
 
     @Override
@@ -188,17 +179,13 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         } else if (id == R.id.nav_wallet) {
 
         } else if (id == R.id.nav_album) {
-            Toast.makeText(this, "跳转到相册", Toast.LENGTH_SHORT).show();
-            //startActivity(AlbumActivity.class);
             ARouter.getInstance().build("/app/AlbumActivity").navigation();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
-
+            //ARouter.getInstance().build("/video/VideoActivity").navigation();
         } else if (id == R.id.nav_contact) {
-            Toast.makeText(this, "跳转到聊天", Toast.LENGTH_SHORT).show();
-            //startActivity(com.mars.edu.chat.ChatActivity.class);
-            ARouter.getInstance().build("/chat/ChatActivity").navigation();
+            //ARouter.getInstance().build("/chat/ChatActivity").navigation();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -217,6 +204,20 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
                 break;
             case "teacher":
                 startActivity(TeacherActivity.class);
+                break;
+            case "practice":
+                startActivity(TeacherActivity.class);
+                break;
+            case "picture":
+                startActivity(TeacherActivity.class);
+                break;
+            case "chat":
+                //startActivity(ChatActivity.class);
+                ARouter.getInstance().build("/chat/ChatActivity").navigation();
+                break;
+            case "video":
+                //startActivity(video);
+                ARouter.getInstance().build("/video/VideoActivity").navigation();
                 break;
             default:
                 break;

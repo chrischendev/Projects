@@ -43,7 +43,9 @@ public class MainPresenter implements MainContracts.Presenter {
         mainNavItemList.add(MainNavItem.create("activation", R.mipmap.icon_main_activation, "活动"));
         mainNavItemList.add(MainNavItem.create("practice", R.mipmap.icon_main_practice, "实践"));
         mainNavItemList.add(MainNavItem.create("picture", R.mipmap.icon_main_album, "剪影"));
-//        mainNavItemList.add(MainNavItem.create("example", R.mipmap.main_item_chat, "考试"));
+        mainNavItemList.add(MainNavItem.create("chat", R.mipmap.icon_main_album, "聊天"));
+        mainNavItemList.add(MainNavItem.create("video", R.mipmap.icon_main_album, "视频"));
+//        mainNavItemList.add(MainNavItem.create("example", R.mipmap.icon_main_chat, "考试"));
 
         return mainNavItemList;
     }

@@ -1,15 +1,13 @@
 package com.mars.edu.chat;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-
-@Route(path = "/chat/MainActivity")
+//@Route(path = "/chat/MainActivity")
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
 

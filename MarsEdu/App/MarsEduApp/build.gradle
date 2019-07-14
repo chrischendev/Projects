@@ -19,9 +19,10 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven {
-//            url 'http://maven.ai-ways.com/nexus/content/repositories/snapshots/'
-//        }
+        maven {
+            //url 'http://maven.ai-ways.com/nexus/content/repositories/releases'
+            url 'http://192.168.0.114:8081/repository/maven-releases/'
+        }
         google()
         jcenter()
 
@@ -30,4 +31,15 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext{
+    applicationId= "com.mars.edu.app"
+    minSdkVersion =19
+    targetSdkVersion =28
+    versionCode= 1
+    versionName ="1.0"
+    compileSdkVersion= 28
+    buildToolsVersion ='28.0.3'
+
 }

@@ -1,17 +1,14 @@
-//apply plugin: 'com.android.application'
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
-
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         //applicationId "com.mars.edu.chat"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -19,7 +16,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 
@@ -36,11 +33,20 @@ android {
         targetCompatibility = '1.8'
     }
 
-
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res'
+            ]
+            jniLibs.srcDirs = ['libs']
+            java.srcDirs+='src/main/kotlin'
+            resourcePrefix "mars_"
+        }
+    }
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
@@ -51,8 +57,41 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //implementation 'com.chris:base-library:1.0.0'
+    //基本库
+    api project(':common')
 
-    implementation 'com.alibaba:arouter-api:1.2.2'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
+    //api 'com.chris:mars-edu-common:1.0.0'
+
+    implementation 'com.alibaba:arouter-api:1.4.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+}
+
+//maven插件
+apply plugin: 'maven'
+
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+artifacts {
+    archives androidSourcesJar
+}
+//上传到Maven仓库的task
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //指定maven仓库url 如果使用快照库需要注意版本号的后缀
+            //repository(url: "http://maven.ai-ways.com/nexus/content/repositories/releases/") {
+            repository(url: "http://192.168.0.114:8081/repository/maven-releases/") {
+                //nexus登录默认用户名和密码 userName大小写要匹配
+                //authentication(userName: "admin", password: "Aa1111111")
+                authentication(userName: "admin", password: "admin")
+            }
+            pom.groupId = 'com.chris'
+            pom.artifactId = 'mars-edu-chat'
+            pom.version = '1.0.0'
+        }
+    }
 }
