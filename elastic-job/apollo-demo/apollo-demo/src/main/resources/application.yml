@@ -1,0 +1,8 @@
+server:
+  port: 8081
+app:
+  # 如果有private的命名空间需要配置（默认application空间是private的）
+  id: chris
+apollo:
+  # 指定apollo-configservice
+  meta: http://192.168.0.112:8080
