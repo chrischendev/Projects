@@ -1,0 +1,15 @@
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\bin\Debug\FileRenameTool.exe.config
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\bin\Debug\FileRenameTool.exe
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\bin\Debug\FileRenameTool.pdb
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.csprojAssemblyReference.cache
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\MainWindow.g.cs
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\App.g.cs
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool_MarkupCompile.cache
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool_MarkupCompile.lref
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\MainWindow.baml
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.g.resources
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.Properties.Resources.resources
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.csproj.GenerateResource.cache
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.csproj.CoreCompileInputs.cache
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.exe
+F:\Workspace\Projects\FileRenameTool\FileRenameTool\obj\Debug\FileRenameTool.pdb
