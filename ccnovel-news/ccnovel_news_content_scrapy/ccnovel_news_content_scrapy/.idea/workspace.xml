@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="183a1d63-61d2-41d8-8cbb-16c2c2c6f9fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ccnovel-news-content-spider/spider-ccnovel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ccnovel-news-content-spider/spider-ccnovel/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="183a1d63-61d2-41d8-8cbb-16c2c2c6f9fd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,12 +107,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566657810883</updated>
-      <workItem from="1566657812178" duration="5418000" />
+      <workItem from="1566657812178" duration="5542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5418000" />
+    <option name="totallyTimeSpent" value="5542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
