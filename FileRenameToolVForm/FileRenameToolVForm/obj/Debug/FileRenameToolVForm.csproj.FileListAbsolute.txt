@@ -1,0 +1,10 @@
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\bin\Debug\FileRenameToolVForm.exe.config
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\bin\Debug\FileRenameToolVForm.exe
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\bin\Debug\FileRenameToolVForm.pdb
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.csprojAssemblyReference.cache
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.FormMain.resources
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.Properties.Resources.resources
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.csproj.GenerateResource.cache
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.csproj.CoreCompileInputs.cache
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.exe
+F:\Workspace\Projects\FileRenameToolVForm\FileRenameToolVForm\obj\Debug\FileRenameToolVForm.pdb
