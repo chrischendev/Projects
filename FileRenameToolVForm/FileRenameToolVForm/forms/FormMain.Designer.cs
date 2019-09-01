@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnQuit = new System.Windows.Forms.Button();
             this.listViewFiles = new System.Windows.Forms.ListView();
             this.textBoxPath = new System.Windows.Forms.TextBox();
@@ -40,21 +41,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.numStart = new System.Windows.Forms.NumericUpDown();
+            this.btnAddSuffixSeq = new System.Windows.Forms.Button();
+            this.btnAddFixSuffix = new System.Windows.Forms.Button();
+            this.btnAddPreSeq = new System.Windows.Forms.Button();
+            this.btnAddFixPre = new System.Windows.Forms.Button();
+            this.numSeqStart = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxFixStr = new System.Windows.Forms.TextBox();
+            this.tbSeqFixStr = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnExclude = new System.Windows.Forms.Button();
+            this.btnRetain = new System.Windows.Forms.Button();
+            this.nudSubRightLen = new System.Windows.Forms.NumericUpDown();
+            this.nudSubLeftLen = new System.Windows.Forms.NumericUpDown();
+            this.nudSubRightStart = new System.Windows.Forms.NumericUpDown();
+            this.nudSubLeftStart = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,12 +63,12 @@
             this.rbFromRight = new System.Windows.Forms.RadioButton();
             this.rbFromLeft = new System.Windows.Forms.RadioButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbInsertStr = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.nudInsertRight = new System.Windows.Forms.NumericUpDown();
+            this.nudInsertLeft = new System.Windows.Forms.NumericUpDown();
+            this.rbInsertFromRight = new System.Windows.Forms.RadioButton();
+            this.rbInsertFromLeft = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbChangeExtName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.btnCreate = new System.Windows.Forms.Button();
@@ -89,23 +90,28 @@
             this.tbMockFixFileNameStr = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnExcute = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.nudInsertStartIndex = new System.Windows.Forms.NumericUpDown();
+            this.btnInsertSeq = new System.Windows.Forms.Button();
+            this.btnInsertFixStr = new System.Windows.Forms.Button();
             this.序列.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeqStart)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubRightLen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubLeftLen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubRightStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubLeftStart)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertLeft)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMockCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMockMinIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertStartIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // btnQuit
@@ -227,13 +233,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.numStart);
+            this.tabPage2.Controls.Add(this.btnAddSuffixSeq);
+            this.tabPage2.Controls.Add(this.btnAddFixSuffix);
+            this.tabPage2.Controls.Add(this.btnAddPreSeq);
+            this.tabPage2.Controls.Add(this.btnAddFixPre);
+            this.tabPage2.Controls.Add(this.numSeqStart);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.textBoxFixStr);
+            this.tabPage2.Controls.Add(this.tbSeqFixStr);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -243,49 +249,70 @@
             this.tabPage2.Text = "序列";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnAddSuffixSeq
             // 
-            this.button4.Location = new System.Drawing.Point(577, 92);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "添加后缀序列";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAddSuffixSeq.Location = new System.Drawing.Point(577, 92);
+            this.btnAddSuffixSeq.Name = "btnAddSuffixSeq";
+            this.btnAddSuffixSeq.Size = new System.Drawing.Size(87, 23);
+            this.btnAddSuffixSeq.TabIndex = 7;
+            this.btnAddSuffixSeq.Text = "添加后缀序列";
+            this.btnAddSuffixSeq.UseVisualStyleBackColor = true;
+            this.btnAddSuffixSeq.Click += new System.EventHandler(this.btnAddSuffixSeq_Click);
             // 
-            // button3
+            // btnAddFixSuffix
             // 
-            this.button3.Location = new System.Drawing.Point(577, 63);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "添加固定后缀";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAddFixSuffix.Location = new System.Drawing.Point(577, 63);
+            this.btnAddFixSuffix.Name = "btnAddFixSuffix";
+            this.btnAddFixSuffix.Size = new System.Drawing.Size(87, 23);
+            this.btnAddFixSuffix.TabIndex = 6;
+            this.btnAddFixSuffix.Text = "添加固定后缀";
+            this.btnAddFixSuffix.UseVisualStyleBackColor = true;
+            this.btnAddFixSuffix.Click += new System.EventHandler(this.btnAddFixSuffix_Click);
             // 
-            // button2
+            // btnAddPreSeq
             // 
-            this.button2.Location = new System.Drawing.Point(577, 34);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "添加前缀序列";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddPreSeq.Location = new System.Drawing.Point(577, 34);
+            this.btnAddPreSeq.Name = "btnAddPreSeq";
+            this.btnAddPreSeq.Size = new System.Drawing.Size(87, 23);
+            this.btnAddPreSeq.TabIndex = 5;
+            this.btnAddPreSeq.Text = "添加前缀序列";
+            this.btnAddPreSeq.UseVisualStyleBackColor = true;
+            this.btnAddPreSeq.Click += new System.EventHandler(this.btnAddPreSeq_Click);
             // 
-            // button1
+            // btnAddFixPre
             // 
-            this.button1.Location = new System.Drawing.Point(577, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "添加固定前缀";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddFixPre.Location = new System.Drawing.Point(577, 6);
+            this.btnAddFixPre.Name = "btnAddFixPre";
+            this.btnAddFixPre.Size = new System.Drawing.Size(87, 23);
+            this.btnAddFixPre.TabIndex = 4;
+            this.btnAddFixPre.Text = "添加固定前缀";
+            this.btnAddFixPre.UseVisualStyleBackColor = true;
+            this.btnAddFixPre.Click += new System.EventHandler(this.btnAddFixPre_Click);
             // 
-            // numStart
+            // numSeqStart
             // 
-            this.numStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numStart.Location = new System.Drawing.Point(90, 35);
-            this.numStart.Name = "numStart";
-            this.numStart.Size = new System.Drawing.Size(120, 21);
-            this.numStart.TabIndex = 3;
+            this.numSeqStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numSeqStart.Location = new System.Drawing.Point(90, 35);
+            this.numSeqStart.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numSeqStart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSeqStart.Name = "numSeqStart";
+            this.numSeqStart.Size = new System.Drawing.Size(120, 21);
+            this.numSeqStart.TabIndex = 3;
+            this.numSeqStart.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSeqStart.ValueChanged += new System.EventHandler(this.numSeqStart_ValueChanged);
+            this.numSeqStart.Click += new System.EventHandler(this.numSeqStart_ValueChanged);
             // 
             // label4
             // 
@@ -296,13 +323,14 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "起始下标";
             // 
-            // textBoxFixStr
+            // tbSeqFixStr
             // 
-            this.textBoxFixStr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxFixStr.Location = new System.Drawing.Point(90, 7);
-            this.textBoxFixStr.Name = "textBoxFixStr";
-            this.textBoxFixStr.Size = new System.Drawing.Size(465, 21);
-            this.textBoxFixStr.TabIndex = 1;
+            this.tbSeqFixStr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbSeqFixStr.Location = new System.Drawing.Point(90, 7);
+            this.tbSeqFixStr.Name = "tbSeqFixStr";
+            this.tbSeqFixStr.Size = new System.Drawing.Size(465, 21);
+            this.tbSeqFixStr.TabIndex = 1;
+            this.tbSeqFixStr.TextChanged += new System.EventHandler(this.tbSeqFixStr_TextChanged);
             // 
             // label3
             // 
@@ -315,12 +343,12 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.button5);
-            this.tabPage3.Controls.Add(this.numericUpDown4);
-            this.tabPage3.Controls.Add(this.numericUpDown3);
-            this.tabPage3.Controls.Add(this.numericUpDown2);
-            this.tabPage3.Controls.Add(this.numericUpDown1);
+            this.tabPage3.Controls.Add(this.btnExclude);
+            this.tabPage3.Controls.Add(this.btnRetain);
+            this.tabPage3.Controls.Add(this.nudSubRightLen);
+            this.tabPage3.Controls.Add(this.nudSubLeftLen);
+            this.tabPage3.Controls.Add(this.nudSubRightStart);
+            this.tabPage3.Controls.Add(this.nudSubLeftStart);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label6);
@@ -335,51 +363,112 @@
             this.tabPage3.Text = "截取";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnExclude
             // 
-            this.button6.Location = new System.Drawing.Point(589, 92);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "去除";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnExclude.Location = new System.Drawing.Point(589, 92);
+            this.btnExclude.Name = "btnExclude";
+            this.btnExclude.Size = new System.Drawing.Size(75, 23);
+            this.btnExclude.TabIndex = 11;
+            this.btnExclude.Text = "去除";
+            this.btnExclude.UseVisualStyleBackColor = true;
+            this.btnExclude.Click += new System.EventHandler(this.btnExclude_Click);
             // 
-            // button5
+            // btnRetain
             // 
-            this.button5.Location = new System.Drawing.Point(508, 92);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "截取";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnRetain.Location = new System.Drawing.Point(508, 92);
+            this.btnRetain.Name = "btnRetain";
+            this.btnRetain.Size = new System.Drawing.Size(75, 23);
+            this.btnRetain.TabIndex = 10;
+            this.btnRetain.Text = "截取";
+            this.btnRetain.UseVisualStyleBackColor = true;
+            this.btnRetain.Click += new System.EventHandler(this.btnRetain_Click);
             // 
-            // numericUpDown4
+            // nudSubRightLen
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(326, 53);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown4.TabIndex = 9;
+            this.nudSubRightLen.Location = new System.Drawing.Point(326, 53);
+            this.nudSubRightLen.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubRightLen.Name = "nudSubRightLen";
+            this.nudSubRightLen.Size = new System.Drawing.Size(120, 21);
+            this.nudSubRightLen.TabIndex = 9;
+            this.nudSubRightLen.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubRightLen.ValueChanged += new System.EventHandler(this.nudSubRightLen_ValueChanged);
             // 
-            // numericUpDown3
+            // nudSubLeftLen
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(326, 14);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown3.TabIndex = 8;
+            this.nudSubLeftLen.Location = new System.Drawing.Point(326, 14);
+            this.nudSubLeftLen.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudSubLeftLen.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubLeftLen.Name = "nudSubLeftLen";
+            this.nudSubLeftLen.Size = new System.Drawing.Size(120, 21);
+            this.nudSubLeftLen.TabIndex = 8;
+            this.nudSubLeftLen.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubLeftLen.ValueChanged += new System.EventHandler(this.nudSubLeftLen_ValueChanged);
             // 
-            // numericUpDown2
+            // nudSubRightStart
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(149, 53);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown2.TabIndex = 7;
+            this.nudSubRightStart.Location = new System.Drawing.Point(149, 53);
+            this.nudSubRightStart.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudSubRightStart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubRightStart.Name = "nudSubRightStart";
+            this.nudSubRightStart.Size = new System.Drawing.Size(120, 21);
+            this.nudSubRightStart.TabIndex = 7;
+            this.nudSubRightStart.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubRightStart.ValueChanged += new System.EventHandler(this.nudSubRightStart_ValueChanged);
             // 
-            // numericUpDown1
+            // nudSubLeftStart
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(149, 14);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown1.TabIndex = 6;
+            this.nudSubLeftStart.Location = new System.Drawing.Point(149, 14);
+            this.nudSubLeftStart.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudSubLeftStart.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubLeftStart.Name = "nudSubLeftStart";
+            this.nudSubLeftStart.Size = new System.Drawing.Size(120, 21);
+            this.nudSubLeftStart.TabIndex = 6;
+            this.nudSubLeftStart.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubLeftStart.ValueChanged += new System.EventHandler(this.nudSubLeftStart_ValueChanged);
             // 
             // label8
             // 
@@ -424,13 +513,14 @@
             this.rbFromRight.Name = "rbFromRight";
             this.rbFromRight.Size = new System.Drawing.Size(47, 16);
             this.rbFromRight.TabIndex = 1;
-            this.rbFromRight.TabStop = true;
             this.rbFromRight.Text = "倒数";
             this.rbFromRight.UseVisualStyleBackColor = true;
+            this.rbFromRight.CheckedChanged += new System.EventHandler(this.rbFromRight_CheckedChanged);
             // 
             // rbFromLeft
             // 
             this.rbFromLeft.AutoSize = true;
+            this.rbFromLeft.Checked = true;
             this.rbFromLeft.Location = new System.Drawing.Point(31, 16);
             this.rbFromLeft.Name = "rbFromLeft";
             this.rbFromLeft.Size = new System.Drawing.Size(47, 16);
@@ -438,15 +528,20 @@
             this.rbFromLeft.TabStop = true;
             this.rbFromLeft.Text = "左数";
             this.rbFromLeft.UseVisualStyleBackColor = true;
+            this.rbFromLeft.CheckedChanged += new System.EventHandler(this.rbFromLeft_CheckedChanged);
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.btnInsertFixStr);
+            this.tabPage4.Controls.Add(this.btnInsertSeq);
+            this.tabPage4.Controls.Add(this.nudInsertStartIndex);
+            this.tabPage4.Controls.Add(this.label18);
+            this.tabPage4.Controls.Add(this.tbInsertStr);
             this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.numericUpDown6);
-            this.tabPage4.Controls.Add(this.numericUpDown5);
-            this.tabPage4.Controls.Add(this.radioButton2);
-            this.tabPage4.Controls.Add(this.radioButton1);
+            this.tabPage4.Controls.Add(this.nudInsertRight);
+            this.tabPage4.Controls.Add(this.nudInsertLeft);
+            this.tabPage4.Controls.Add(this.rbInsertFromRight);
+            this.tabPage4.Controls.Add(this.rbInsertFromLeft);
             this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.label10);
             this.tabPage4.Controls.Add(this.label9);
@@ -458,13 +553,14 @@
             this.tabPage4.Text = "插入";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbInsertStr
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(102, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(550, 21);
-            this.textBox1.TabIndex = 8;
+            this.tbInsertStr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbInsertStr.Location = new System.Drawing.Point(102, 77);
+            this.tbInsertStr.Name = "tbInsertStr";
+            this.tbInsertStr.Size = new System.Drawing.Size(467, 21);
+            this.tbInsertStr.TabIndex = 8;
+            this.tbInsertStr.TextChanged += new System.EventHandler(this.tbInsertStr_TextChanged);
             // 
             // label12
             // 
@@ -475,41 +571,75 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "插入字符串";
             // 
-            // numericUpDown6
+            // nudInsertRight
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(167, 42);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown6.TabIndex = 6;
+            this.nudInsertRight.Location = new System.Drawing.Point(167, 42);
+            this.nudInsertRight.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudInsertRight.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInsertRight.Name = "nudInsertRight";
+            this.nudInsertRight.Size = new System.Drawing.Size(120, 21);
+            this.nudInsertRight.TabIndex = 6;
+            this.nudInsertRight.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInsertRight.ValueChanged += new System.EventHandler(this.nudInsertRight_ValueChanged);
             // 
-            // numericUpDown5
+            // nudInsertLeft
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(167, 12);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 21);
-            this.numericUpDown5.TabIndex = 5;
+            this.nudInsertLeft.Location = new System.Drawing.Point(167, 12);
+            this.nudInsertLeft.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudInsertLeft.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInsertLeft.Name = "nudInsertLeft";
+            this.nudInsertLeft.Size = new System.Drawing.Size(120, 21);
+            this.nudInsertLeft.TabIndex = 5;
+            this.nudInsertLeft.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInsertLeft.ValueChanged += new System.EventHandler(this.nudInsertLeft_ValueChanged);
             // 
-            // radioButton2
+            // rbInsertFromRight
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(102, 44);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "倒数";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbInsertFromRight.AutoSize = true;
+            this.rbInsertFromRight.Location = new System.Drawing.Point(102, 44);
+            this.rbInsertFromRight.Name = "rbInsertFromRight";
+            this.rbInsertFromRight.Size = new System.Drawing.Size(47, 16);
+            this.rbInsertFromRight.TabIndex = 4;
+            this.rbInsertFromRight.TabStop = true;
+            this.rbInsertFromRight.Text = "倒数";
+            this.rbInsertFromRight.UseVisualStyleBackColor = true;
+            this.rbInsertFromRight.CheckedChanged += new System.EventHandler(this.rbInsertFromRight_CheckedChanged);
             // 
-            // radioButton1
+            // rbInsertFromLeft
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(102, 14);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "左数";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbInsertFromLeft.AutoSize = true;
+            this.rbInsertFromLeft.Location = new System.Drawing.Point(102, 14);
+            this.rbInsertFromLeft.Name = "rbInsertFromLeft";
+            this.rbInsertFromLeft.Size = new System.Drawing.Size(47, 16);
+            this.rbInsertFromLeft.TabIndex = 3;
+            this.rbInsertFromLeft.TabStop = true;
+            this.rbInsertFromLeft.Text = "左数";
+            this.rbInsertFromLeft.UseVisualStyleBackColor = true;
+            this.rbInsertFromLeft.CheckedChanged += new System.EventHandler(this.rbInsertFromLeft_CheckedChanged);
             // 
             // label11
             // 
@@ -570,7 +700,7 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.textBox2);
+            this.tabPage6.Controls.Add(this.tbChangeExtName);
             this.tabPage6.Controls.Add(this.label13);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
@@ -580,13 +710,14 @@
             this.tabPage6.Text = "类型";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tbChangeExtName
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(168, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(161, 21);
-            this.textBox2.TabIndex = 1;
+            this.tbChangeExtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbChangeExtName.Location = new System.Drawing.Point(168, 51);
+            this.tbChangeExtName.Name = "tbChangeExtName";
+            this.tbChangeExtName.Size = new System.Drawing.Size(161, 21);
+            this.tbChangeExtName.TabIndex = 1;
+            this.tbChangeExtName.TextChanged += new System.EventHandler(this.tbChangeExtName_TextChanged);
             // 
             // label13
             // 
@@ -731,6 +862,57 @@
             this.btnExcute.UseVisualStyleBackColor = true;
             this.btnExcute.Click += new System.EventHandler(this.btnExcute_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(400, 46);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 12);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "开始下标";
+            // 
+            // nudInsertStartIndex
+            // 
+            this.nudInsertStartIndex.Location = new System.Drawing.Point(459, 42);
+            this.nudInsertStartIndex.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudInsertStartIndex.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudInsertStartIndex.Name = "nudInsertStartIndex";
+            this.nudInsertStartIndex.Size = new System.Drawing.Size(110, 21);
+            this.nudInsertStartIndex.TabIndex = 10;
+            this.nudInsertStartIndex.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // btnInsertSeq
+            // 
+            this.btnInsertSeq.Location = new System.Drawing.Point(589, 41);
+            this.btnInsertSeq.Name = "btnInsertSeq";
+            this.btnInsertSeq.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertSeq.TabIndex = 11;
+            this.btnInsertSeq.Text = "插入序列";
+            this.btnInsertSeq.UseVisualStyleBackColor = true;
+            this.btnInsertSeq.Click += new System.EventHandler(this.btnInsertSeq_Click);
+            // 
+            // btnInsertFixStr
+            // 
+            this.btnInsertFixStr.Location = new System.Drawing.Point(589, 76);
+            this.btnInsertFixStr.Name = "btnInsertFixStr";
+            this.btnInsertFixStr.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertFixStr.TabIndex = 12;
+            this.btnInsertFixStr.Text = "插入";
+            this.btnInsertFixStr.UseVisualStyleBackColor = true;
+            this.btnInsertFixStr.Click += new System.EventHandler(this.btnInsertFixStr_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -746,6 +928,7 @@
             this.Controls.Add(this.listViewFiles);
             this.Controls.Add(this.btnQuit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMain";
@@ -756,17 +939,17 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeqStart)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubRightLen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubLeftLen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubRightStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubLeftStart)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertLeft)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
@@ -774,6 +957,7 @@
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMockCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMockMinIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudInsertStartIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -799,38 +983,38 @@
         private System.Windows.Forms.TextBox textBoxKeyWordSource;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numStart;
+        private System.Windows.Forms.Button btnAddSuffixSeq;
+        private System.Windows.Forms.Button btnAddFixSuffix;
+        private System.Windows.Forms.Button btnAddPreSeq;
+        private System.Windows.Forms.Button btnAddFixPre;
+        private System.Windows.Forms.NumericUpDown numSeqStart;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxFixStr;
+        private System.Windows.Forms.TextBox tbSeqFixStr;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btnExclude;
+        private System.Windows.Forms.Button btnRetain;
+        private System.Windows.Forms.NumericUpDown nudSubRightLen;
+        private System.Windows.Forms.NumericUpDown nudSubLeftLen;
+        private System.Windows.Forms.NumericUpDown nudSubRightStart;
+        private System.Windows.Forms.NumericUpDown nudSubLeftStart;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbFromRight;
         private System.Windows.Forms.RadioButton rbFromLeft;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbInsertStr;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.NumericUpDown nudInsertRight;
+        private System.Windows.Forms.NumericUpDown nudInsertLeft;
+        private System.Windows.Forms.RadioButton rbInsertFromRight;
+        private System.Windows.Forms.RadioButton rbInsertFromLeft;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbChangeExtName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnSelectSavePath;
@@ -842,6 +1026,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tbMockFixFileNameStr;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnInsertFixStr;
+        private System.Windows.Forms.Button btnInsertSeq;
+        private System.Windows.Forms.NumericUpDown nudInsertStartIndex;
+        private System.Windows.Forms.Label label18;
     }
 }
 
