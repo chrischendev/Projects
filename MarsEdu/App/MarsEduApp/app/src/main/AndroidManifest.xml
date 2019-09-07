@@ -52,8 +52,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".pages.news.NewsDetailActivity"
-            android:label="新闻"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="新闻" />
         <activity
             android:name=".pages.scan.ScanActivity"
             android:label="扫一扫"
