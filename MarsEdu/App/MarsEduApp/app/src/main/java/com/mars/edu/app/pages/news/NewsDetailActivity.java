@@ -8,7 +8,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -67,7 +66,7 @@ public class NewsDetailActivity extends BaseInjectActivity {
         settings.setJavaScriptEnabled(true);
 
 
-        vh.webNewsDetail.setWebViewClient(new WebViewClient(){
+        vh.webNewsDetail.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
@@ -76,31 +75,36 @@ public class NewsDetailActivity extends BaseInjectActivity {
 
         });
 
-        vh.webNewsDetail.setWebChromeClient(new WebChromeClient(){
+        vh.webNewsDetail.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 vh.pbPage.setProgress(newProgress);
-                if (newProgress==100){
+                if (newProgress == 100) {
                     closeProgressDialog();
-                }else {
+                } else {
                     openProgressDialog(newProgress);
                 }
             }
 
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                setTitle(title);
+            }
         });
 
     }
 
     private void closeProgressDialog() {
-        if (progressDialog!=null){
+        if (progressDialog != null) {
             progressDialog.dismiss();
-            progressDialog=null;
+            progressDialog = null;
             Toast.makeText(this, "加载完成", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void openProgressDialog(int newProgress) {
-        if (progressDialog==null) {
+        if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("正在加载...");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -112,17 +116,20 @@ public class NewsDetailActivity extends BaseInjectActivity {
 
     /**
      * 页面返回
+     *
      * @param keyCode
      * @param event
      * @return
      */
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK){
-            if (vh.webNewsDetail.canGoBack()){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (vh.webNewsDetail.canGoBack()) {
                 vh.webNewsDetail.goBack();
-                return true;
+            } else {
+                finish();
             }
+            return true;
         }
         return super.onKeyUp(keyCode, event);
     }
@@ -135,8 +142,12 @@ public class NewsDetailActivity extends BaseInjectActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
-            finish();
+        if (item.getItemId() == android.R.id.home) {
+            if (vh.webNewsDetail.canGoBack()) {
+                vh.webNewsDetail.goBack();
+            } else {
+                finish();
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);

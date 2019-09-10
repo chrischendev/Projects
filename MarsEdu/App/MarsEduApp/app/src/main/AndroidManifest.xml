@@ -61,6 +61,9 @@
             android:name=".pages.album.AlbumActivity"
             android:label="相册"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".pages.picture.PictureActivity"
+            android:label="剪影" />
     </application>
 
 </manifest>

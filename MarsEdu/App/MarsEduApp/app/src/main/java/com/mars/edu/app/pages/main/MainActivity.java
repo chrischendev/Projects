@@ -30,6 +30,7 @@ import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
 import com.mars.edu.app.pages.news.NewsActivity;
+import com.mars.edu.app.pages.picture.PictureActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
 import com.mars.edu.chat.ChatActivity;
@@ -209,7 +210,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
                 startActivity(TeacherActivity.class);
                 break;
             case "picture":
-                startActivity(TeacherActivity.class);
+                startActivity(PictureActivity.class);
                 break;
             case "chat":
                 //startActivity(ChatActivity.class);
