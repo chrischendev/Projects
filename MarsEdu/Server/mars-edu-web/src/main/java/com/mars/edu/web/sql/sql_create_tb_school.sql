@@ -18,7 +18,9 @@ create table if not exists sch_staff
   wechat_code        varchar(32) not null comment '微信',
   site_url           varchar(128) comment '个人主页',
   status             tinyint(1)  not null comment '逻辑删除标记'
-);
+) engine = InnoDb
+  default
+    charset = utf8;
 
 # 年级
 drop table if exists sch_grade;
