@@ -43,9 +43,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/gateway?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://192.168.0.121:3307/db_shengyu?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password:
+    password: root
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -87,7 +87,7 @@ spring:
         enabled: true
 
 server:
-  port: 8080
+  port: 8888
 
 # ===================================================================
 # JHipster specific properties
@@ -116,15 +116,13 @@ jhipster:
     allow-credentials: true
     max-age: 1800
   security:
-    authentication:
-      jwt:
-        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: YjJhODI5YjcxNzE3ODI1MmMxODMxMzZjZWU3OWRlMGI5YWRlYTU2MTZlZGVhMDI1YTczN2E1OWQxMmMyNTk2OGI2NjAyM2MzZjVhNjFkMjRkOWRjMzNiOWFmY2Y0ODM2NjJlYWY2OGFjZjE2YTc1MWU4NDZkNjYxMjI0MzI2MDk=
-        # Token is valid 24 hours
-        token-validity-in-seconds: 86400
-        token-validity-in-seconds-for-remember-me: 2592000
+    client-authorization:
+      access-token-uri: http://uaa/oauth/token
+      token-service-id: uaa
+      client-id: internal
+      client-secret: internal
   mail: # specific JHipster mail property, for standard properties see MailProperties
-    base-url: http://127.0.0.1:8080
+    base-url: http://127.0.0.1:8888
   metrics:
     logs: # Reports metrics in the logs
       enabled: false
@@ -138,7 +136,20 @@ jhipster:
       queue-size: 512
   audit-events:
     retention-period: 30 # Number of days before audit events are deleted.
-
+oauth2:
+  signature-verification:
+    public-key-endpoint-uri: http://uaa/oauth/token_key
+    #ttl for public keys to verify JWT tokens (in ms)
+    ttl: 3600000
+    #max. rate at which public keys will be fetched (in ms)
+    public-key-refresh-rate-limit: 10000
+  web-client-configuration:
+    #keep in sync with UAA configuration
+    client-id: web_app
+    secret: changeit
+    # Controls session expiration due to inactivity (ignored for remember-me).
+    # Negative values disable session inactivity expiration.
+    session-timeout-in-seconds: 1800
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class

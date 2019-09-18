@@ -1,6 +1,7 @@
 package com.shengyu.gateway.config.timezone;
 
 import com.shengyu.gateway.GatewayApp;
+import com.shengyu.gateway.config.SecurityBeanOverrideConfiguration;
 import com.shengyu.gateway.repository.timezone.DateTimeWrapper;
 import com.shengyu.gateway.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Integration tests for the UTC Hibernate configuration.
  */
-@SpringBootTest(classes = GatewayApp.class)
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, GatewayApp.class})
 public class HibernateTimeZoneIT {
 
     @Autowired

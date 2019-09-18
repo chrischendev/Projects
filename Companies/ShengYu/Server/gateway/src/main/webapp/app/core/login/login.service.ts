@@ -26,11 +26,19 @@ export class LoginService {
     });
   }
 
-  loginWithToken(jwt, rememberMe) {
-    return this.authServerProvider.loginWithToken(jwt, rememberMe);
+  isAuthenticated() {
+    return this.accountService.isAuthenticated();
+  }
+
+  logoutDirectly() {
+    this.accountService.authenticate(null);
   }
 
   logout() {
-    this.authServerProvider.logout().subscribe(null, null, () => this.accountService.authenticate(null));
+    if (this.accountService.isAuthenticated()) {
+      this.authServerProvider.logout().subscribe(() => this.accountService.authenticate(null));
+    } else {
+      this.accountService.authenticate(null);
+    }
   }
 }

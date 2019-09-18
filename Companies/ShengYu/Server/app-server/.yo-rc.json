@@ -1,16 +1,17 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.shengyu.app",
+      "packageName": "com.shengyu.appserver",
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "6.3.0",
     "applicationType": "microservice",
     "baseName": "appserver",
-    "packageName": "com.shengyu.app",
-    "packageFolder": "com/shengyu/app",
+    "packageName": "com.shengyu.appserver",
+    "packageFolder": "com/shengyu/appserver",
     "serverPort": "8081",
-    "authenticationType": "jwt",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
     "cacheProvider": "ehcache",
     "enableHibernateCache": true,
     "websocket": false,
@@ -22,7 +23,7 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "NTY5MjhjZTMzZGUzZjhiYjhkZGQ5YTA1YTdjZDI1ZGQ4NmI3ZGYxN2E4MzI3YmJjNDU3ZGE3YmUwMTg4MmZkYjExYmQyYjg2Zjc1NjlhODZlYTg2MmViY2NiY2Y4MGQ3MjRhYzExZTc3OWYyYjlhMTNmMjY3NWMyMzFmZjI5YzQ=",
+    "jwtSecretKey": "OTIxZGY4OGM3ZTk2ODMzMTYxOTYxOWQ2NzY5NDA3MTAyNTkyYjFhMzdjNGE5ZTRlODYxMjE4Yzg4Nzk1YmE5NDA0NjBhYTJjYjJkODNkNWI1NDI1YjQ4ZTY0ZjliZWVlODk4OWFjNDRmMDQxNGNmNTQxZTFhNjJlYWFlZTkzMjA=",
     "embeddableLaunchScript": false,
     "testFrameworks": [],
     "jhiPrefix": "jhi",

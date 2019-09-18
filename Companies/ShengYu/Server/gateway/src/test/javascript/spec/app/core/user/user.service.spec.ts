@@ -32,7 +32,7 @@ describe('Service Tests', () => {
         service.find('user').subscribe(() => {});
 
         const req = httpMock.expectOne({ method: 'GET' });
-        const resourceUrl = SERVER_API_URL + 'api/users';
+        const resourceUrl = SERVER_API_URL + 'services/uaa/api/users';
         expect(req.request.url).toEqual(`${resourceUrl}/user`);
       });
       it('should return User', () => {
