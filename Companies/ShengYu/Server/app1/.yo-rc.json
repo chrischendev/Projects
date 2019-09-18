@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.shengyu.app1",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.3.0",
+    "applicationType": "microservice",
+    "baseName": "app1",
+    "packageName": "com.shengyu.app1",
+    "packageFolder": "com/shengyu/app1",
+    "serverPort": "8081",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ODE5OTg1ZjM5NWNiOGVlOWU1NGIxZDFhM2NiMTAwNTE2NTU4ZGVjNWEwMjRiNzlhNWY5MjMwMjNkYzRhNDBlOWZkNGNlY2NjYjU4MzRjMTE4MzRiODQzODAwMjQ1ZmRlODAyNDliNGFmNGNlZDdhODU3ODBjNDQzOWJjZTQ1OGQ=",
+    "embeddableLaunchScript": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
