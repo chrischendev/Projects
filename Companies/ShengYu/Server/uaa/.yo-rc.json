@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.shengyu.uaa",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.3.0",
+    "applicationType": "uaa",
+    "baseName": "uaa",
+    "packageName": "com.shengyu.uaa",
+    "packageFolder": "com/shengyu/uaa",
+    "serverPort": "9999",
+    "authenticationType": "uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OWI2NzJmMjBlNzljZGRiYzI2MTY2YjdjZjFmNWZlZDlhMTUxNjgyZmFlMGEyMzdjNDY5MWI2NGJlMDkxZDY4MmE2OWMwYWVmZDAxYjI5OWQzMzI3YTM4MjA4ZDY0MGI5MDZhNDlhN2FlZTQ4MDEzZWUyOTExYTc0Y2FjMjIwYTA=",
+    "embeddableLaunchScript": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "blueprints": [],
+    "skipClient": true
+  }
+}
