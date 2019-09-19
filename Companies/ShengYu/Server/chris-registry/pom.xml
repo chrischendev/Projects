@@ -71,6 +71,9 @@
         <sonar.sources>${project.basedir}/src/main/</sonar.sources>
         <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
+
+        <!-- jar包主类 -->
+        <start-class>com.chris.registry.JHipsterRegistryApp</start-class>
     </properties>
 
     <dependencyManagement>
@@ -563,6 +566,8 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
+
+
             </plugins>
         </pluginManagement>
 
