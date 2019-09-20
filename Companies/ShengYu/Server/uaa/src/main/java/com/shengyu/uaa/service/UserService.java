@@ -49,6 +49,11 @@ public class UserService {
         this.cacheManager = cacheManager;
     }
 
+    /**
+     * 激活用户
+     * @param key
+     * @return
+     */
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
         return userRepository.findOneByActivationKey(key)
@@ -62,6 +67,12 @@ public class UserService {
             });
     }
 
+    /**
+     * 密码复位完成
+     * @param newPassword
+     * @param key
+     * @return
+     */
     public Optional<User> completePasswordReset(String newPassword, String key) {
         log.debug("Reset user password for reset key {}", key);
         return userRepository.findOneByResetKey(key)
@@ -75,6 +86,11 @@ public class UserService {
             });
     }
 
+    /**
+     * 密码复位请求
+     * @param mail
+     * @return
+     */
     public Optional<User> requestPasswordReset(String mail) {
         return userRepository.findOneByEmailIgnoreCase(mail)
             .filter(User::getActivated)
@@ -86,6 +102,12 @@ public class UserService {
             });
     }
 
+    /**
+     * 注册用户
+     * @param userDTO
+     * @param password
+     * @return
+     */
     public User registerUser(UserDTO userDTO, String password) {
         userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
             boolean removed = removeNonActivatedUser(existingUser);
@@ -100,6 +122,7 @@ public class UserService {
             }
         });
         User newUser = new User();
+        //使用密码编码器对新密码进行编码
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin().toLowerCase());
         // new user gets initially a generated password
@@ -122,6 +145,11 @@ public class UserService {
         return newUser;
     }
 
+    /**
+     * 移除未激活的用户
+     * @param existingUser
+     * @return
+     */
     private boolean removeNonActivatedUser(User existingUser){
         if (existingUser.getActivated()) {
              return false;
@@ -132,6 +160,11 @@ public class UserService {
         return true;
     }
 
+    /**
+     * 创建用户
+     * @param userDTO
+     * @return
+     */
     public User createUser(UserDTO userDTO) {
         User user = new User();
         user.setLogin(userDTO.getLogin().toLowerCase());
@@ -165,6 +198,7 @@ public class UserService {
 
     /**
      * Update basic information (first name, last name, email, language) for the current user.
+     * 更新用户基本信息
      *
      * @param firstName first name of user.
      * @param lastName  last name of user.
@@ -188,6 +222,7 @@ public class UserService {
 
     /**
      * Update all information for a specific user, and return the modified user.
+     * 更新用户
      *
      * @param userDTO user to update.
      * @return updated user.
@@ -220,6 +255,10 @@ public class UserService {
             .map(UserDTO::new);
     }
 
+    /**
+     * 根据登录名删除用户
+     * @param login
+     */
     public void deleteUser(String login) {
         userRepository.findOneByLogin(login).ifPresent(user -> {
             userRepository.delete(user);
@@ -228,19 +267,27 @@ public class UserService {
         });
     }
 
+    /**
+     * 修改密码
+     * @param currentClearTextPassword 旧密码
+     * @param newPassword 新密码
+     */
     public void changePassword(String currentClearTextPassword, String newPassword) {
         SecurityUtils.getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
             .ifPresent(user -> {
                 String currentEncryptedPassword = user.getPassword();
+                //如果旧密码与数据库中的密码不匹配，则抛出异常
                 if (!passwordEncoder.matches(currentClearTextPassword, currentEncryptedPassword)) {
                     throw new InvalidPasswordException();
                 }
+                //将新密码编码 更新
                 String encryptedPassword = passwordEncoder.encode(newPassword);
                 user.setPassword(encryptedPassword);
                 this.clearUserCaches(user);
                 log.debug("Changed password for User: {}", user);
             });
+        ///todo NND在哪儿持久化的呢？
     }
 
     @Transactional(readOnly = true)
@@ -288,6 +335,10 @@ public class UserService {
     }
 
 
+    /**
+     * 清除用户信息缓存
+     * @param user
+     */
     private void clearUserCaches(User user) {
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_LOGIN_CACHE)).evict(user.getLogin());
         Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());

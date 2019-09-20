@@ -1,42 +1,56 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { GatewaySharedModule } from 'app/shared/shared.module';
+import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageHelper } from 'app/core';
+import { GatewaySharedModule } from 'app/shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
-import { adminState } from './admin.route';
-import { AuditsComponent } from './audits/audits.component';
-import { UserMgmtComponent } from './user-management/user-management.component';
-import { UserMgmtDetailComponent } from './user-management/user-management-detail.component';
-import { UserMgmtUpdateComponent } from './user-management/user-management-update.component';
-import { UserMgmtDeleteDialogComponent } from './user-management/user-management-delete-dialog.component';
-import { LogsComponent } from './logs/logs.component';
-import { JhiMetricsMonitoringComponent } from './metrics/metrics.component';
-import { JhiHealthModalComponent } from './health/health-modal.component';
-import { JhiHealthCheckComponent } from './health/health.component';
-import { JhiConfigurationComponent } from './configuration/configuration.component';
-import { JhiDocsComponent } from './docs/docs.component';
-import { JhiGatewayComponent } from './gateway/gateway.component';
-
-@NgModule({
-  imports: [
-    GatewaySharedModule,
-    /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
-    RouterModule.forChild(adminState)
-  ],
-  declarations: [
+import {
+    adminState,
     AuditsComponent,
     UserMgmtComponent,
     UserMgmtDetailComponent,
     UserMgmtUpdateComponent,
     UserMgmtDeleteDialogComponent,
     LogsComponent,
-    JhiConfigurationComponent,
-    JhiHealthCheckComponent,
+    JhiMetricsMonitoringComponent,
     JhiHealthModalComponent,
+    JhiHealthCheckComponent,
+    JhiConfigurationComponent,
     JhiDocsComponent,
-    JhiGatewayComponent,
-    JhiMetricsMonitoringComponent
-  ],
-  entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent]
+    JhiGatewayComponent
+} from './';
+
+@NgModule({
+    imports: [
+        GatewaySharedModule,
+        RouterModule.forChild(adminState)
+        /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
+    ],
+    declarations: [
+        AuditsComponent,
+        UserMgmtComponent,
+        UserMgmtDetailComponent,
+        UserMgmtUpdateComponent,
+        UserMgmtDeleteDialogComponent,
+        LogsComponent,
+        JhiConfigurationComponent,
+        JhiHealthCheckComponent,
+        JhiHealthModalComponent,
+        JhiDocsComponent,
+        JhiGatewayComponent,
+        JhiMetricsMonitoringComponent
+    ],
+    providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
+    entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class GatewayAdminModule {}
+export class GatewayAdminModule {
+    constructor(private languageService: JhiLanguageService, private languageHelper: JhiLanguageHelper) {
+        this.languageHelper.language.subscribe((languageKey: string) => {
+            if (languageKey !== undefined) {
+                this.languageService.changeLanguage(languageKey);
+            }
+        });
+    }
+}

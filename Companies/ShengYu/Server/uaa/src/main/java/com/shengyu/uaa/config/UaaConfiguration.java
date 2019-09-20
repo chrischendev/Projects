@@ -41,6 +41,7 @@ import java.util.Collection;
 public class UaaConfiguration extends AuthorizationServerConfigurerAdapter implements ApplicationContextAware {
     /**
      * Access tokens will not expire any earlier than this.
+     * 访问令牌不会在此之前过期
      */
     private static final int MIN_ACCESS_TOKEN_VALIDITY_SECS = 60;
 

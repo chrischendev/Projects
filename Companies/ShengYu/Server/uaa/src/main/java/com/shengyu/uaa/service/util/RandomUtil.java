@@ -24,6 +24,7 @@ public final class RandomUtil {
 
     /**
      * Generate a password.
+     * 构建一个密码
      *
      * @return the generated password.
      */
@@ -33,6 +34,7 @@ public final class RandomUtil {
 
     /**
      * Generate an activation key.
+     * 构建一个激活码
      *
      * @return the generated activation key.
      */
@@ -42,6 +44,7 @@ public final class RandomUtil {
 
     /**
      * Generate a reset key.
+     * 构建一个复位码
      *
      * @return the generated reset key.
      */

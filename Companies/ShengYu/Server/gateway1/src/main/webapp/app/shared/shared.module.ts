@@ -1,22 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Gateway1SharedLibsModule } from './shared-libs.module';
-import { FindLanguageFromKeyPipe } from './language/find-language-from-key.pipe';
-import { JhiAlertComponent } from './alert/alert.component';
-import { JhiAlertErrorComponent } from './alert/alert-error.component';
-import { JhiLoginModalComponent } from './login/login.component';
-import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbDateMomentAdapter } from './util/datepicker-adapter';
+import { GatewaySharedLibsModule, GatewaySharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective } from './';
 
 @NgModule({
-  imports: [Gateway1SharedLibsModule],
-  declarations: [FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent, JhiLoginModalComponent, HasAnyAuthorityDirective],
-  entryComponents: [JhiLoginModalComponent],
-  exports: [
-    Gateway1SharedLibsModule,
-    FindLanguageFromKeyPipe,
-    JhiAlertComponent,
-    JhiAlertErrorComponent,
-    JhiLoginModalComponent,
-    HasAnyAuthorityDirective
-  ]
+    imports: [GatewaySharedLibsModule, GatewaySharedCommonModule],
+    declarations: [JhiLoginModalComponent, HasAnyAuthorityDirective],
+    providers: [{ provide: NgbDateAdapter, useClass: NgbDateMomentAdapter }],
+    entryComponents: [JhiLoginModalComponent],
+    exports: [GatewaySharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class Gateway1SharedModule {}
+export class GatewaySharedModule {
+    static forRoot() {
+        return {
+            ngModule: GatewaySharedModule
+        };
+    }
+}

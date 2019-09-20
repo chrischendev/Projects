@@ -17,27 +17,26 @@ const ENV = 'development';
 module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: './target/classes/static/',
+        contentBase: './target/www',
         proxy: [{
             context: [
+                /* jhipster-needle-add-entity-to-webpack - JHipster will add entity api paths here */
                 '/api',
-                '/services',
                 '/management',
                 '/swagger-resources',
                 '/v2/api-docs',
                 '/h2-console',
                 '/auth'
             ],
-            target: `http${options.tls ? 's' : ''}://localhost:8888`,
+            target: `http${options.tls ? 's' : ''}://127.0.0.1:8888`,
             secure: false,
-            changeOrigin: options.tls
+            changeOrigin: options.tls,
+            headers: { host: 'localhost:9000' }
         }],
         stats: options.stats,
         watchOptions: {
             ignored: /node_modules/
-        },
-        https: options.tls,
-        historyApiFallback: true
+        }
     },
     entry: {
         polyfills: './src/main/webapp/app/polyfills',
@@ -45,16 +44,16 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         main: './src/main/webapp/app/app.main'
     },
     output: {
-        path: utils.root('target/classes/static/'),
+        path: utils.root('target/www'),
         filename: 'app/[name].bundle.js',
         chunkFilename: 'app/[id].chunk.js'
     },
     module: {
         rules: [{
-            test: /\.(j|t)s$/,
+            test: /\.ts$/,
             enforce: 'pre',
-            loader: 'eslint-loader',
-            exclude: /node_modules/
+            loader: 'tslint-loader',
+            exclude: [/(node_modules)/, new RegExp('reflect-metadata\\' + path.sep + 'Reflect\\.ts')]
         },
         {
             test: /\.ts$/,
@@ -69,9 +68,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
                 {
                     loader: 'thread-loader',
                     options: {
-                        // There should be 1 cpu for the fork-ts-checker-webpack-plugin.
-                        // The value may need to be adjusted (e.g. to 1) in some CI environments,
-                        // as cpus() may report more cores than what are available to the build.
+                        // there should be 1 cpu for the fork-ts-checker-webpack-plugin
                         workers: require('os').cpus().length - 1
                     }
                 },
@@ -81,7 +78,8 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
                         transpileOnly: true,
                         happyPackMode: true
                     }
-                }
+                },
+                'angular-router-loader'
             ],
             exclude: /(node_modules)/
         },
@@ -99,6 +97,15 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
                 loader: 'sass-loader',
                 options: { implementation: sass }
             }]
+        },
+        {
+            test: /\.css$/,
+            use: ['to-string-loader', 'css-loader'],
+            exclude: /(vendor\.css|global\.css)/
+        },
+        {
+            test: /(vendor\.css|global\.css)/,
+            use: ['style-loader', 'css-loader']
         }]
     },
     stats: process.env.JHI_DISABLE_WEBPACK_LOGS ? 'none' : options.stats,
@@ -111,14 +118,10 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         new FriendlyErrorsWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin(),
         new BrowserSyncPlugin({
-            https: options.tls,
             host: 'localhost',
             port: 9000,
             proxy: {
-                target: `http${options.tls ? 's' : ''}://localhost:9060`,
-                proxyOptions: {
-                    changeOrigin: false  //pass the Host header to the backend unchanged  https://github.com/Browsersync/browser-sync/issues/430
-                }
+                target: 'http://localhost:9060'
             },
             socket: {
                 clients: {
@@ -130,7 +133,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
         }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)/,
-            path.resolve(__dirname, './src/main/webapp/')
+            path.resolve(__dirname, './src/main/webapp')
         ),
         new writeFilePlugin(),
         new webpack.WatchIgnorePlugin([
