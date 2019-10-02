@@ -35,6 +35,7 @@ public class UserApi {
             DataManager.occLoginInfo(code, username);
             return true;
         }
+        System.out.println("验证失败");
         return false;
     }
 
@@ -63,6 +64,7 @@ public class UserApi {
      */
     @GetMapping("/askLogin")
     public LoginUser askLogin(String code) {
+        System.out.println(code);
         if (DataManager.checkOcc(code)) {
             return DataManager.getUserByCode(code);
         }

@@ -7,12 +7,29 @@
     <script src="../js/vue/vue.min.js"></script>
     <script src="../js/vue/vue-resource.min.js"></script>
     <script src="../js/jquery-qrcode.js"></script>
+    <style>
+        .main-box {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .btn-show {
+            margin-top: 40px;
+        }
+
+        canvas {
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
-    <div id="output"></div>
-    <button @click="getScanCode()">显示二维码</button>
-    <h1>{{ name }}</h1>
+    <div class="main-box">
+        <div id="output"></div>
+        <h3>{{ info }}</h3>
+        <button class="btn-show" @click="getScanCode()">显示二维码</button>
+    </div>
 </div>
 </body>
 <script src="../js/index.js"></script>

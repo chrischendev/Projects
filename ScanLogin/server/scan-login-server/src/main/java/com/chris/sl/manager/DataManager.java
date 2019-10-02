@@ -27,7 +27,7 @@ public class DataManager {
      * 初始化
      */
     public static void init() {
-        userMap.put("kaly", new LoginUser("kalychen", "123456"));
+        userMap.put("kaly", new LoginUser("kaly", "123456"));
         userMap.put("chris", new LoginUser("chris", "123456"));
         userMap.put("will", new LoginUser("will", "123456"));
         userMap.put("chenfabao", new LoginUser("chenfabao", "123456"));
@@ -80,7 +80,7 @@ public class DataManager {
         //检查二维码识别码是否存在或过期
         LoginInfo loginInfo = loginInfoMap.get(code);
         long currentTime = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
-        if (null == loginInfo || loginInfo.getExpire() > currentTime) {
+        if (null == loginInfo || currentTime > loginInfo.getExpire()) {
             return false;
         }
         return true;
@@ -124,7 +124,7 @@ public class DataManager {
         //收集
         long currentTime = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
         for (Map.Entry<String, LoginInfo> entry : loginInfoMap.entrySet()) {
-            if (entry.getValue().getExpire() > currentTime) {
+            if (currentTime > entry.getValue().getExpire()) {
                 codeSet.add(entry.getKey());
             }
         }
