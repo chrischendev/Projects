@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
  * create on: 2019/10/2 11:31
  * use for: 登录用户
  */
-@Data@NoArgsConstructor@AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginUser {
     private String username;
     private String password;

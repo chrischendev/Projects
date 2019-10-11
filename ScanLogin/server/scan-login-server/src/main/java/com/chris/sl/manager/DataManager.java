@@ -93,6 +93,7 @@ public class DataManager {
      * @return
      */
     public static boolean checkOcc(String code) {
+        refreshLoginInfo();//整理
         LoginInfo loginInfo = loginInfoMap.get(code);
         if (null == loginInfo) {
             return false;

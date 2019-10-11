@@ -21,7 +21,7 @@ new Vue({
                         $('#output').empty();
                         $('#output').qrcode(this.code);
 
-                        //在此轮询 1秒一次 都没成功
+                        //在此轮询 1秒一次
                         this.loopAsk()
                     },
                     function (response) {

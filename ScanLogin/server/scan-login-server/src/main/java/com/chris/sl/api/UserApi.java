@@ -69,6 +69,5 @@ public class UserApi {
             return DataManager.getUserByCode(code);
         }
         return null;
-//        return new LoginUser("chris","123456");//临时测试
     }
 }
