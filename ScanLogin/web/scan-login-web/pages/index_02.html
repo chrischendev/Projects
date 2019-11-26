@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫码登录-后端生成图片</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/vue/vue.min.js"></script>
+    <script src="../js/vue/vue-resource.min.js"></script>
+    <script src="../js/jquery-qrcode.js"></script>
+    <style>
+        .main-box {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .btn-show {
+            margin-top: 40px;
+        }
+
+        canvas {
+            margin-top: 40px;
+        }
+        #qr{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="main-box">
+        <div id="output"><img id="qr"></div>
+        <h3>{{ info }}</h3>
+        <button class="btn-show" @click="getScanCode()">显示二维码</button>
+    </div>
+</div>
+</body>
+<script src="../js/index_02.js"></script>
+</html>

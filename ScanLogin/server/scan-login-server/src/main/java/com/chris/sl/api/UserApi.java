@@ -3,10 +3,16 @@ package com.chris.sl.api;
 import com.chris.sl.manager.DataManager;
 import com.chris.sl.model.LoginUser;
 import com.chris.sl.model.ScanCode;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.UUID;
 
 /**
@@ -69,5 +75,34 @@ public class UserApi {
             return DataManager.getUserByCode(code);
         }
         return null;
+    }
+
+    /**
+     * 获取扫描识别码流 Web前端调用
+     * 后端生成图片，然后以流的形式传输给web前端
+     *
+     * @return
+     */
+    @GetMapping("/getScanCodeStream")
+    public ResponseEntity getScanCodeStream(HttpServletResponse response) {
+        //ScanCode scanCode = getScanCode();
+        //String code = scanCode.getCode();
+
+        response.setContentType("image/jpeg");
+
+        File file = new File("D:\\temp\\file\\1.jpg");
+
+        //复制流
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ServletOutputStream os = response.getOutputStream();
+            IOUtils.copy(fis, os);
+            os.flush();
+            os.close();
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok().build();
     }
 }

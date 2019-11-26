@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 edit.putString("password", password);
                 edit.commit();
                 //setTitle(username + " : " + password);
-                Toast.makeText(MainActivity.this, "APP登陆成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "APP登录成功", Toast.LENGTH_SHORT).show();
             }
         });
 

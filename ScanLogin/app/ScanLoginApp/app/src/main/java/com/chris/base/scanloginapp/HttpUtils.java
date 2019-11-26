@@ -17,37 +17,48 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * use for :
  */
 public class HttpUtils {
-    public static void login(String username, String password, String code, final LoginCallback<String> callback) {
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @param code
+     * @param loginCallback
+     */
+    public static void login(String username, String password, String code, final LoginCallback<String> loginCallback) {
         String baseUrl = "http://192.168.0.100:7021/";
+        //OkHttpClient
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10L, TimeUnit.SECONDS)
                 .readTimeout(10L, TimeUnit.SECONDS)
                 .writeTimeout(10L, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 .build();
+        //Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
+        //Api
         LoginService loginService = retrofit.create(LoginService.class);
         Map<String, Object> paramMap = new HashMap<>(16);
         paramMap.put("username", username);
         paramMap.put("password", password);
         paramMap.put("code", code);
         Call<Boolean> call = loginService.login(paramMap);
-        call.enqueue(new Callback<Boolean>() {
+        Callback<Boolean> callback = new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 if (response.body()) {
-                    callback.success("登陆成功");
+                    loginCallback.success("登录成功");
                 }
             }
 
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {
-                callback.failed(t.getMessage(), t);
+                loginCallback.failed(t.getMessage(), t);
             }
-        });
+        };
+        call.enqueue(callback);
     }
 }
