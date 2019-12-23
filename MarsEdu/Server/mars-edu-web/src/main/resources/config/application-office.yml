@@ -1,5 +1,6 @@
 spring:
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://10.16.17.26:3307/db_mars_edu?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root

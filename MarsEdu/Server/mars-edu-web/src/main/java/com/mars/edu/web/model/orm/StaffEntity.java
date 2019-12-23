@@ -30,7 +30,7 @@ public class StaffEntity {
      * 学校名称
      * 约定大于配置 school_name
      */
-    private String schoolName;
+    private transient String schoolName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
