@@ -1,9 +1,10 @@
 package com.mars.edu.app.pages.teacher;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.chris.base.library.base.activity.BaseMvpActivity;
 import com.chris.base.library.base.adapter.BaseRecyclerAdapter;

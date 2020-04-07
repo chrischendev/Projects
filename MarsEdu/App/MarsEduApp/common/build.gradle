@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+def myproject = rootProject.ext.myapp
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -61,11 +61,9 @@ uploadArchives {
     repositories {
         mavenDeployer {
             //指定maven仓库url 如果使用快照库需要注意版本号的后缀
-            //repository(url: "http://maven.ai-ways.com/nexus/content/repositories/releases/") {
-            repository(url: "http://192.168.0.114:8081/repository/maven-releases/") {
+            repository(url: myproject.nexus_url) {
                 //nexus登录默认用户名和密码 userName大小写要匹配
-                //authentication(userName: "admin", password: "Aa1111111")
-                authentication(userName: "admin", password: "admin")
+                authentication(userName: "admin", password: "admin123")
             }
             pom.groupId = 'com.chris'
             pom.artifactId = 'mars-edu-common'

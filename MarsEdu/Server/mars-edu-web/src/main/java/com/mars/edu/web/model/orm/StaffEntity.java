@@ -30,7 +30,7 @@ public class StaffEntity {
      * 学校名称
      * 约定大于配置 school_name
      */
-    private transient String schoolName;
+    //private transient String schoolName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -153,13 +153,13 @@ public class StaffEntity {
         this.status = status;
     }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
-
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
+//    public String getSchoolName() {
+//        return schoolName;
+//    }
+//
+//    public void setSchoolName(String schoolName) {
+//        this.schoolName = schoolName;
+//    }
 
     @Override
     public boolean equals(Object o) {

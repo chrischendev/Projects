@@ -2,9 +2,10 @@ package com.mars.edu.app.pages.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
 import com.chris.base.library.base.fragment.BaseMvpFragment;

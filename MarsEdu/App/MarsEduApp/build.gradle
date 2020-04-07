@@ -1,3 +1,4 @@
+apply from: "config.gradle"
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
@@ -5,12 +6,16 @@ buildscript {
         flatDir {
             dirs 'libs'
         }
-        google()
-        jcenter()
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.android.tools.build:gradle:3.6.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,13 +24,15 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            //url 'http://maven.ai-ways.com/nexus/content/repositories/releases'
-            url 'http://192.168.0.114:8081/repository/maven-releases/'
-        }
-        google()
-        jcenter()
-
+//        maven {
+//            url 'http://server.chris.com:8081/repository/maven-releases/'
+//        }
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
 }
 
@@ -33,13 +40,13 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext{
-    applicationId= "com.mars.edu.app"
-    minSdkVersion =19
-    targetSdkVersion =28
-    versionCode= 1
-    versionName ="1.0"
-    compileSdkVersion= 28
-    buildToolsVersion ='28.0.3'
-
+ext {
+    applicationId = "com.mars.edu.app"
+    minSdkVersion = 19
+    targetSdkVersion = 28
+    versionCode = 1
+    versionName = "1.0"
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+    var = '3.6.0'
 }

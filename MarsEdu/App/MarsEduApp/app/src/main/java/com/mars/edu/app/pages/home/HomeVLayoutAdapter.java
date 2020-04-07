@@ -1,10 +1,11 @@
 package com.mars.edu.app.pages.home;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
@@ -59,7 +60,7 @@ public class HomeVLayoutAdapter extends DelegateAdapter.Adapter<HomeRvViewHolder
                 OnePlusNLayoutHelper onePlusNLayoutHelper = new OnePlusNLayoutHelper(5);
                 onePlusNLayoutHelper.setColWeights(new float[]{10f});
                 onePlusNLayoutHelper.setRowWeight(30f);
-                onePlusNLayoutHelper.setMargin(1,1,1,1);
+                onePlusNLayoutHelper.setMargin(1, 1, 1, 1);
                 return onePlusNLayoutHelper;
             default:
                 return null;

@@ -1,8 +1,9 @@
 package com.mars.edu.app.pages.teacher;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chris.base.library.base.viewholder.BaseViewHolder;
 import com.mars.edu.app.R;

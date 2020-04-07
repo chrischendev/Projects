@@ -1,9 +1,10 @@
 package com.mars.edu.app.pages.main;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
-import android.support.annotation.RawRes;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.RawRes;
 
 /**
  * @author Chris Chan

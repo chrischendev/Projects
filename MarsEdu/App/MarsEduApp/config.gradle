@@ -1,0 +1,5 @@
+ext {
+    myapp = [
+            nexus_url: "http://server.chris.com:8081/repository/maven-releases/"
+    ]
+}

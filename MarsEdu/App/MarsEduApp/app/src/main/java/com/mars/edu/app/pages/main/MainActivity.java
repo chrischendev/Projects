@@ -2,21 +2,19 @@ package com.mars.edu.app.pages.main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
@@ -25,6 +23,9 @@ import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
 import com.chris.base.library.base.mvp.BasePresenter;
 import com.chris.base.library.utils.GlideUtils;
 import com.chris.base.library.utils.SPUtils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.mars.edu.app.R;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 import com.mars.edu.app.pages.home.HomeActivity;
@@ -33,7 +34,6 @@ import com.mars.edu.app.pages.news.NewsActivity;
 import com.mars.edu.app.pages.picture.PictureActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
 import com.mars.edu.app.pages.teacher.TeacherActivity;
-import com.mars.edu.chat.ChatActivity;
 
 import java.util.List;
 
@@ -242,7 +242,6 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         NavigationView navView;
         @BindView(R.id.drawer_layout)
         DrawerLayout drawer;
-
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

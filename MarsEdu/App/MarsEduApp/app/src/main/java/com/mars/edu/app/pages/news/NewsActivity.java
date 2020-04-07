@@ -1,11 +1,12 @@
 package com.mars.edu.app.pages.news;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+
 import com.chris.base.library.base.activity.BaseInjectActivity;
+import com.google.android.material.tabs.TabLayout;
 import com.mars.edu.app.R;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
 
