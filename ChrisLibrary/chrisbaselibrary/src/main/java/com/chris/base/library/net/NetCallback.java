@@ -26,6 +26,8 @@ public abstract class NetCallback<T> implements Callback<T> {
                 //如果数据为空
                 onComplete(new NetResponse<>(call, true, NetStatus.DATA_EMPTY, null));
             }
+        }else{
+            onComplete(new NetResponse<>(call, false, NetStatus.DATA_ERROR, null));
         }
     }
 

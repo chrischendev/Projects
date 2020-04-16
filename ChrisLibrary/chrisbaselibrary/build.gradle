@@ -86,7 +86,7 @@ uploadArchives {
             }
             pom.groupId = 'com.chris'
             pom.artifactId = 'base-library'
-            pom.version = '1.0.0'
+            pom.version = '1.0.1'
         }
     }
 }
