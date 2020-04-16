@@ -6,12 +6,14 @@ buildscript {
         flatDir {
             dirs 'libs'
         }
+        maven { url 'http://server.chris.com:8081/repository/gradle-public/' }
+        maven { url 'http://server.chris.com:8081/repository/maven-releases/' }
 //        google()
 //        jcenter()
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
 
     }
     dependencies {
@@ -24,15 +26,15 @@ buildscript {
 
 allprojects {
     repositories {
-//        maven {
-//            url 'http://server.chris.com:8081/repository/maven-releases/'
-//        }
+
+        maven { url 'http://server.chris.com:8081/repository/gradle-public/' }
+        maven { url 'http://server.chris.com:8081/repository/maven-releases/' }
 //        google()
 //        jcenter()
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
     }
 }
 
