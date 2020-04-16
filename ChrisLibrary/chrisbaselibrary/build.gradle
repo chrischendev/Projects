@@ -78,10 +78,8 @@ uploadArchives {
     repositories {
         mavenDeployer {
             //指定maven仓库url 如果使用快照库需要注意版本号的后缀
-            //repository(url: "http://maven.ai-ways.com/nexus/content/repositories/releases/") {
             repository(url: "http://server.chris.com:8081/repository/maven-releases/") {
                 //nexus登录默认用户名和密码 userName大小写要匹配
-                //authentication(userName: "admin", password: "Aa1111111")
                 authentication(userName: "admin", password: "admin123")
             }
             pom.groupId = 'com.chris'
