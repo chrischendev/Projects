@@ -16,10 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.chris.base.library.base.activity.BaseMvpActivity;
-import com.chris.base.library.base.adapter.BaseRecyclerAdapter;
 import com.chris.base.library.base.mvp.BasePresenter;
 import com.chris.base.library.utils.GlideUtils;
 import com.chris.base.library.utils.SPUtils;
@@ -28,12 +26,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.mars.edu.app.R;
 import com.mars.edu.app.locallibs.inject.DaggerActivityComponent;
-import com.mars.edu.app.pages.home.HomeActivity;
 import com.mars.edu.app.pages.login.LoginActivity;
-import com.mars.edu.app.pages.news.NewsActivity;
-import com.mars.edu.app.pages.picture.PictureActivity;
 import com.mars.edu.app.pages.scan.ScanActivity;
-import com.mars.edu.app.pages.teacher.TeacherActivity;
 
 import java.util.List;
 
@@ -42,7 +36,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseMvpActivity implements NavigationView.OnNavigationItemSelectedListener, MainContracts.View, BaseRecyclerAdapter.OnItemClickListener<MainNavItem> {
+public class MainActivity extends BaseMvpActivity implements MainContracts.View {
 
     @Inject
     MainPresenter mainPresenter;
@@ -54,6 +48,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
 
     @Override
     protected BasePresenter getPresenter() {
+        mainPresenter.setActivity(this);
         return mainPresenter;
     }
 
@@ -96,7 +91,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
 
         //适配器
         mainRvAdapter = new MainRvAdapter(this, mainNavItemList);
-        mainRvAdapter.setOnItemClickListener(this);
+        mainRvAdapter.setOnItemClickListener(mainPresenter);
         //显示控件
         vh.rvMainNav.setLayoutManager(new GridLayoutManager(this, 4));
         vh.rvMainNav.setAdapter(mainRvAdapter);
@@ -108,7 +103,8 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, vh.drawer, vh.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         vh.drawer.addDrawerListener(toggle);
         toggle.syncState();
-        vh.navView.setNavigationItemSelectedListener(this);
+        //vh.navView.setNavigationItemSelectedListener(this);
+        vh.navView.setNavigationItemSelectedListener(mainPresenter);
         //侧滑菜单头部控件数据持有者
         nvh = new NavHeaderViewHolder(vh.navView.getHeaderView(0));
         nvh.tvMainLoginReg.setOnClickListener(view -> startActivityFromTo(MainActivity.this, LoginActivity.class));
@@ -171,60 +167,6 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.nav_user_info) {
-            startActivity(HomeActivity.class);
-        } else if (id == R.id.nav_wallet) {
-
-        } else if (id == R.id.nav_album) {
-            ARouter.getInstance().build("/app/AlbumActivity").navigation();
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-            //ARouter.getInstance().build("/video/VideoActivity").navigation();
-        } else if (id == R.id.nav_contact) {
-            //ARouter.getInstance().build("/chat/ChatActivity").navigation();
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void onItemClick(View itemView, int position, MainNavItem item) {
-        switch (item.code) {
-            case "news":
-                startActivity(NewsActivity.class);
-                break;
-            case "school":
-                startActivity(HomeActivity.class);
-                break;
-            case "teacher":
-                startActivity(TeacherActivity.class);
-                break;
-            case "practice":
-                startActivity(TeacherActivity.class);
-                break;
-            case "picture":
-                startActivity(PictureActivity.class);
-                break;
-            case "chat":
-                //startActivity(ChatActivity.class);
-                ARouter.getInstance().build("/chat/ChatActivity").navigation();
-                break;
-            case "video":
-                //startActivity(video);
-                ARouter.getInstance().build("/video/VideoActivity").navigation();
-                break;
-            default:
-                break;
-        }
-    }
-
     /**
      * 主要控件
      */
@@ -242,6 +184,7 @@ public class MainActivity extends BaseMvpActivity implements NavigationView.OnNa
         NavigationView navView;
         @BindView(R.id.drawer_layout)
         DrawerLayout drawer;
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
